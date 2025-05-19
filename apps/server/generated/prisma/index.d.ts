@@ -3268,18 +3268,21 @@ export namespace Prisma {
   export type IncidentMinAggregateOutputType = {
     id: string | null
     dateCreated: Date | null
+    incidentType: string | null
     videoData: Uint8Array | null
   }
 
   export type IncidentMaxAggregateOutputType = {
     id: string | null
     dateCreated: Date | null
+    incidentType: string | null
     videoData: Uint8Array | null
   }
 
   export type IncidentCountAggregateOutputType = {
     id: number
     dateCreated: number
+    incidentType: number
     videoData: number
     _all: number
   }
@@ -3288,18 +3291,21 @@ export namespace Prisma {
   export type IncidentMinAggregateInputType = {
     id?: true
     dateCreated?: true
+    incidentType?: true
     videoData?: true
   }
 
   export type IncidentMaxAggregateInputType = {
     id?: true
     dateCreated?: true
+    incidentType?: true
     videoData?: true
   }
 
   export type IncidentCountAggregateInputType = {
     id?: true
     dateCreated?: true
+    incidentType?: true
     videoData?: true
     _all?: true
   }
@@ -3379,6 +3385,7 @@ export namespace Prisma {
   export type IncidentGroupByOutputType = {
     id: string
     dateCreated: Date
+    incidentType: string
     videoData: Uint8Array
     _count: IncidentCountAggregateOutputType | null
     _min: IncidentMinAggregateOutputType | null
@@ -3402,28 +3409,32 @@ export namespace Prisma {
   export type IncidentSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     dateCreated?: boolean
+    incidentType?: boolean
     videoData?: boolean
   }, ExtArgs["result"]["incident"]>
 
   export type IncidentSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     dateCreated?: boolean
+    incidentType?: boolean
     videoData?: boolean
   }, ExtArgs["result"]["incident"]>
 
   export type IncidentSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     dateCreated?: boolean
+    incidentType?: boolean
     videoData?: boolean
   }, ExtArgs["result"]["incident"]>
 
   export type IncidentSelectScalar = {
     id?: boolean
     dateCreated?: boolean
+    incidentType?: boolean
     videoData?: boolean
   }
 
-  export type IncidentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "dateCreated" | "videoData", ExtArgs["result"]["incident"]>
+  export type IncidentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "dateCreated" | "incidentType" | "videoData", ExtArgs["result"]["incident"]>
 
   export type $IncidentPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Incident"
@@ -3431,6 +3442,7 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: string
       dateCreated: Date
+      incidentType: string
       videoData: Uint8Array
     }, ExtArgs["result"]["incident"]>
     composites: {}
@@ -3857,6 +3869,7 @@ export namespace Prisma {
   interface IncidentFieldRefs {
     readonly id: FieldRef<"Incident", 'String'>
     readonly dateCreated: FieldRef<"Incident", 'DateTime'>
+    readonly incidentType: FieldRef<"Incident", 'String'>
     readonly videoData: FieldRef<"Incident", 'Bytes'>
   }
     
@@ -4259,6 +4272,7 @@ export namespace Prisma {
   export const IncidentScalarFieldEnum: {
     id: 'id',
     dateCreated: 'dateCreated',
+    incidentType: 'incidentType',
     videoData: 'videoData'
   };
 
@@ -4447,12 +4461,14 @@ export namespace Prisma {
     NOT?: IncidentWhereInput | IncidentWhereInput[]
     id?: StringFilter<"Incident"> | string
     dateCreated?: DateTimeFilter<"Incident"> | Date | string
+    incidentType?: StringFilter<"Incident"> | string
     videoData?: BytesFilter<"Incident"> | Uint8Array
   }
 
   export type IncidentOrderByWithRelationInput = {
     id?: SortOrder
     dateCreated?: SortOrder
+    incidentType?: SortOrder
     videoData?: SortOrder
   }
 
@@ -4462,12 +4478,14 @@ export namespace Prisma {
     OR?: IncidentWhereInput[]
     NOT?: IncidentWhereInput | IncidentWhereInput[]
     dateCreated?: DateTimeFilter<"Incident"> | Date | string
+    incidentType?: StringFilter<"Incident"> | string
     videoData?: BytesFilter<"Incident"> | Uint8Array
   }, "id" | "id">
 
   export type IncidentOrderByWithAggregationInput = {
     id?: SortOrder
     dateCreated?: SortOrder
+    incidentType?: SortOrder
     videoData?: SortOrder
     _count?: IncidentCountOrderByAggregateInput
     _max?: IncidentMaxOrderByAggregateInput
@@ -4480,6 +4498,7 @@ export namespace Prisma {
     NOT?: IncidentScalarWhereWithAggregatesInput | IncidentScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Incident"> | string
     dateCreated?: DateTimeWithAggregatesFilter<"Incident"> | Date | string
+    incidentType?: StringWithAggregatesFilter<"Incident"> | string
     videoData?: BytesWithAggregatesFilter<"Incident"> | Uint8Array
   }
 
@@ -4581,42 +4600,49 @@ export namespace Prisma {
   export type IncidentCreateInput = {
     id?: string
     dateCreated?: Date | string
+    incidentType: string
     videoData: Uint8Array
   }
 
   export type IncidentUncheckedCreateInput = {
     id?: string
     dateCreated?: Date | string
+    incidentType: string
     videoData: Uint8Array
   }
 
   export type IncidentUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    incidentType?: StringFieldUpdateOperationsInput | string
     videoData?: BytesFieldUpdateOperationsInput | Uint8Array
   }
 
   export type IncidentUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    incidentType?: StringFieldUpdateOperationsInput | string
     videoData?: BytesFieldUpdateOperationsInput | Uint8Array
   }
 
   export type IncidentCreateManyInput = {
     id?: string
     dateCreated?: Date | string
+    incidentType: string
     videoData: Uint8Array
   }
 
   export type IncidentUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    incidentType?: StringFieldUpdateOperationsInput | string
     videoData?: BytesFieldUpdateOperationsInput | Uint8Array
   }
 
   export type IncidentUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    incidentType?: StringFieldUpdateOperationsInput | string
     videoData?: BytesFieldUpdateOperationsInput | Uint8Array
   }
 
@@ -4735,18 +4761,21 @@ export namespace Prisma {
   export type IncidentCountOrderByAggregateInput = {
     id?: SortOrder
     dateCreated?: SortOrder
+    incidentType?: SortOrder
     videoData?: SortOrder
   }
 
   export type IncidentMaxOrderByAggregateInput = {
     id?: SortOrder
     dateCreated?: SortOrder
+    incidentType?: SortOrder
     videoData?: SortOrder
   }
 
   export type IncidentMinOrderByAggregateInput = {
     id?: SortOrder
     dateCreated?: SortOrder
+    incidentType?: SortOrder
     videoData?: SortOrder
   }
 

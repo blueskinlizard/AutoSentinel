@@ -31,7 +31,8 @@ model Dashboard {
 }
 
 model Incident {
-  id          String   @id @unique @default(uuid())
-  dateCreated DateTime @default(now())
-  videoData   Bytes
+  id           String   @id @unique @default(uuid())
+  dateCreated  DateTime @default(now())
+  incidentType String
+  videoData    Bytes
 }
