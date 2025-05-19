@@ -13,3 +13,25 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model User {
+  id               String      @id @unique @default(uuid())
+  name             String      @unique
+  password         String
+  DashboardsOwned  Dashboard[] @relation("OwnedDashboards")
+  DashboardsShared Dashboard[] @relation("SharedDashboards")
+}
+
+model Dashboard {
+  id               String @id @unique @default(uuid())
+  name             String
+  DashboardOwner   User   @relation("OwnedDashboards", fields: [DashboardOwnerId], references: [id])
+  DashboardOwnerId String
+  DashboardViewers User[] @relation("SharedDashboards")
+}
+
+model Incident {
+  id          String   @id @unique @default(uuid())
+  dateCreated DateTime @default(now())
+  videoData   Bytes
+}
