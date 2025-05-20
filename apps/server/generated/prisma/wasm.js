@@ -129,14 +129,15 @@ exports.Prisma.UserScalarFieldEnum = {
 exports.Prisma.DashboardScalarFieldEnum = {
   id: 'id',
   name: 'name',
-  DashboardOwnerId: 'DashboardOwnerId'
+  dashboardOwnerId: 'dashboardOwnerId'
 };
 
 exports.Prisma.IncidentScalarFieldEnum = {
   id: 'id',
   dateCreated: 'dateCreated',
   incidentType: 'incidentType',
-  videoData: 'videoData'
+  videoData: 'videoData',
+  dashboardId: 'dashboardId'
 };
 
 exports.Prisma.SortOrder = {

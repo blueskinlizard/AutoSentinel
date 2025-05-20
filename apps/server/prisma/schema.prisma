@@ -25,9 +25,10 @@ model User {
 model Dashboard {
   id               String @id @unique @default(uuid())
   name             String
-  DashboardOwner   User   @relation("OwnedDashboards", fields: [DashboardOwnerId], references: [id])
-  DashboardOwnerId String
+  DashboardOwner   User   @relation("OwnedDashboards", fields: [dashboardOwnerId], references: [id])
+  dashboardOwnerId String
   DashboardViewers User[] @relation("SharedDashboards")
+  IncidentCollection Incident[] @relation("DashboardIncidents")
 }
 
 model Incident {
@@ -35,4 +36,6 @@ model Incident {
   dateCreated DateTime @default(now())
   incidentType String
   videoData   Bytes
+  Dashboard   Dashboard @relation("DashboardIncidents", fields: [dashboardId], references: [id])
+  dashboardId String
 }

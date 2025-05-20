@@ -1092,10 +1092,12 @@ export namespace Prisma {
 
   export type DashboardCountOutputType = {
     DashboardViewers: number
+    IncidentCollection: number
   }
 
   export type DashboardCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     DashboardViewers?: boolean | DashboardCountOutputTypeCountDashboardViewersArgs
+    IncidentCollection?: boolean | DashboardCountOutputTypeCountIncidentCollectionArgs
   }
 
   // Custom InputTypes
@@ -1114,6 +1116,13 @@ export namespace Prisma {
    */
   export type DashboardCountOutputTypeCountDashboardViewersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: UserWhereInput
+  }
+
+  /**
+   * DashboardCountOutputType without action
+   */
+  export type DashboardCountOutputTypeCountIncidentCollectionArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: IncidentWhereInput
   }
 
 
@@ -2206,19 +2215,19 @@ export namespace Prisma {
   export type DashboardMinAggregateOutputType = {
     id: string | null
     name: string | null
-    DashboardOwnerId: string | null
+    dashboardOwnerId: string | null
   }
 
   export type DashboardMaxAggregateOutputType = {
     id: string | null
     name: string | null
-    DashboardOwnerId: string | null
+    dashboardOwnerId: string | null
   }
 
   export type DashboardCountAggregateOutputType = {
     id: number
     name: number
-    DashboardOwnerId: number
+    dashboardOwnerId: number
     _all: number
   }
 
@@ -2226,19 +2235,19 @@ export namespace Prisma {
   export type DashboardMinAggregateInputType = {
     id?: true
     name?: true
-    DashboardOwnerId?: true
+    dashboardOwnerId?: true
   }
 
   export type DashboardMaxAggregateInputType = {
     id?: true
     name?: true
-    DashboardOwnerId?: true
+    dashboardOwnerId?: true
   }
 
   export type DashboardCountAggregateInputType = {
     id?: true
     name?: true
-    DashboardOwnerId?: true
+    dashboardOwnerId?: true
     _all?: true
   }
 
@@ -2317,7 +2326,7 @@ export namespace Prisma {
   export type DashboardGroupByOutputType = {
     id: string
     name: string
-    DashboardOwnerId: string
+    dashboardOwnerId: string
     _count: DashboardCountAggregateOutputType | null
     _min: DashboardMinAggregateOutputType | null
     _max: DashboardMaxAggregateOutputType | null
@@ -2340,36 +2349,38 @@ export namespace Prisma {
   export type DashboardSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
-    DashboardOwnerId?: boolean
+    dashboardOwnerId?: boolean
     DashboardOwner?: boolean | UserDefaultArgs<ExtArgs>
     DashboardViewers?: boolean | Dashboard$DashboardViewersArgs<ExtArgs>
+    IncidentCollection?: boolean | Dashboard$IncidentCollectionArgs<ExtArgs>
     _count?: boolean | DashboardCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["dashboard"]>
 
   export type DashboardSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
-    DashboardOwnerId?: boolean
+    dashboardOwnerId?: boolean
     DashboardOwner?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["dashboard"]>
 
   export type DashboardSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
-    DashboardOwnerId?: boolean
+    dashboardOwnerId?: boolean
     DashboardOwner?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["dashboard"]>
 
   export type DashboardSelectScalar = {
     id?: boolean
     name?: boolean
-    DashboardOwnerId?: boolean
+    dashboardOwnerId?: boolean
   }
 
-  export type DashboardOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "DashboardOwnerId", ExtArgs["result"]["dashboard"]>
+  export type DashboardOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "dashboardOwnerId", ExtArgs["result"]["dashboard"]>
   export type DashboardInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     DashboardOwner?: boolean | UserDefaultArgs<ExtArgs>
     DashboardViewers?: boolean | Dashboard$DashboardViewersArgs<ExtArgs>
+    IncidentCollection?: boolean | Dashboard$IncidentCollectionArgs<ExtArgs>
     _count?: boolean | DashboardCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type DashboardIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2384,11 +2395,12 @@ export namespace Prisma {
     objects: {
       DashboardOwner: Prisma.$UserPayload<ExtArgs>
       DashboardViewers: Prisma.$UserPayload<ExtArgs>[]
+      IncidentCollection: Prisma.$IncidentPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       name: string
-      DashboardOwnerId: string
+      dashboardOwnerId: string
     }, ExtArgs["result"]["dashboard"]>
     composites: {}
   }
@@ -2785,6 +2797,7 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     DashboardOwner<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     DashboardViewers<T extends Dashboard$DashboardViewersArgs<ExtArgs> = {}>(args?: Subset<T, Dashboard$DashboardViewersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    IncidentCollection<T extends Dashboard$IncidentCollectionArgs<ExtArgs> = {}>(args?: Subset<T, Dashboard$IncidentCollectionArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$IncidentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2816,7 +2829,7 @@ export namespace Prisma {
   interface DashboardFieldRefs {
     readonly id: FieldRef<"Dashboard", 'String'>
     readonly name: FieldRef<"Dashboard", 'String'>
-    readonly DashboardOwnerId: FieldRef<"Dashboard", 'String'>
+    readonly dashboardOwnerId: FieldRef<"Dashboard", 'String'>
   }
     
 
@@ -3237,6 +3250,30 @@ export namespace Prisma {
   }
 
   /**
+   * Dashboard.IncidentCollection
+   */
+  export type Dashboard$IncidentCollectionArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Incident
+     */
+    select?: IncidentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Incident
+     */
+    omit?: IncidentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: IncidentInclude<ExtArgs> | null
+    where?: IncidentWhereInput
+    orderBy?: IncidentOrderByWithRelationInput | IncidentOrderByWithRelationInput[]
+    cursor?: IncidentWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: IncidentScalarFieldEnum | IncidentScalarFieldEnum[]
+  }
+
+  /**
    * Dashboard without action
    */
   export type DashboardDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3270,6 +3307,7 @@ export namespace Prisma {
     dateCreated: Date | null
     incidentType: string | null
     videoData: Uint8Array | null
+    dashboardId: string | null
   }
 
   export type IncidentMaxAggregateOutputType = {
@@ -3277,6 +3315,7 @@ export namespace Prisma {
     dateCreated: Date | null
     incidentType: string | null
     videoData: Uint8Array | null
+    dashboardId: string | null
   }
 
   export type IncidentCountAggregateOutputType = {
@@ -3284,6 +3323,7 @@ export namespace Prisma {
     dateCreated: number
     incidentType: number
     videoData: number
+    dashboardId: number
     _all: number
   }
 
@@ -3293,6 +3333,7 @@ export namespace Prisma {
     dateCreated?: true
     incidentType?: true
     videoData?: true
+    dashboardId?: true
   }
 
   export type IncidentMaxAggregateInputType = {
@@ -3300,6 +3341,7 @@ export namespace Prisma {
     dateCreated?: true
     incidentType?: true
     videoData?: true
+    dashboardId?: true
   }
 
   export type IncidentCountAggregateInputType = {
@@ -3307,6 +3349,7 @@ export namespace Prisma {
     dateCreated?: true
     incidentType?: true
     videoData?: true
+    dashboardId?: true
     _all?: true
   }
 
@@ -3387,6 +3430,7 @@ export namespace Prisma {
     dateCreated: Date
     incidentType: string
     videoData: Uint8Array
+    dashboardId: string
     _count: IncidentCountAggregateOutputType | null
     _min: IncidentMinAggregateOutputType | null
     _max: IncidentMaxAggregateOutputType | null
@@ -3411,6 +3455,8 @@ export namespace Prisma {
     dateCreated?: boolean
     incidentType?: boolean
     videoData?: boolean
+    dashboardId?: boolean
+    Dashboard?: boolean | DashboardDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["incident"]>
 
   export type IncidentSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -3418,6 +3464,8 @@ export namespace Prisma {
     dateCreated?: boolean
     incidentType?: boolean
     videoData?: boolean
+    dashboardId?: boolean
+    Dashboard?: boolean | DashboardDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["incident"]>
 
   export type IncidentSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -3425,6 +3473,8 @@ export namespace Prisma {
     dateCreated?: boolean
     incidentType?: boolean
     videoData?: boolean
+    dashboardId?: boolean
+    Dashboard?: boolean | DashboardDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["incident"]>
 
   export type IncidentSelectScalar = {
@@ -3432,18 +3482,31 @@ export namespace Prisma {
     dateCreated?: boolean
     incidentType?: boolean
     videoData?: boolean
+    dashboardId?: boolean
   }
 
-  export type IncidentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "dateCreated" | "incidentType" | "videoData", ExtArgs["result"]["incident"]>
+  export type IncidentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "dateCreated" | "incidentType" | "videoData" | "dashboardId", ExtArgs["result"]["incident"]>
+  export type IncidentInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    Dashboard?: boolean | DashboardDefaultArgs<ExtArgs>
+  }
+  export type IncidentIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    Dashboard?: boolean | DashboardDefaultArgs<ExtArgs>
+  }
+  export type IncidentIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    Dashboard?: boolean | DashboardDefaultArgs<ExtArgs>
+  }
 
   export type $IncidentPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Incident"
-    objects: {}
+    objects: {
+      Dashboard: Prisma.$DashboardPayload<ExtArgs>
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       dateCreated: Date
       incidentType: string
       videoData: Uint8Array
+      dashboardId: string
     }, ExtArgs["result"]["incident"]>
     composites: {}
   }
@@ -3838,6 +3901,7 @@ export namespace Prisma {
    */
   export interface Prisma__IncidentClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    Dashboard<T extends DashboardDefaultArgs<ExtArgs> = {}>(args?: Subset<T, DashboardDefaultArgs<ExtArgs>>): Prisma__DashboardClient<$Result.GetResult<Prisma.$DashboardPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3871,6 +3935,7 @@ export namespace Prisma {
     readonly dateCreated: FieldRef<"Incident", 'DateTime'>
     readonly incidentType: FieldRef<"Incident", 'String'>
     readonly videoData: FieldRef<"Incident", 'Bytes'>
+    readonly dashboardId: FieldRef<"Incident", 'String'>
   }
     
 
@@ -3887,6 +3952,10 @@ export namespace Prisma {
      * Omit specific fields from the Incident
      */
     omit?: IncidentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: IncidentInclude<ExtArgs> | null
     /**
      * Filter, which Incident to fetch.
      */
@@ -3906,6 +3975,10 @@ export namespace Prisma {
      */
     omit?: IncidentOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: IncidentInclude<ExtArgs> | null
+    /**
      * Filter, which Incident to fetch.
      */
     where: IncidentWhereUniqueInput
@@ -3923,6 +3996,10 @@ export namespace Prisma {
      * Omit specific fields from the Incident
      */
     omit?: IncidentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: IncidentInclude<ExtArgs> | null
     /**
      * Filter, which Incident to fetch.
      */
@@ -3972,6 +4049,10 @@ export namespace Prisma {
      */
     omit?: IncidentOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: IncidentInclude<ExtArgs> | null
+    /**
      * Filter, which Incident to fetch.
      */
     where?: IncidentWhereInput
@@ -4020,6 +4101,10 @@ export namespace Prisma {
      */
     omit?: IncidentOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: IncidentInclude<ExtArgs> | null
+    /**
      * Filter, which Incidents to fetch.
      */
     where?: IncidentWhereInput
@@ -4063,6 +4148,10 @@ export namespace Prisma {
      */
     omit?: IncidentOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: IncidentInclude<ExtArgs> | null
+    /**
      * The data needed to create a Incident.
      */
     data: XOR<IncidentCreateInput, IncidentUncheckedCreateInput>
@@ -4096,6 +4185,10 @@ export namespace Prisma {
      */
     data: IncidentCreateManyInput | IncidentCreateManyInput[]
     skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: IncidentIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -4110,6 +4203,10 @@ export namespace Prisma {
      * Omit specific fields from the Incident
      */
     omit?: IncidentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: IncidentInclude<ExtArgs> | null
     /**
      * The data needed to update a Incident.
      */
@@ -4162,6 +4259,10 @@ export namespace Prisma {
      * Limit how many Incidents to update.
      */
     limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: IncidentIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -4176,6 +4277,10 @@ export namespace Prisma {
      * Omit specific fields from the Incident
      */
     omit?: IncidentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: IncidentInclude<ExtArgs> | null
     /**
      * The filter to search for the Incident to update in case it exists.
      */
@@ -4202,6 +4307,10 @@ export namespace Prisma {
      * Omit specific fields from the Incident
      */
     omit?: IncidentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: IncidentInclude<ExtArgs> | null
     /**
      * Filter which Incident to delete.
      */
@@ -4234,6 +4343,10 @@ export namespace Prisma {
      * Omit specific fields from the Incident
      */
     omit?: IncidentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: IncidentInclude<ExtArgs> | null
   }
 
 
@@ -4263,7 +4376,7 @@ export namespace Prisma {
   export const DashboardScalarFieldEnum: {
     id: 'id',
     name: 'name',
-    DashboardOwnerId: 'DashboardOwnerId'
+    dashboardOwnerId: 'dashboardOwnerId'
   };
 
   export type DashboardScalarFieldEnum = (typeof DashboardScalarFieldEnum)[keyof typeof DashboardScalarFieldEnum]
@@ -4273,7 +4386,8 @@ export namespace Prisma {
     id: 'id',
     dateCreated: 'dateCreated',
     incidentType: 'incidentType',
-    videoData: 'videoData'
+    videoData: 'videoData',
+    dashboardId: 'dashboardId'
   };
 
   export type IncidentScalarFieldEnum = (typeof IncidentScalarFieldEnum)[keyof typeof IncidentScalarFieldEnum]
@@ -4413,17 +4527,19 @@ export namespace Prisma {
     NOT?: DashboardWhereInput | DashboardWhereInput[]
     id?: StringFilter<"Dashboard"> | string
     name?: StringFilter<"Dashboard"> | string
-    DashboardOwnerId?: StringFilter<"Dashboard"> | string
+    dashboardOwnerId?: StringFilter<"Dashboard"> | string
     DashboardOwner?: XOR<UserScalarRelationFilter, UserWhereInput>
     DashboardViewers?: UserListRelationFilter
+    IncidentCollection?: IncidentListRelationFilter
   }
 
   export type DashboardOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrder
-    DashboardOwnerId?: SortOrder
+    dashboardOwnerId?: SortOrder
     DashboardOwner?: UserOrderByWithRelationInput
     DashboardViewers?: UserOrderByRelationAggregateInput
+    IncidentCollection?: IncidentOrderByRelationAggregateInput
   }
 
   export type DashboardWhereUniqueInput = Prisma.AtLeast<{
@@ -4432,15 +4548,16 @@ export namespace Prisma {
     OR?: DashboardWhereInput[]
     NOT?: DashboardWhereInput | DashboardWhereInput[]
     name?: StringFilter<"Dashboard"> | string
-    DashboardOwnerId?: StringFilter<"Dashboard"> | string
+    dashboardOwnerId?: StringFilter<"Dashboard"> | string
     DashboardOwner?: XOR<UserScalarRelationFilter, UserWhereInput>
     DashboardViewers?: UserListRelationFilter
+    IncidentCollection?: IncidentListRelationFilter
   }, "id" | "id">
 
   export type DashboardOrderByWithAggregationInput = {
     id?: SortOrder
     name?: SortOrder
-    DashboardOwnerId?: SortOrder
+    dashboardOwnerId?: SortOrder
     _count?: DashboardCountOrderByAggregateInput
     _max?: DashboardMaxOrderByAggregateInput
     _min?: DashboardMinOrderByAggregateInput
@@ -4452,7 +4569,7 @@ export namespace Prisma {
     NOT?: DashboardScalarWhereWithAggregatesInput | DashboardScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Dashboard"> | string
     name?: StringWithAggregatesFilter<"Dashboard"> | string
-    DashboardOwnerId?: StringWithAggregatesFilter<"Dashboard"> | string
+    dashboardOwnerId?: StringWithAggregatesFilter<"Dashboard"> | string
   }
 
   export type IncidentWhereInput = {
@@ -4463,6 +4580,8 @@ export namespace Prisma {
     dateCreated?: DateTimeFilter<"Incident"> | Date | string
     incidentType?: StringFilter<"Incident"> | string
     videoData?: BytesFilter<"Incident"> | Uint8Array
+    dashboardId?: StringFilter<"Incident"> | string
+    Dashboard?: XOR<DashboardScalarRelationFilter, DashboardWhereInput>
   }
 
   export type IncidentOrderByWithRelationInput = {
@@ -4470,6 +4589,8 @@ export namespace Prisma {
     dateCreated?: SortOrder
     incidentType?: SortOrder
     videoData?: SortOrder
+    dashboardId?: SortOrder
+    Dashboard?: DashboardOrderByWithRelationInput
   }
 
   export type IncidentWhereUniqueInput = Prisma.AtLeast<{
@@ -4480,6 +4601,8 @@ export namespace Prisma {
     dateCreated?: DateTimeFilter<"Incident"> | Date | string
     incidentType?: StringFilter<"Incident"> | string
     videoData?: BytesFilter<"Incident"> | Uint8Array
+    dashboardId?: StringFilter<"Incident"> | string
+    Dashboard?: XOR<DashboardScalarRelationFilter, DashboardWhereInput>
   }, "id" | "id">
 
   export type IncidentOrderByWithAggregationInput = {
@@ -4487,6 +4610,7 @@ export namespace Prisma {
     dateCreated?: SortOrder
     incidentType?: SortOrder
     videoData?: SortOrder
+    dashboardId?: SortOrder
     _count?: IncidentCountOrderByAggregateInput
     _max?: IncidentMaxOrderByAggregateInput
     _min?: IncidentMinOrderByAggregateInput
@@ -4500,6 +4624,7 @@ export namespace Prisma {
     dateCreated?: DateTimeWithAggregatesFilter<"Incident"> | Date | string
     incidentType?: StringWithAggregatesFilter<"Incident"> | string
     videoData?: BytesWithAggregatesFilter<"Incident"> | Uint8Array
+    dashboardId?: StringWithAggregatesFilter<"Incident"> | string
   }
 
   export type UserCreateInput = {
@@ -4557,13 +4682,15 @@ export namespace Prisma {
     name: string
     DashboardOwner: UserCreateNestedOneWithoutDashboardsOwnedInput
     DashboardViewers?: UserCreateNestedManyWithoutDashboardsSharedInput
+    IncidentCollection?: IncidentCreateNestedManyWithoutDashboardInput
   }
 
   export type DashboardUncheckedCreateInput = {
     id?: string
     name: string
-    DashboardOwnerId: string
+    dashboardOwnerId: string
     DashboardViewers?: UserUncheckedCreateNestedManyWithoutDashboardsSharedInput
+    IncidentCollection?: IncidentUncheckedCreateNestedManyWithoutDashboardInput
   }
 
   export type DashboardUpdateInput = {
@@ -4571,19 +4698,21 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     DashboardOwner?: UserUpdateOneRequiredWithoutDashboardsOwnedNestedInput
     DashboardViewers?: UserUpdateManyWithoutDashboardsSharedNestedInput
+    IncidentCollection?: IncidentUpdateManyWithoutDashboardNestedInput
   }
 
   export type DashboardUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    DashboardOwnerId?: StringFieldUpdateOperationsInput | string
+    dashboardOwnerId?: StringFieldUpdateOperationsInput | string
     DashboardViewers?: UserUncheckedUpdateManyWithoutDashboardsSharedNestedInput
+    IncidentCollection?: IncidentUncheckedUpdateManyWithoutDashboardNestedInput
   }
 
   export type DashboardCreateManyInput = {
     id?: string
     name: string
-    DashboardOwnerId: string
+    dashboardOwnerId: string
   }
 
   export type DashboardUpdateManyMutationInput = {
@@ -4594,7 +4723,7 @@ export namespace Prisma {
   export type DashboardUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    DashboardOwnerId?: StringFieldUpdateOperationsInput | string
+    dashboardOwnerId?: StringFieldUpdateOperationsInput | string
   }
 
   export type IncidentCreateInput = {
@@ -4602,6 +4731,7 @@ export namespace Prisma {
     dateCreated?: Date | string
     incidentType: string
     videoData: Uint8Array
+    Dashboard: DashboardCreateNestedOneWithoutIncidentCollectionInput
   }
 
   export type IncidentUncheckedCreateInput = {
@@ -4609,6 +4739,7 @@ export namespace Prisma {
     dateCreated?: Date | string
     incidentType: string
     videoData: Uint8Array
+    dashboardId: string
   }
 
   export type IncidentUpdateInput = {
@@ -4616,6 +4747,7 @@ export namespace Prisma {
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     incidentType?: StringFieldUpdateOperationsInput | string
     videoData?: BytesFieldUpdateOperationsInput | Uint8Array
+    Dashboard?: DashboardUpdateOneRequiredWithoutIncidentCollectionNestedInput
   }
 
   export type IncidentUncheckedUpdateInput = {
@@ -4623,6 +4755,7 @@ export namespace Prisma {
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     incidentType?: StringFieldUpdateOperationsInput | string
     videoData?: BytesFieldUpdateOperationsInput | Uint8Array
+    dashboardId?: StringFieldUpdateOperationsInput | string
   }
 
   export type IncidentCreateManyInput = {
@@ -4630,6 +4763,7 @@ export namespace Prisma {
     dateCreated?: Date | string
     incidentType: string
     videoData: Uint8Array
+    dashboardId: string
   }
 
   export type IncidentUpdateManyMutationInput = {
@@ -4644,6 +4778,7 @@ export namespace Prisma {
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     incidentType?: StringFieldUpdateOperationsInput | string
     videoData?: BytesFieldUpdateOperationsInput | Uint8Array
+    dashboardId?: StringFieldUpdateOperationsInput | string
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -4718,26 +4853,36 @@ export namespace Prisma {
     none?: UserWhereInput
   }
 
+  export type IncidentListRelationFilter = {
+    every?: IncidentWhereInput
+    some?: IncidentWhereInput
+    none?: IncidentWhereInput
+  }
+
   export type UserOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type IncidentOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
   export type DashboardCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
-    DashboardOwnerId?: SortOrder
+    dashboardOwnerId?: SortOrder
   }
 
   export type DashboardMaxOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
-    DashboardOwnerId?: SortOrder
+    dashboardOwnerId?: SortOrder
   }
 
   export type DashboardMinOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
-    DashboardOwnerId?: SortOrder
+    dashboardOwnerId?: SortOrder
   }
 
   export type DateTimeFilter<$PrismaModel = never> = {
@@ -4758,11 +4903,17 @@ export namespace Prisma {
     not?: NestedBytesFilter<$PrismaModel> | Uint8Array
   }
 
+  export type DashboardScalarRelationFilter = {
+    is?: DashboardWhereInput
+    isNot?: DashboardWhereInput
+  }
+
   export type IncidentCountOrderByAggregateInput = {
     id?: SortOrder
     dateCreated?: SortOrder
     incidentType?: SortOrder
     videoData?: SortOrder
+    dashboardId?: SortOrder
   }
 
   export type IncidentMaxOrderByAggregateInput = {
@@ -4770,6 +4921,7 @@ export namespace Prisma {
     dateCreated?: SortOrder
     incidentType?: SortOrder
     videoData?: SortOrder
+    dashboardId?: SortOrder
   }
 
   export type IncidentMinOrderByAggregateInput = {
@@ -4777,6 +4929,7 @@ export namespace Prisma {
     dateCreated?: SortOrder
     incidentType?: SortOrder
     videoData?: SortOrder
+    dashboardId?: SortOrder
   }
 
   export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
@@ -4899,10 +5052,24 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
   }
 
+  export type IncidentCreateNestedManyWithoutDashboardInput = {
+    create?: XOR<IncidentCreateWithoutDashboardInput, IncidentUncheckedCreateWithoutDashboardInput> | IncidentCreateWithoutDashboardInput[] | IncidentUncheckedCreateWithoutDashboardInput[]
+    connectOrCreate?: IncidentCreateOrConnectWithoutDashboardInput | IncidentCreateOrConnectWithoutDashboardInput[]
+    createMany?: IncidentCreateManyDashboardInputEnvelope
+    connect?: IncidentWhereUniqueInput | IncidentWhereUniqueInput[]
+  }
+
   export type UserUncheckedCreateNestedManyWithoutDashboardsSharedInput = {
     create?: XOR<UserCreateWithoutDashboardsSharedInput, UserUncheckedCreateWithoutDashboardsSharedInput> | UserCreateWithoutDashboardsSharedInput[] | UserUncheckedCreateWithoutDashboardsSharedInput[]
     connectOrCreate?: UserCreateOrConnectWithoutDashboardsSharedInput | UserCreateOrConnectWithoutDashboardsSharedInput[]
     connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
+  }
+
+  export type IncidentUncheckedCreateNestedManyWithoutDashboardInput = {
+    create?: XOR<IncidentCreateWithoutDashboardInput, IncidentUncheckedCreateWithoutDashboardInput> | IncidentCreateWithoutDashboardInput[] | IncidentUncheckedCreateWithoutDashboardInput[]
+    connectOrCreate?: IncidentCreateOrConnectWithoutDashboardInput | IncidentCreateOrConnectWithoutDashboardInput[]
+    createMany?: IncidentCreateManyDashboardInputEnvelope
+    connect?: IncidentWhereUniqueInput | IncidentWhereUniqueInput[]
   }
 
   export type UserUpdateOneRequiredWithoutDashboardsOwnedNestedInput = {
@@ -4926,6 +5093,20 @@ export namespace Prisma {
     deleteMany?: UserScalarWhereInput | UserScalarWhereInput[]
   }
 
+  export type IncidentUpdateManyWithoutDashboardNestedInput = {
+    create?: XOR<IncidentCreateWithoutDashboardInput, IncidentUncheckedCreateWithoutDashboardInput> | IncidentCreateWithoutDashboardInput[] | IncidentUncheckedCreateWithoutDashboardInput[]
+    connectOrCreate?: IncidentCreateOrConnectWithoutDashboardInput | IncidentCreateOrConnectWithoutDashboardInput[]
+    upsert?: IncidentUpsertWithWhereUniqueWithoutDashboardInput | IncidentUpsertWithWhereUniqueWithoutDashboardInput[]
+    createMany?: IncidentCreateManyDashboardInputEnvelope
+    set?: IncidentWhereUniqueInput | IncidentWhereUniqueInput[]
+    disconnect?: IncidentWhereUniqueInput | IncidentWhereUniqueInput[]
+    delete?: IncidentWhereUniqueInput | IncidentWhereUniqueInput[]
+    connect?: IncidentWhereUniqueInput | IncidentWhereUniqueInput[]
+    update?: IncidentUpdateWithWhereUniqueWithoutDashboardInput | IncidentUpdateWithWhereUniqueWithoutDashboardInput[]
+    updateMany?: IncidentUpdateManyWithWhereWithoutDashboardInput | IncidentUpdateManyWithWhereWithoutDashboardInput[]
+    deleteMany?: IncidentScalarWhereInput | IncidentScalarWhereInput[]
+  }
+
   export type UserUncheckedUpdateManyWithoutDashboardsSharedNestedInput = {
     create?: XOR<UserCreateWithoutDashboardsSharedInput, UserUncheckedCreateWithoutDashboardsSharedInput> | UserCreateWithoutDashboardsSharedInput[] | UserUncheckedCreateWithoutDashboardsSharedInput[]
     connectOrCreate?: UserCreateOrConnectWithoutDashboardsSharedInput | UserCreateOrConnectWithoutDashboardsSharedInput[]
@@ -4939,12 +5120,40 @@ export namespace Prisma {
     deleteMany?: UserScalarWhereInput | UserScalarWhereInput[]
   }
 
+  export type IncidentUncheckedUpdateManyWithoutDashboardNestedInput = {
+    create?: XOR<IncidentCreateWithoutDashboardInput, IncidentUncheckedCreateWithoutDashboardInput> | IncidentCreateWithoutDashboardInput[] | IncidentUncheckedCreateWithoutDashboardInput[]
+    connectOrCreate?: IncidentCreateOrConnectWithoutDashboardInput | IncidentCreateOrConnectWithoutDashboardInput[]
+    upsert?: IncidentUpsertWithWhereUniqueWithoutDashboardInput | IncidentUpsertWithWhereUniqueWithoutDashboardInput[]
+    createMany?: IncidentCreateManyDashboardInputEnvelope
+    set?: IncidentWhereUniqueInput | IncidentWhereUniqueInput[]
+    disconnect?: IncidentWhereUniqueInput | IncidentWhereUniqueInput[]
+    delete?: IncidentWhereUniqueInput | IncidentWhereUniqueInput[]
+    connect?: IncidentWhereUniqueInput | IncidentWhereUniqueInput[]
+    update?: IncidentUpdateWithWhereUniqueWithoutDashboardInput | IncidentUpdateWithWhereUniqueWithoutDashboardInput[]
+    updateMany?: IncidentUpdateManyWithWhereWithoutDashboardInput | IncidentUpdateManyWithWhereWithoutDashboardInput[]
+    deleteMany?: IncidentScalarWhereInput | IncidentScalarWhereInput[]
+  }
+
+  export type DashboardCreateNestedOneWithoutIncidentCollectionInput = {
+    create?: XOR<DashboardCreateWithoutIncidentCollectionInput, DashboardUncheckedCreateWithoutIncidentCollectionInput>
+    connectOrCreate?: DashboardCreateOrConnectWithoutIncidentCollectionInput
+    connect?: DashboardWhereUniqueInput
+  }
+
   export type DateTimeFieldUpdateOperationsInput = {
     set?: Date | string
   }
 
   export type BytesFieldUpdateOperationsInput = {
     set?: Uint8Array
+  }
+
+  export type DashboardUpdateOneRequiredWithoutIncidentCollectionNestedInput = {
+    create?: XOR<DashboardCreateWithoutIncidentCollectionInput, DashboardUncheckedCreateWithoutIncidentCollectionInput>
+    connectOrCreate?: DashboardCreateOrConnectWithoutIncidentCollectionInput
+    upsert?: DashboardUpsertWithoutIncidentCollectionInput
+    connect?: DashboardWhereUniqueInput
+    update?: XOR<XOR<DashboardUpdateToOneWithWhereWithoutIncidentCollectionInput, DashboardUpdateWithoutIncidentCollectionInput>, DashboardUncheckedUpdateWithoutIncidentCollectionInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -5035,12 +5244,14 @@ export namespace Prisma {
     id?: string
     name: string
     DashboardViewers?: UserCreateNestedManyWithoutDashboardsSharedInput
+    IncidentCollection?: IncidentCreateNestedManyWithoutDashboardInput
   }
 
   export type DashboardUncheckedCreateWithoutDashboardOwnerInput = {
     id?: string
     name: string
     DashboardViewers?: UserUncheckedCreateNestedManyWithoutDashboardsSharedInput
+    IncidentCollection?: IncidentUncheckedCreateNestedManyWithoutDashboardInput
   }
 
   export type DashboardCreateOrConnectWithoutDashboardOwnerInput = {
@@ -5057,12 +5268,14 @@ export namespace Prisma {
     id?: string
     name: string
     DashboardOwner: UserCreateNestedOneWithoutDashboardsOwnedInput
+    IncidentCollection?: IncidentCreateNestedManyWithoutDashboardInput
   }
 
   export type DashboardUncheckedCreateWithoutDashboardViewersInput = {
     id?: string
     name: string
-    DashboardOwnerId: string
+    dashboardOwnerId: string
+    IncidentCollection?: IncidentUncheckedCreateNestedManyWithoutDashboardInput
   }
 
   export type DashboardCreateOrConnectWithoutDashboardViewersInput = {
@@ -5092,7 +5305,7 @@ export namespace Prisma {
     NOT?: DashboardScalarWhereInput | DashboardScalarWhereInput[]
     id?: StringFilter<"Dashboard"> | string
     name?: StringFilter<"Dashboard"> | string
-    DashboardOwnerId?: StringFilter<"Dashboard"> | string
+    dashboardOwnerId?: StringFilter<"Dashboard"> | string
   }
 
   export type DashboardUpsertWithWhereUniqueWithoutDashboardViewersInput = {
@@ -5149,6 +5362,30 @@ export namespace Prisma {
     create: XOR<UserCreateWithoutDashboardsSharedInput, UserUncheckedCreateWithoutDashboardsSharedInput>
   }
 
+  export type IncidentCreateWithoutDashboardInput = {
+    id?: string
+    dateCreated?: Date | string
+    incidentType: string
+    videoData: Uint8Array
+  }
+
+  export type IncidentUncheckedCreateWithoutDashboardInput = {
+    id?: string
+    dateCreated?: Date | string
+    incidentType: string
+    videoData: Uint8Array
+  }
+
+  export type IncidentCreateOrConnectWithoutDashboardInput = {
+    where: IncidentWhereUniqueInput
+    create: XOR<IncidentCreateWithoutDashboardInput, IncidentUncheckedCreateWithoutDashboardInput>
+  }
+
+  export type IncidentCreateManyDashboardInputEnvelope = {
+    data: IncidentCreateManyDashboardInput | IncidentCreateManyDashboardInput[]
+    skipDuplicates?: boolean
+  }
+
   export type UserUpsertWithoutDashboardsOwnedInput = {
     update: XOR<UserUpdateWithoutDashboardsOwnedInput, UserUncheckedUpdateWithoutDashboardsOwnedInput>
     create: XOR<UserCreateWithoutDashboardsOwnedInput, UserUncheckedCreateWithoutDashboardsOwnedInput>
@@ -5199,6 +5436,77 @@ export namespace Prisma {
     password?: StringFilter<"User"> | string
   }
 
+  export type IncidentUpsertWithWhereUniqueWithoutDashboardInput = {
+    where: IncidentWhereUniqueInput
+    update: XOR<IncidentUpdateWithoutDashboardInput, IncidentUncheckedUpdateWithoutDashboardInput>
+    create: XOR<IncidentCreateWithoutDashboardInput, IncidentUncheckedCreateWithoutDashboardInput>
+  }
+
+  export type IncidentUpdateWithWhereUniqueWithoutDashboardInput = {
+    where: IncidentWhereUniqueInput
+    data: XOR<IncidentUpdateWithoutDashboardInput, IncidentUncheckedUpdateWithoutDashboardInput>
+  }
+
+  export type IncidentUpdateManyWithWhereWithoutDashboardInput = {
+    where: IncidentScalarWhereInput
+    data: XOR<IncidentUpdateManyMutationInput, IncidentUncheckedUpdateManyWithoutDashboardInput>
+  }
+
+  export type IncidentScalarWhereInput = {
+    AND?: IncidentScalarWhereInput | IncidentScalarWhereInput[]
+    OR?: IncidentScalarWhereInput[]
+    NOT?: IncidentScalarWhereInput | IncidentScalarWhereInput[]
+    id?: StringFilter<"Incident"> | string
+    dateCreated?: DateTimeFilter<"Incident"> | Date | string
+    incidentType?: StringFilter<"Incident"> | string
+    videoData?: BytesFilter<"Incident"> | Uint8Array
+    dashboardId?: StringFilter<"Incident"> | string
+  }
+
+  export type DashboardCreateWithoutIncidentCollectionInput = {
+    id?: string
+    name: string
+    DashboardOwner: UserCreateNestedOneWithoutDashboardsOwnedInput
+    DashboardViewers?: UserCreateNestedManyWithoutDashboardsSharedInput
+  }
+
+  export type DashboardUncheckedCreateWithoutIncidentCollectionInput = {
+    id?: string
+    name: string
+    dashboardOwnerId: string
+    DashboardViewers?: UserUncheckedCreateNestedManyWithoutDashboardsSharedInput
+  }
+
+  export type DashboardCreateOrConnectWithoutIncidentCollectionInput = {
+    where: DashboardWhereUniqueInput
+    create: XOR<DashboardCreateWithoutIncidentCollectionInput, DashboardUncheckedCreateWithoutIncidentCollectionInput>
+  }
+
+  export type DashboardUpsertWithoutIncidentCollectionInput = {
+    update: XOR<DashboardUpdateWithoutIncidentCollectionInput, DashboardUncheckedUpdateWithoutIncidentCollectionInput>
+    create: XOR<DashboardCreateWithoutIncidentCollectionInput, DashboardUncheckedCreateWithoutIncidentCollectionInput>
+    where?: DashboardWhereInput
+  }
+
+  export type DashboardUpdateToOneWithWhereWithoutIncidentCollectionInput = {
+    where?: DashboardWhereInput
+    data: XOR<DashboardUpdateWithoutIncidentCollectionInput, DashboardUncheckedUpdateWithoutIncidentCollectionInput>
+  }
+
+  export type DashboardUpdateWithoutIncidentCollectionInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    DashboardOwner?: UserUpdateOneRequiredWithoutDashboardsOwnedNestedInput
+    DashboardViewers?: UserUpdateManyWithoutDashboardsSharedNestedInput
+  }
+
+  export type DashboardUncheckedUpdateWithoutIncidentCollectionInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    dashboardOwnerId?: StringFieldUpdateOperationsInput | string
+    DashboardViewers?: UserUncheckedUpdateManyWithoutDashboardsSharedNestedInput
+  }
+
   export type DashboardCreateManyDashboardOwnerInput = {
     id?: string
     name: string
@@ -5208,12 +5516,14 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     DashboardViewers?: UserUpdateManyWithoutDashboardsSharedNestedInput
+    IncidentCollection?: IncidentUpdateManyWithoutDashboardNestedInput
   }
 
   export type DashboardUncheckedUpdateWithoutDashboardOwnerInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     DashboardViewers?: UserUncheckedUpdateManyWithoutDashboardsSharedNestedInput
+    IncidentCollection?: IncidentUncheckedUpdateManyWithoutDashboardNestedInput
   }
 
   export type DashboardUncheckedUpdateManyWithoutDashboardOwnerInput = {
@@ -5225,18 +5535,27 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     DashboardOwner?: UserUpdateOneRequiredWithoutDashboardsOwnedNestedInput
+    IncidentCollection?: IncidentUpdateManyWithoutDashboardNestedInput
   }
 
   export type DashboardUncheckedUpdateWithoutDashboardViewersInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    DashboardOwnerId?: StringFieldUpdateOperationsInput | string
+    dashboardOwnerId?: StringFieldUpdateOperationsInput | string
+    IncidentCollection?: IncidentUncheckedUpdateManyWithoutDashboardNestedInput
   }
 
   export type DashboardUncheckedUpdateManyWithoutDashboardViewersInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    DashboardOwnerId?: StringFieldUpdateOperationsInput | string
+    dashboardOwnerId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type IncidentCreateManyDashboardInput = {
+    id?: string
+    dateCreated?: Date | string
+    incidentType: string
+    videoData: Uint8Array
   }
 
   export type UserUpdateWithoutDashboardsSharedInput = {
@@ -5257,6 +5576,27 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type IncidentUpdateWithoutDashboardInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    incidentType?: StringFieldUpdateOperationsInput | string
+    videoData?: BytesFieldUpdateOperationsInput | Uint8Array
+  }
+
+  export type IncidentUncheckedUpdateWithoutDashboardInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    incidentType?: StringFieldUpdateOperationsInput | string
+    videoData?: BytesFieldUpdateOperationsInput | Uint8Array
+  }
+
+  export type IncidentUncheckedUpdateManyWithoutDashboardInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
+    incidentType?: StringFieldUpdateOperationsInput | string
+    videoData?: BytesFieldUpdateOperationsInput | Uint8Array
   }
 
 
