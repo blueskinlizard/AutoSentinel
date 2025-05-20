@@ -1,6 +1,6 @@
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
-const db = require('../prisma_queries/queries');
+const db = require('../prisma/queries');
 const bcrypt = require('bcryptjs');
 
 passport.use('local-signin', new LocalStrategy(
@@ -37,7 +37,7 @@ passport.use('local-signup', new LocalStrategy(
                 return done(null, false, { message: 'User already exists, cannot create new account' });
             }
             const hashedPassword = await bcrypt.hash(password, 10); 
-            // const user = await db.createUser(username, hashedPassword);
+            const user = await db.createUser(username, hashedPassword);
             return done(null, user)
         }catch(error){
             return done(error);
