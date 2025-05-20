@@ -1,6 +1,5 @@
-const db = require("../prisma_queries/queries.js")
+const db = require("../prisma/queries.js")
 const express = require('express')
-const passport = require('../authentication/passport_login.js')
 
 const router = express.Router();
 
@@ -20,3 +19,5 @@ router.post("/delete_incident", async(req, res) =>{
         
     }
 })
+
+module.exports = router;
