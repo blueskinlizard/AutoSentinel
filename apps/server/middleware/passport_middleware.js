@@ -15,11 +15,11 @@ passport.use('local-signin', new LocalStrategy(
             if(!fetched_user){
                 return done(null, false, { message: 'Incorrect or missing username' });
             }
-            const bcrypt_match = await bcrypt.compare(password, user.password);
+            const bcrypt_match = await bcrypt.compare(password, fetched_user.password);
             if(!bcrypt_match){
                 return done(null, false, { message: 'Incorrect password from user' });
             }
-            return done(null, user);
+            return done(null, fetched_user);
         }catch(error){
             return done(error);
         }
@@ -38,7 +38,7 @@ passport.use('local-signup', new LocalStrategy(
             }
             const hashedPassword = await bcrypt.hash(password, 10); 
             const user = await db.createNewUser(username, hashedPassword);
-            return done(null, user)
+            return done(null, fetched_foundUser)
         }catch(error){
             return done(error);
         }
@@ -51,7 +51,7 @@ passport.serializeUser((user, done) =>{
 passport.deserializeUser(async(id, done) =>{
     try{
         const current_user = await db.findUserById(id);
-        done(null, user)
+        done(null, current_user)
     }catch(error){
         done(error);
     }
