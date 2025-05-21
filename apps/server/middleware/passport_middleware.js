@@ -37,7 +37,7 @@ passport.use('local-signup', new LocalStrategy(
                 return done(null, false, { message: 'User already exists, cannot create new account' });
             }
             const hashedPassword = await bcrypt.hash(password, 10); 
-            const user = await db.createUser(username, hashedPassword);
+            const user = await db.createNewUser(username, hashedPassword);
             return done(null, user)
         }catch(error){
             return done(error);

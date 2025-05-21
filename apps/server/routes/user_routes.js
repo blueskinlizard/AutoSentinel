@@ -6,7 +6,7 @@ const router = express.Router();
 
 router.post("/user_login", async(req, res, next)=>{3
     try{
-        passport.authenticate('local_signin', async (err, user, info) =>{
+        passport.authenticate('local-signin', async (err, user, info) =>{
             if (err) { 
                 console.error("Authentication error:", err);
                 return res.status(500).json({message: `Authentication error: ${err.message}`});
@@ -32,7 +32,7 @@ router.post("/user_login", async(req, res, next)=>{3
 router.post("/user_signup", async(req, res, next)=>{
     try{
     
-        passport.authenticate('local_signup', async (err, user, info) =>{
+        passport.authenticate('local-signup', async (err, user, info) =>{
             if (err) { return next(err); }
             console.log("Passport authenticate result:", { 
                 err: err ? err.message : null, 
