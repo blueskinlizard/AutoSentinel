@@ -69,7 +69,7 @@ export default function CameraCapture(){
   }, [snapshotInterval])
 
   const sendImageData = async(dataURL) =>{
-    await fetch(`http://localhost:8080/api/newImage`, {
+    await fetch(`http://localhost:8080/api/new_image`, {
       method: 'POST',
       headers: {
         "Content-Type": "application/json",
