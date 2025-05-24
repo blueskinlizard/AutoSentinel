@@ -1,6 +1,5 @@
 const db = require("../prisma/queries.js")
 const express = require('express')
-
 const router = express.Router();
 
 router.post("/new_incident", async(req, res)=>{
