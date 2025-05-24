@@ -4,7 +4,7 @@ const passport = require('../middleware/passport_middleware.js')
 
 const router = express.Router();
 
-router.post("/user_login", async(req, res, next)=>{3
+router.post("/user_login", async(req, res, next)=>{
     try{
         passport.authenticate('local-signin', async (err, user, info) =>{
             if (err) { 
@@ -49,6 +49,16 @@ router.post("/user_signup", async(req, res, next)=>{
         })(req, res, next)
     }catch(err){
         return res.status(500).json({message: "Error in signup route, error: " + err});
+    }
+})
+
+
+router.get("/current_user", async(req, res) =>{
+    try{
+        return res.status(200).json({ currentUser: req.user })
+        //Just return current passport session user values
+    }catch(err){
+        return res.status(500).json({message: `Internal server error while getting current user, error: ${err}`})
     }
 })
 
