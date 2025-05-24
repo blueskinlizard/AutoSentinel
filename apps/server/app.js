@@ -28,6 +28,30 @@ const io = new Server(server, {
   }
 });
 
+console.log('REDIS_HOST:', process.env.REDIS_HOST);
+console.log('REDIS_PORT:', process.env.REDIS_PORT);
+const redisClient = redis.createClient({
+  url: `redis://${process.env.REDIS_HOST || 'redis'}:${process.env.REDIS_PORT || 6379}`
+});
+console.log('Attempting to connect to Redis at:', redisClient.options.url);
+redisClient.on('connect', () => {
+  console.log('Redis client connected successfully');
+});
+redisClient.on('error', (err) => {
+  console.error('Redis Client Error:', err);
+});
+async function connectRedis() {
+  try {
+    await redisClient.connect();
+    console.log('Redis connection established');
+  } catch (err) {
+    console.error('Redis connection failed:', err);
+  }
+}
+
+connectRedis()
+socketHandler(io);
+
 app.use(session({
   secret: process.env.SECRET_PASSWORD || "default secret",
   resave: false,

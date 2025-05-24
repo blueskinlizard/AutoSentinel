@@ -58,13 +58,27 @@ export default function CameraCapture(){
           //Save snapshot
           const ctx = canvas.getContext('2d');
           ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-          const dataUrl = canvas.toDataURL('image/jpeg'); //Saves data in easy form to be sent to backend
+          const dataURL = canvas.toDataURL('image/jpeg'); //Saves data in easy form to be sent to backend
+          sendImageData(dataURL).catch(err =>
+            console.log("Error sending image to backend: "+err)
+          );
         }
       })
     }, (snapshotInterval));
     return () => clearInterval(intervalId);
-  })
+  }, [snapshotInterval])
 
+  const sendImageData = async(dataURL) =>{
+    await fetch(`http://localhost:8080/api/newImage`, {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ dataURL }),
+        credentials: "include"
+      })
+  }
+  
   return (
     <div>
       <h2>All cameras</h2>
