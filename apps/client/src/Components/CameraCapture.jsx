@@ -5,6 +5,8 @@ export default function CameraCapture(){
   const [videoStreams, setVideoStreams] = useState([]);
   //Store video references to dom
   const videoRefs = useRef([]);
+  const canvasRef = useRef([]);
+  const snapshotInterval = 1000;
 
   useEffect(() => {
     const setupStreams = async () => {
@@ -47,20 +49,44 @@ export default function CameraCapture(){
       }
     });
   }, [videoStreams]);
+  useEffect(() =>{
+    const intervalId = setInterval(() => {
+      //Loop through video elements and their respective Canvases
+      videoRefs.current.forEach((video, index) =>{
+        const canvas = canvasRef.current[index];
+        if(video && canvas){
+          //Save snapshot
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+          const dataUrl = canvas.toDataURL('image/jpeg'); //Saves data in easy form to be sent to backend
+        }
+      })
+    }, (snapshotInterval));
+    return () => clearInterval(intervalId);
+  })
 
   return (
     <div>
       <h2>All cameras</h2>
+      {{//Loop through our videostream objects, create video elements, and hidden canvas to store image data
+      }}
       <div>
-        {videoStreams.map((_, i) => ( <video
-            key={i}
-            ref={el => (videoRefs.current[i] = el)}
+        {videoStreams.map((_, i) => ( 
+          <div key={i}>
+            <video ref={el => (videoRefs.current[i] = el)}
             autoPlay
             playsInline
             width="320"
             height="240"
-          />
+            ></video>
+            <canvas ref={el => (canvasRef.current[i] = el)}
+            width="320"
+            height="240"
+            style={{ display: 'none' }}
+            ></canvas>
+          </div>
         ))}
+         
       </div>
     </div>
   );
