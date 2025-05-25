@@ -10,7 +10,6 @@ const camera_routes = require("./routes/camera_routes");
 const dashboard_routes = require("./routes/dashboard_routes");
 const incident_routes = require("./routes/incident_routes");
 const user_routes = require("./routes/user_routes");
-const yolo_routes = require("./routes/yolo_routes");
 
 const socketHandler = require("./websocket/camera_websocket");
 
@@ -55,7 +54,6 @@ app.use('/api/', camera_routes);
 app.use('/api/', dashboard_routes);
 app.use('/api/', incident_routes);
 app.use('/api/', user_routes);
-app.use('/api/', yolo_routes);
 
 
 server.listen(PORT, () => {

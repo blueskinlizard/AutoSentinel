@@ -5,12 +5,13 @@ import sys
 
 model = YOLO("../../yoloservice/best-backup-two.pt")
 image_path = sys.argv[1]
+print(f"Attempting to read image from: {image_path}", file=sys.stderr)
 image = cv2.imread(image_path)
 if image is None:
     print(json.dumps([]))
     sys.exit(0)
 
-results = model(image)
+results = model(image, conf=0.3)
 
 output = []
 

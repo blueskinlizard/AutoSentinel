@@ -3,6 +3,7 @@ const router = express.Router();
 const crypto = require('crypto');
 const fs = require('fs');
 const path = require('path');
+const { spawn } = require("child_process");
 
 
 router.post("/new_image", async(req, res)=>{
@@ -12,21 +13,21 @@ router.post("/new_image", async(req, res)=>{
     console.log("Incoming Data URL starts with:", dataURL.slice(0, 30));
     const base64Data = dataURL.replace(/^data:image\/\w+;base64,/, '');
     const buffer = Buffer.from(base64Data, 'base64');
+    const imagePath = path.join(__dirname, '..', 'cam-cache', `${UUID}.jpg`);
+        fs.writeFileSync(imagePath, buffer);
     try{
-        const filePath = path.join(__dirname, '..', 'cam-cache', `${UUID}.jpg`);
-        fs.writeFileSync(filePath, buffer);
-    }catch(error){
-        return res.status(500).json({message: "Error adding file to cam-cache", error: error.message});
-    }
-    try{
-        await fetch(`http://localhost:8080/api/yolo_detect`, {
-            method: 'POST',
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ UUID }),
-            //Sent our UUID to the Yolo detect route so it knows where to access our image file
-            credentials: "include"
+        //I know I could uniformly use async/await stuff but I'm too stubborn for that
+        await fs.promises.access(imagePath, fs.constants.F_OK | fs.constants.R_OK);
+        runDetection(imagePath).then((detections) =>{
+            //Return our detections here, console.log is just for debuggin:
+            console.log("Detections:", detections);
+            //Simple detection return
+            return res.status(200).json({detections, UUID})
+        })
+        .catch((error)=>{
+            console.log("Error during detection: "+error)
+            //This isn't ran if no detections are found, simply from a syntax error.
+            res.status(500).json({ message: "Detection failed", error: error.message });
         })
         //This is where our logic takes a pause for now
     }catch(error){
@@ -35,8 +36,38 @@ router.post("/new_image", async(req, res)=>{
     
 })
 
-
 router.post("/deleteImage", async(req, res)=>{
     res.json({ message: "Delete not yet implemented" });
 })
+
+function runDetection(imagePath) {
+
+    return new Promise((resolve, reject) => {
+        const process = spawn("python3", ["../../yoloservice/yolo_model.py", imagePath]);
+        let data = "";
+        let error = "";
+        process.stdout.on("data", (chunk) => {
+            console.log("Python stdout:", chunk.toString());
+            data += chunk;
+        });
+
+        process.stderr.on("data", (chunk) => {
+            console.error("Python stderr:", chunk.toString());
+            error += chunk;
+        });
+
+        process.on("close", (code) => {
+            if (code !== 0) {
+                reject(new Error(`Process exited with code ${code}\n${error}`));
+            } else {
+                try {
+                    const result = JSON.parse(data);
+                    resolve(result);
+                } catch (err) {
+                    reject(new Error(`Failed to parse JSON: ${err.message}`));
+                }
+            }
+        });
+    });
+}
 module.exports = router;
