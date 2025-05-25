@@ -22,7 +22,7 @@ router.post("/new_image", async(req, res)=>{
             //Return our detections here, console.log is just for debuggin:
             console.log("Detections:", detections);
             //Simple detection return
-            return res.status(200).json({detections, UUID})
+            return res.status(200).json({detections, UUID, message: "Detection ran!!!"})
         })
         .catch((error)=>{
             console.log("Error during detection: "+error)
@@ -45,15 +45,9 @@ function runDetection(imagePath) {
     return new Promise((resolve, reject) => {
         const process = spawn("python3", ["../../yoloservice/yolo_model.py", imagePath]);
         let data = "";
-        let error = "";
         process.stdout.on("data", (chunk) => {
             console.log("Python stdout:", chunk.toString());
             data += chunk;
-        });
-
-        process.stderr.on("data", (chunk) => {
-            console.error("Python stderr:", chunk.toString());
-            error += chunk;
         });
 
         process.on("close", (code) => {
@@ -61,7 +55,9 @@ function runDetection(imagePath) {
                 reject(new Error(`Process exited with code ${code}\n${error}`));
             } else {
                 try {
-                    const result = JSON.parse(data);
+                    const lines = data.trim().split('\n').filter(line => line.trim().length > 0);
+                    const jsonLine = lines.reverse().find(line => line.startsWith('[') || line.startsWith('{'));
+                    const result = JSON.parse(jsonLine);
                     resolve(result);
                 } catch (err) {
                     reject(new Error(`Failed to parse JSON: ${err.message}`));

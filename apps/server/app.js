@@ -11,7 +11,6 @@ const dashboard_routes = require("./routes/dashboard_routes");
 const incident_routes = require("./routes/incident_routes");
 const user_routes = require("./routes/user_routes");
 
-const socketHandler = require("./websocket/camera_websocket");
 
 dotenv.config();
 
@@ -26,7 +25,6 @@ const io = new Server(server, {
     credentials: true
   }
 });
-socketHandler(io);
 
 app.use(session({
   secret: process.env.SECRET_PASSWORD || "default secret",
