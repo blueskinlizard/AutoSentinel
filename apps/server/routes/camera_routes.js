@@ -1,31 +1,25 @@
 const express = require('express')
 const router = express.Router();
-const redis = require('redis')
 const crypto = require('crypto');
-const fetch = require('node-fetch');
 const fs = require('fs');
-
-const cache = redis.createClient({
-    url: `redis://${process.env.REDIS_HOST || 'redis'}:${process.env.REDIS_PORT || 6379}`
-});
-cache.connect().catch(err => {
-    console.error('Redis connection error:', err);
-});
+const path = require('path');
 
 
 router.post("/new_image", async(req, res)=>{
     const dataURL = req.body.dataURL;
     //Strip out prefix
     const UUID = crypto.randomUUID();
-    const base64Data = dataURL.replace(/^data:image\/jpeg;base64,/, '');
+    console.log("Incoming Data URL starts with:", dataURL.slice(0, 30));
+    const base64Data = dataURL.replace(/^data:image\/\w+;base64,/, '');
     const buffer = Buffer.from(base64Data, 'base64');
     try{
-        fs.writeFileSync(`../cam-cache/${UUID}.jpg`, buffer);
+        const filePath = path.join(__dirname, '..', 'cam-cache', `${UUID}.jpg`);
+        fs.writeFileSync(filePath, buffer);
     }catch(error){
-        return res.status(500).json({message: "Error adding file to cam-cache"})
+        return res.status(500).json({message: "Error adding file to cam-cache", error: error.message});
     }
     try{
-        const detection_response = await fetch(`http://localhost:8080/api/yolo_detect`, {
+        await fetch(`http://localhost:8080/api/yolo_detect`, {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json",
@@ -36,8 +30,7 @@ router.post("/new_image", async(req, res)=>{
         })
         //This is where our logic takes a pause for now
     }catch(error){
-        console.error("Error calling /yolo_detect:", err);
-        res.status(500).json({ message: "Failed to call detection API", error: err.message });
+        res.status(500).json({ message: "Failed to call detection API", error: error.message });
     }
     
 })

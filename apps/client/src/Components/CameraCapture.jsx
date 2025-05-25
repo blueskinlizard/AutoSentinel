@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
+import { useNavigate } from "react-router-dom";
 
 export default function CameraCapture(){
   //Store videostream object
@@ -7,6 +8,22 @@ export default function CameraCapture(){
   const videoRefs = useRef([]);
   const canvasRef = useRef([]);
   const snapshotInterval = 1000;
+
+    useEffect(() =>{
+    const findCurrentUser = async() =>{
+      const currentUser = await fetch(`http://localhost:8080/api/current_user`, {
+        method: 'GET',
+        headers: {
+          "Content-Type": "application/json",
+        },
+          credentials: "include"
+        })
+        if(!currentUser){ redirect("/home"); }
+        else{ console.log("Current user: "+currentUser.name)}
+    }
+    findCurrentUser();
+  }, [])
+
 
   useEffect(() => {
     const setupStreams = async () => {
@@ -67,7 +84,6 @@ export default function CameraCapture(){
     }, (snapshotInterval));
     return () => clearInterval(intervalId);
   }, [snapshotInterval])
-
   const sendImageData = async(dataURL) =>{
     await fetch(`http://localhost:8080/api/new_image`, {
       method: 'POST',
@@ -82,8 +98,8 @@ export default function CameraCapture(){
   return (
     <div>
       <h2>All cameras</h2>
-      {{//Loop through our videostream objects, create video elements, and hidden canvas to store image data
-      }}
+      {//Loop through our videostream objects, create video elements, and hidden canvas to store image data
+      }
       <div>
         {videoStreams.map((_, i) => ( 
           <div key={i}>

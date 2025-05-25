@@ -5,6 +5,7 @@ const { spawn } = require("child_process");
 
 router.post("/yolo_detect", async(req, res)=>{
     const UUID = req.body.UUID;
+    console.log("Received UUID of: "+UUID)
     if (!UUID) {
         return res.status(400).json({ message: "Missing UUID in request body" });
     }
@@ -24,7 +25,7 @@ router.post("/yolo_detect", async(req, res)=>{
 function runDetection(imagePath) {
 
     return new Promise((resolve, reject) => {
-        const process = spawn("python3", ["detect.py", imagePath]);
+        const process = spawn("python3", ["../../yoloservice/yolo_model.py", imagePath]);
         let data = "";
         let error = "";
         process.stdout.on("data", (chunk) => {

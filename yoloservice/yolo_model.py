@@ -3,7 +3,7 @@ import cv2
 import json
 import sys
 
-model = YOLO("best-backup-two.pt")
+model = YOLO("../../yoloservice/best-backup-two.pt")
 image_path = sys.argv[1]
 image = cv2.imread(image_path)
 if image is None:
