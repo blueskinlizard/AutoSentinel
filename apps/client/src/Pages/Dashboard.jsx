@@ -3,6 +3,9 @@ import { useQuery } from "@tanstack/react-query";
 
 export default function Dashboard(){
     const [dashboardData, setDashboardData] = useState([null]);
+    //Simply stores incident ID for comparison, whole object storage is unecessary
+    const [incidents, setIncidents] = useState(null);
+    //Quality of life access for incident management, technically unecessary, but makes my life easier
     useEffect(() =>{
         const fetchDashboardInformation = (async() =>{
             const fetchedDashboardInformation = await fetch(`http://localhost:8080/api/fetch_dashboard`, {
@@ -13,6 +16,7 @@ export default function Dashboard(){
                 credentials: "include",
             })
             setDashboardData(fetchedDashboardInformation);
+            setIncidents(fetchedDashboardInformation.IncidentCollection)
         })
     })
 
@@ -21,8 +25,16 @@ export default function Dashboard(){
         staleTime: 1000 * 20,
         queryFn: async () =>{
             const fetchedLastIncident = await fetch(`http://localhost:8080/api/latest_incident`, {
-
+                method: 'GET',
+                headers: {
+                "Content-Type": "application/json",
+                },
+                credentials: "include",
             })
+            if(fetchedLastIncident.id != incidents[incidents.length - 1]){
+                //Incidents.length - 1 refers to our last incident
+                setIncidents(prevIncidents => [...prevIncidents, fetchedLastIncident.id]) //Append new message
+            }
         },
         refetchInterval: 1000 * 2,
         refetchIntervalInBackground: false

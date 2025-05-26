@@ -3,17 +3,17 @@ const express = require('express')
 const router = express.Router();
 
 router.post("/delete_incident", async(req, res) =>{
-    const {incident_id} = req.body;
+    const fetched_user = await db.findUserByName(req.user.name)
     try{
-
+        const fetched_dashboard = await db.fetchDashboard(fetched_user.id);
     }catch(error){
         
     }
 })
-router.post("/latest_incident", async(req, res) =>{
-    const {user_id} = req.body;
+router.get("/latest_incident", async(req, res) =>{
+    const fetched_user = await db.findUserByName(req.user.name)
     try{
-        const fetched_dashboard = await db.fetchDashboard(user_id);
+        const fetched_dashboard = await db.fetchDashboard(fetched_user.id);
         const incidents = fetched_dashboard?.IncidentCollection || [];
         const latest_incident = incidents[incidents.length - 1] || null;
         return res.status(200).json({latest_incident})
