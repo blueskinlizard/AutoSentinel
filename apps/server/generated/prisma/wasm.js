@@ -135,8 +135,9 @@ exports.Prisma.DashboardScalarFieldEnum = {
 exports.Prisma.IncidentScalarFieldEnum = {
   id: 'id',
   dateCreated: 'dateCreated',
-  incidentType: 'incidentType',
-  videoData: 'videoData',
+  imageData: 'imageData',
+  incidentConfidence: 'incidentConfidence',
+  incidentCoords: 'incidentCoords',
   dashboardId: 'dashboardId'
 };
 

@@ -20,9 +20,9 @@ for result in results:
         detectedObject = {
             "class_id": int(box.cls[0]),
             "confidence": float(box.conf[0]),
-            "bbox": [float(coord) for coord in box.xyxy[0]]
-            #bbox is our bounding box coordinate, important for
-            #false positive prevention methods
+            "bbox": [float(coord) for coord in box.xyxy[0]],
+            #bbox is our bounding box coordinate, important for false positive prevention methods
+            "path": image_path
         }
         output.append(detectedObject)
 print(json.dumps(output)) 

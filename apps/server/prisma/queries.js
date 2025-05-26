@@ -30,11 +30,12 @@ export const deleteIncident = async(identification_param) =>{
         }
     })
 }
-export const createIncident = async(videoData_param, incidentType_param) =>{
+export const createIncident = async(incidentOject_param, incidentData_param) =>{
     return await prisma.incident.create({
         data:{
-            incidentType: incidentType_param,
-            videoData: videoData_param
+            imagedata: incidentData_param,
+            incidentConfidence: incidentOject_param.confidence,
+            incidentCoords: incidentOject_param.bbox
         }
     })
 }

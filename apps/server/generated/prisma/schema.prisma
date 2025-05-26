@@ -32,10 +32,11 @@ model Dashboard {
 }
 
 model Incident {
-  id           String    @id @unique @default(uuid())
-  dateCreated  DateTime  @default(now())
-  incidentType String
-  videoData    Bytes
-  Dashboard    Dashboard @relation("DashboardIncidents", fields: [dashboardId], references: [id])
-  dashboardId  String
+  id                 String    @id @unique @default(uuid())
+  dateCreated        DateTime  @default(now())
+  imageData          Bytes
+  incidentConfidence Int
+  incidentCoords     Int[]
+  Dashboard          Dashboard @relation("DashboardIncidents", fields: [dashboardId], references: [id])
+  dashboardId        String
 }

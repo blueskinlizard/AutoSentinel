@@ -3298,57 +3298,81 @@ export namespace Prisma {
 
   export type AggregateIncident = {
     _count: IncidentCountAggregateOutputType | null
+    _avg: IncidentAvgAggregateOutputType | null
+    _sum: IncidentSumAggregateOutputType | null
     _min: IncidentMinAggregateOutputType | null
     _max: IncidentMaxAggregateOutputType | null
+  }
+
+  export type IncidentAvgAggregateOutputType = {
+    incidentConfidence: number | null
+    incidentCoords: number | null
+  }
+
+  export type IncidentSumAggregateOutputType = {
+    incidentConfidence: number | null
+    incidentCoords: number[]
   }
 
   export type IncidentMinAggregateOutputType = {
     id: string | null
     dateCreated: Date | null
-    incidentType: string | null
-    videoData: Uint8Array | null
+    imageData: Uint8Array | null
+    incidentConfidence: number | null
     dashboardId: string | null
   }
 
   export type IncidentMaxAggregateOutputType = {
     id: string | null
     dateCreated: Date | null
-    incidentType: string | null
-    videoData: Uint8Array | null
+    imageData: Uint8Array | null
+    incidentConfidence: number | null
     dashboardId: string | null
   }
 
   export type IncidentCountAggregateOutputType = {
     id: number
     dateCreated: number
-    incidentType: number
-    videoData: number
+    imageData: number
+    incidentConfidence: number
+    incidentCoords: number
     dashboardId: number
     _all: number
   }
 
 
+  export type IncidentAvgAggregateInputType = {
+    incidentConfidence?: true
+    incidentCoords?: true
+  }
+
+  export type IncidentSumAggregateInputType = {
+    incidentConfidence?: true
+    incidentCoords?: true
+  }
+
   export type IncidentMinAggregateInputType = {
     id?: true
     dateCreated?: true
-    incidentType?: true
-    videoData?: true
+    imageData?: true
+    incidentConfidence?: true
     dashboardId?: true
   }
 
   export type IncidentMaxAggregateInputType = {
     id?: true
     dateCreated?: true
-    incidentType?: true
-    videoData?: true
+    imageData?: true
+    incidentConfidence?: true
     dashboardId?: true
   }
 
   export type IncidentCountAggregateInputType = {
     id?: true
     dateCreated?: true
-    incidentType?: true
-    videoData?: true
+    imageData?: true
+    incidentConfidence?: true
+    incidentCoords?: true
     dashboardId?: true
     _all?: true
   }
@@ -3391,6 +3415,18 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
+     * Select which fields to average
+    **/
+    _avg?: IncidentAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: IncidentSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
      * Select which fields to find the minimum value
     **/
     _min?: IncidentMinAggregateInputType
@@ -3421,6 +3457,8 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: IncidentCountAggregateInputType | true
+    _avg?: IncidentAvgAggregateInputType
+    _sum?: IncidentSumAggregateInputType
     _min?: IncidentMinAggregateInputType
     _max?: IncidentMaxAggregateInputType
   }
@@ -3428,10 +3466,13 @@ export namespace Prisma {
   export type IncidentGroupByOutputType = {
     id: string
     dateCreated: Date
-    incidentType: string
-    videoData: Uint8Array
+    imageData: Uint8Array
+    incidentConfidence: number
+    incidentCoords: number[]
     dashboardId: string
     _count: IncidentCountAggregateOutputType | null
+    _avg: IncidentAvgAggregateOutputType | null
+    _sum: IncidentSumAggregateOutputType | null
     _min: IncidentMinAggregateOutputType | null
     _max: IncidentMaxAggregateOutputType | null
   }
@@ -3453,8 +3494,9 @@ export namespace Prisma {
   export type IncidentSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     dateCreated?: boolean
-    incidentType?: boolean
-    videoData?: boolean
+    imageData?: boolean
+    incidentConfidence?: boolean
+    incidentCoords?: boolean
     dashboardId?: boolean
     Dashboard?: boolean | DashboardDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["incident"]>
@@ -3462,8 +3504,9 @@ export namespace Prisma {
   export type IncidentSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     dateCreated?: boolean
-    incidentType?: boolean
-    videoData?: boolean
+    imageData?: boolean
+    incidentConfidence?: boolean
+    incidentCoords?: boolean
     dashboardId?: boolean
     Dashboard?: boolean | DashboardDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["incident"]>
@@ -3471,8 +3514,9 @@ export namespace Prisma {
   export type IncidentSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     dateCreated?: boolean
-    incidentType?: boolean
-    videoData?: boolean
+    imageData?: boolean
+    incidentConfidence?: boolean
+    incidentCoords?: boolean
     dashboardId?: boolean
     Dashboard?: boolean | DashboardDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["incident"]>
@@ -3480,12 +3524,13 @@ export namespace Prisma {
   export type IncidentSelectScalar = {
     id?: boolean
     dateCreated?: boolean
-    incidentType?: boolean
-    videoData?: boolean
+    imageData?: boolean
+    incidentConfidence?: boolean
+    incidentCoords?: boolean
     dashboardId?: boolean
   }
 
-  export type IncidentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "dateCreated" | "incidentType" | "videoData" | "dashboardId", ExtArgs["result"]["incident"]>
+  export type IncidentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "dateCreated" | "imageData" | "incidentConfidence" | "incidentCoords" | "dashboardId", ExtArgs["result"]["incident"]>
   export type IncidentInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     Dashboard?: boolean | DashboardDefaultArgs<ExtArgs>
   }
@@ -3504,8 +3549,9 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: string
       dateCreated: Date
-      incidentType: string
-      videoData: Uint8Array
+      imageData: Uint8Array
+      incidentConfidence: number
+      incidentCoords: number[]
       dashboardId: string
     }, ExtArgs["result"]["incident"]>
     composites: {}
@@ -3933,8 +3979,9 @@ export namespace Prisma {
   interface IncidentFieldRefs {
     readonly id: FieldRef<"Incident", 'String'>
     readonly dateCreated: FieldRef<"Incident", 'DateTime'>
-    readonly incidentType: FieldRef<"Incident", 'String'>
-    readonly videoData: FieldRef<"Incident", 'Bytes'>
+    readonly imageData: FieldRef<"Incident", 'Bytes'>
+    readonly incidentConfidence: FieldRef<"Incident", 'Int'>
+    readonly incidentCoords: FieldRef<"Incident", 'Int[]'>
     readonly dashboardId: FieldRef<"Incident", 'String'>
   }
     
@@ -4385,8 +4432,9 @@ export namespace Prisma {
   export const IncidentScalarFieldEnum: {
     id: 'id',
     dateCreated: 'dateCreated',
-    incidentType: 'incidentType',
-    videoData: 'videoData',
+    imageData: 'imageData',
+    incidentConfidence: 'incidentConfidence',
+    incidentCoords: 'incidentCoords',
     dashboardId: 'dashboardId'
   };
 
@@ -4467,6 +4515,20 @@ export namespace Prisma {
    * Reference to a field of type 'Int[]'
    */
   export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'Float'
+   */
+  export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
+    
+
+
+  /**
+   * Reference to a field of type 'Float[]'
+   */
+  export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
     
   /**
    * Deep Input Types
@@ -4578,8 +4640,9 @@ export namespace Prisma {
     NOT?: IncidentWhereInput | IncidentWhereInput[]
     id?: StringFilter<"Incident"> | string
     dateCreated?: DateTimeFilter<"Incident"> | Date | string
-    incidentType?: StringFilter<"Incident"> | string
-    videoData?: BytesFilter<"Incident"> | Uint8Array
+    imageData?: BytesFilter<"Incident"> | Uint8Array
+    incidentConfidence?: IntFilter<"Incident"> | number
+    incidentCoords?: IntNullableListFilter<"Incident">
     dashboardId?: StringFilter<"Incident"> | string
     Dashboard?: XOR<DashboardScalarRelationFilter, DashboardWhereInput>
   }
@@ -4587,8 +4650,9 @@ export namespace Prisma {
   export type IncidentOrderByWithRelationInput = {
     id?: SortOrder
     dateCreated?: SortOrder
-    incidentType?: SortOrder
-    videoData?: SortOrder
+    imageData?: SortOrder
+    incidentConfidence?: SortOrder
+    incidentCoords?: SortOrder
     dashboardId?: SortOrder
     Dashboard?: DashboardOrderByWithRelationInput
   }
@@ -4599,8 +4663,9 @@ export namespace Prisma {
     OR?: IncidentWhereInput[]
     NOT?: IncidentWhereInput | IncidentWhereInput[]
     dateCreated?: DateTimeFilter<"Incident"> | Date | string
-    incidentType?: StringFilter<"Incident"> | string
-    videoData?: BytesFilter<"Incident"> | Uint8Array
+    imageData?: BytesFilter<"Incident"> | Uint8Array
+    incidentConfidence?: IntFilter<"Incident"> | number
+    incidentCoords?: IntNullableListFilter<"Incident">
     dashboardId?: StringFilter<"Incident"> | string
     Dashboard?: XOR<DashboardScalarRelationFilter, DashboardWhereInput>
   }, "id" | "id">
@@ -4608,12 +4673,15 @@ export namespace Prisma {
   export type IncidentOrderByWithAggregationInput = {
     id?: SortOrder
     dateCreated?: SortOrder
-    incidentType?: SortOrder
-    videoData?: SortOrder
+    imageData?: SortOrder
+    incidentConfidence?: SortOrder
+    incidentCoords?: SortOrder
     dashboardId?: SortOrder
     _count?: IncidentCountOrderByAggregateInput
+    _avg?: IncidentAvgOrderByAggregateInput
     _max?: IncidentMaxOrderByAggregateInput
     _min?: IncidentMinOrderByAggregateInput
+    _sum?: IncidentSumOrderByAggregateInput
   }
 
   export type IncidentScalarWhereWithAggregatesInput = {
@@ -4622,8 +4690,9 @@ export namespace Prisma {
     NOT?: IncidentScalarWhereWithAggregatesInput | IncidentScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Incident"> | string
     dateCreated?: DateTimeWithAggregatesFilter<"Incident"> | Date | string
-    incidentType?: StringWithAggregatesFilter<"Incident"> | string
-    videoData?: BytesWithAggregatesFilter<"Incident"> | Uint8Array
+    imageData?: BytesWithAggregatesFilter<"Incident"> | Uint8Array
+    incidentConfidence?: IntWithAggregatesFilter<"Incident"> | number
+    incidentCoords?: IntNullableListFilter<"Incident">
     dashboardId?: StringWithAggregatesFilter<"Incident"> | string
   }
 
@@ -4729,55 +4798,62 @@ export namespace Prisma {
   export type IncidentCreateInput = {
     id?: string
     dateCreated?: Date | string
-    incidentType: string
-    videoData: Uint8Array
+    imageData: Uint8Array
+    incidentConfidence: number
+    incidentCoords?: IncidentCreateincidentCoordsInput | number[]
     Dashboard: DashboardCreateNestedOneWithoutIncidentCollectionInput
   }
 
   export type IncidentUncheckedCreateInput = {
     id?: string
     dateCreated?: Date | string
-    incidentType: string
-    videoData: Uint8Array
+    imageData: Uint8Array
+    incidentConfidence: number
+    incidentCoords?: IncidentCreateincidentCoordsInput | number[]
     dashboardId: string
   }
 
   export type IncidentUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    incidentType?: StringFieldUpdateOperationsInput | string
-    videoData?: BytesFieldUpdateOperationsInput | Uint8Array
+    imageData?: BytesFieldUpdateOperationsInput | Uint8Array
+    incidentConfidence?: IntFieldUpdateOperationsInput | number
+    incidentCoords?: IncidentUpdateincidentCoordsInput | number[]
     Dashboard?: DashboardUpdateOneRequiredWithoutIncidentCollectionNestedInput
   }
 
   export type IncidentUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    incidentType?: StringFieldUpdateOperationsInput | string
-    videoData?: BytesFieldUpdateOperationsInput | Uint8Array
+    imageData?: BytesFieldUpdateOperationsInput | Uint8Array
+    incidentConfidence?: IntFieldUpdateOperationsInput | number
+    incidentCoords?: IncidentUpdateincidentCoordsInput | number[]
     dashboardId?: StringFieldUpdateOperationsInput | string
   }
 
   export type IncidentCreateManyInput = {
     id?: string
     dateCreated?: Date | string
-    incidentType: string
-    videoData: Uint8Array
+    imageData: Uint8Array
+    incidentConfidence: number
+    incidentCoords?: IncidentCreateincidentCoordsInput | number[]
     dashboardId: string
   }
 
   export type IncidentUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    incidentType?: StringFieldUpdateOperationsInput | string
-    videoData?: BytesFieldUpdateOperationsInput | Uint8Array
+    imageData?: BytesFieldUpdateOperationsInput | Uint8Array
+    incidentConfidence?: IntFieldUpdateOperationsInput | number
+    incidentCoords?: IncidentUpdateincidentCoordsInput | number[]
   }
 
   export type IncidentUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    incidentType?: StringFieldUpdateOperationsInput | string
-    videoData?: BytesFieldUpdateOperationsInput | Uint8Array
+    imageData?: BytesFieldUpdateOperationsInput | Uint8Array
+    incidentConfidence?: IntFieldUpdateOperationsInput | number
+    incidentCoords?: IncidentUpdateincidentCoordsInput | number[]
     dashboardId?: StringFieldUpdateOperationsInput | string
   }
 
@@ -4903,6 +4979,25 @@ export namespace Prisma {
     not?: NestedBytesFilter<$PrismaModel> | Uint8Array
   }
 
+  export type IntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
+  }
+
+  export type IntNullableListFilter<$PrismaModel = never> = {
+    equals?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    has?: number | IntFieldRefInput<$PrismaModel> | null
+    hasEvery?: number[] | ListIntFieldRefInput<$PrismaModel>
+    hasSome?: number[] | ListIntFieldRefInput<$PrismaModel>
+    isEmpty?: boolean
+  }
+
   export type DashboardScalarRelationFilter = {
     is?: DashboardWhereInput
     isNot?: DashboardWhereInput
@@ -4911,25 +5006,36 @@ export namespace Prisma {
   export type IncidentCountOrderByAggregateInput = {
     id?: SortOrder
     dateCreated?: SortOrder
-    incidentType?: SortOrder
-    videoData?: SortOrder
+    imageData?: SortOrder
+    incidentConfidence?: SortOrder
+    incidentCoords?: SortOrder
     dashboardId?: SortOrder
+  }
+
+  export type IncidentAvgOrderByAggregateInput = {
+    incidentConfidence?: SortOrder
+    incidentCoords?: SortOrder
   }
 
   export type IncidentMaxOrderByAggregateInput = {
     id?: SortOrder
     dateCreated?: SortOrder
-    incidentType?: SortOrder
-    videoData?: SortOrder
+    imageData?: SortOrder
+    incidentConfidence?: SortOrder
     dashboardId?: SortOrder
   }
 
   export type IncidentMinOrderByAggregateInput = {
     id?: SortOrder
     dateCreated?: SortOrder
-    incidentType?: SortOrder
-    videoData?: SortOrder
+    imageData?: SortOrder
+    incidentConfidence?: SortOrder
     dashboardId?: SortOrder
+  }
+
+  export type IncidentSumOrderByAggregateInput = {
+    incidentConfidence?: SortOrder
+    incidentCoords?: SortOrder
   }
 
   export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
@@ -4954,6 +5060,22 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedBytesFilter<$PrismaModel>
     _max?: NestedBytesFilter<$PrismaModel>
+  }
+
+  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
   }
 
   export type DashboardCreateNestedManyWithoutDashboardOwnerInput = {
@@ -5134,6 +5256,10 @@ export namespace Prisma {
     deleteMany?: IncidentScalarWhereInput | IncidentScalarWhereInput[]
   }
 
+  export type IncidentCreateincidentCoordsInput = {
+    set: number[]
+  }
+
   export type DashboardCreateNestedOneWithoutIncidentCollectionInput = {
     create?: XOR<DashboardCreateWithoutIncidentCollectionInput, DashboardUncheckedCreateWithoutIncidentCollectionInput>
     connectOrCreate?: DashboardCreateOrConnectWithoutIncidentCollectionInput
@@ -5146,6 +5272,19 @@ export namespace Prisma {
 
   export type BytesFieldUpdateOperationsInput = {
     set?: Uint8Array
+  }
+
+  export type IntFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type IncidentUpdateincidentCoordsInput = {
+    set?: number[]
+    push?: number | number[]
   }
 
   export type DashboardUpdateOneRequiredWithoutIncidentCollectionNestedInput = {
@@ -5238,6 +5377,33 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedBytesFilter<$PrismaModel>
     _max?: NestedBytesFilter<$PrismaModel>
+  }
+
+  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type NestedFloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
   }
 
   export type DashboardCreateWithoutDashboardOwnerInput = {
@@ -5365,15 +5531,17 @@ export namespace Prisma {
   export type IncidentCreateWithoutDashboardInput = {
     id?: string
     dateCreated?: Date | string
-    incidentType: string
-    videoData: Uint8Array
+    imageData: Uint8Array
+    incidentConfidence: number
+    incidentCoords?: IncidentCreateincidentCoordsInput | number[]
   }
 
   export type IncidentUncheckedCreateWithoutDashboardInput = {
     id?: string
     dateCreated?: Date | string
-    incidentType: string
-    videoData: Uint8Array
+    imageData: Uint8Array
+    incidentConfidence: number
+    incidentCoords?: IncidentCreateincidentCoordsInput | number[]
   }
 
   export type IncidentCreateOrConnectWithoutDashboardInput = {
@@ -5458,8 +5626,9 @@ export namespace Prisma {
     NOT?: IncidentScalarWhereInput | IncidentScalarWhereInput[]
     id?: StringFilter<"Incident"> | string
     dateCreated?: DateTimeFilter<"Incident"> | Date | string
-    incidentType?: StringFilter<"Incident"> | string
-    videoData?: BytesFilter<"Incident"> | Uint8Array
+    imageData?: BytesFilter<"Incident"> | Uint8Array
+    incidentConfidence?: IntFilter<"Incident"> | number
+    incidentCoords?: IntNullableListFilter<"Incident">
     dashboardId?: StringFilter<"Incident"> | string
   }
 
@@ -5554,8 +5723,9 @@ export namespace Prisma {
   export type IncidentCreateManyDashboardInput = {
     id?: string
     dateCreated?: Date | string
-    incidentType: string
-    videoData: Uint8Array
+    imageData: Uint8Array
+    incidentConfidence: number
+    incidentCoords?: IncidentCreateincidentCoordsInput | number[]
   }
 
   export type UserUpdateWithoutDashboardsSharedInput = {
@@ -5581,22 +5751,25 @@ export namespace Prisma {
   export type IncidentUpdateWithoutDashboardInput = {
     id?: StringFieldUpdateOperationsInput | string
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    incidentType?: StringFieldUpdateOperationsInput | string
-    videoData?: BytesFieldUpdateOperationsInput | Uint8Array
+    imageData?: BytesFieldUpdateOperationsInput | Uint8Array
+    incidentConfidence?: IntFieldUpdateOperationsInput | number
+    incidentCoords?: IncidentUpdateincidentCoordsInput | number[]
   }
 
   export type IncidentUncheckedUpdateWithoutDashboardInput = {
     id?: StringFieldUpdateOperationsInput | string
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    incidentType?: StringFieldUpdateOperationsInput | string
-    videoData?: BytesFieldUpdateOperationsInput | Uint8Array
+    imageData?: BytesFieldUpdateOperationsInput | Uint8Array
+    incidentConfidence?: IntFieldUpdateOperationsInput | number
+    incidentCoords?: IncidentUpdateincidentCoordsInput | number[]
   }
 
   export type IncidentUncheckedUpdateManyWithoutDashboardInput = {
     id?: StringFieldUpdateOperationsInput | string
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
-    incidentType?: StringFieldUpdateOperationsInput | string
-    videoData?: BytesFieldUpdateOperationsInput | Uint8Array
+    imageData?: BytesFieldUpdateOperationsInput | Uint8Array
+    incidentConfidence?: IntFieldUpdateOperationsInput | number
+    incidentCoords?: IncidentUpdateincidentCoordsInput | number[]
   }
 
 

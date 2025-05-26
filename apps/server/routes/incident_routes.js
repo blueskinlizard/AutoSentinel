@@ -3,7 +3,8 @@ const express = require('express')
 const router = express.Router();
 
 router.post("/new_incident", async(req, res)=>{
-    const { incident_object} = req.body;
+    const { incident_object, incident_imageData} = req.body;
+
     try{
         
     }catch(error){
