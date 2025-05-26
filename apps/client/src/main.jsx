@@ -5,7 +5,11 @@ import './index.css'
 import App from './App.jsx'
 
 import { createBrowserRouter, Route, RouterProvider } from 'react-router-dom';
+const queryClient = new QueryClient();
 const router = createBrowserRouter(routes);
+
 createRoot(document.getElementById('root')).render(
-      <RouterProvider router={router} />
+  <QueryClientProvider client={queryClient}>
+    <RouterProvider router={router} />
+  </QueryClientProvider>
 )

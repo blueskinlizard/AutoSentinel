@@ -7,7 +7,7 @@ export default function CameraCapture(){
   //Store video references to dom
   const videoRefs = useRef([]);
   const canvasRef = useRef([]);
-  const snapshotInterval = 1000;
+  const snapshotInterval = 2000;
 
     useEffect(() =>{
     const findCurrentUser = async() =>{

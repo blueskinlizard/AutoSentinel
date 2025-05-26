@@ -46,3 +46,20 @@ export const createDashboard = async(dashboardName_param) =>{
         }
     })
 }
+
+export const fetchDashboard = async(identification_param) =>{
+    return await prisma.dashboard.findUnique({
+        where:{
+            dashboardOwnerId: identification_param
+        },
+        select:{
+            IncidentCollection: true,
+            DashboardViewers: true
+        }
+    })
+}
+export const fetchLatestIncident = async(dashboard_identification_param) =>{
+    return await prisma.dashboard.findUnique({
+        
+    })
+}

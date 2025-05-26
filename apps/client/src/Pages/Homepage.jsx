@@ -6,7 +6,7 @@ export default function Homepage(){
     return(
         <div>
             <h1>Great Debug session king, this is the homepage</h1>
-            <CameraCapture></CameraCapture>
+            
         </div>
     )
 }
