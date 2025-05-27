@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
+import IncidentComponent from "../Components/incidentComponent";
 
 export default function Dashboard(){
     const [dashboardData, setDashboardData] = useState([null]);
@@ -33,7 +34,7 @@ export default function Dashboard(){
             })
             if(fetchedLastIncident.id != incidents[incidents.length - 1]){
                 //Incidents.length - 1 refers to our last incident
-                setIncidents(prevIncidents => [...prevIncidents, fetchedLastIncident.id]) //Append new message
+                setIncidents(prevIncidents => [...prevIncidents, fetchedLastIncident]) //Append new incident
             }
         },
         refetchInterval: 1000 * 2,
@@ -41,7 +42,10 @@ export default function Dashboard(){
     })
     return(
         <>
-        
+            {incidents.map((incident) =>{
+                <IncidentComponent incidentId={incident.id} incidentConfidence={incident.incidentConfidence} incidentTime={incident.dateCreated}></IncidentComponent>
+                //Might have to convert our incidentTime to actually be readable
+            })}
         </>
     )
 }

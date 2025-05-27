@@ -47,7 +47,8 @@ export const createDashboard = async(dashboardName_param) =>{
     })
 }
 
-export const fetchDashboard = async(identification_param) =>{
+export const fetchDashboard = async(identification_param) =>{ 
+    //user identification not dashboard identification
     return await prisma.dashboard.findUnique({
         where:{
             dashboardOwnerId: identification_param
@@ -58,8 +59,9 @@ export const fetchDashboard = async(identification_param) =>{
         }
     })
 }
-export const fetchLatestIncident = async(dashboard_identification_param) =>{
-    return await prisma.dashboard.findUnique({
-        
+
+export const fetchIncident = async(identification_param) =>{
+    return await prisma.incident.findUnique({
+        where: {id: identification_param}
     })
 }
