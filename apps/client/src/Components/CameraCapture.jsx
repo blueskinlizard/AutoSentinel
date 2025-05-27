@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
+import { useNavigate } from "react-router-dom";
 
 export default function CameraCapture(){
   //Store videostream object
@@ -7,6 +8,23 @@ export default function CameraCapture(){
   const videoRefs = useRef([]);
   const canvasRef = useRef([]);
   const snapshotInterval = 2000;
+
+    useEffect(() =>{
+    const findCurrentUser = async() =>{
+      const currentUser = await fetch(`http://localhost:8080/api/current_user`, {
+        method: 'GET',
+        headers: {
+          "Content-Type": "application/json",
+        },
+          credentials: "include"
+        })
+        if(!currentUser){ redirect("/home"); }
+        else{ console.log("Current user: "+currentUser.name)}
+    }
+    findCurrentUser();
+  }, [])
+
+
   useEffect(() => {
     const setupStreams = async () => {
         //Grant permissions first

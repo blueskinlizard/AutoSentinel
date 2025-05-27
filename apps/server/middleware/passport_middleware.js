@@ -38,7 +38,7 @@ passport.use('local-signup', new LocalStrategy(
             }
             const hashedPassword = await bcrypt.hash(password, 10); 
             const user = await db.createNewUser(username, hashedPassword);
-            return done(null, user);
+            return done(null, fetched_foundUser)
         }catch(error){
             return done(error);
         }
@@ -51,7 +51,6 @@ passport.serializeUser((user, done) =>{
 passport.deserializeUser(async(id, done) =>{
     try{
         const current_user = await db.findUserById(id);
-        console.log("Deserialized user:", current_user);
         done(null, current_user)
     }catch(error){
         done(error);
