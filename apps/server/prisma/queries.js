@@ -11,7 +11,7 @@ export const findUserByName = async(username_param) =>{
 export const findUserById = async(identification_param) =>{
     return await prisma.user.findUnique({
         where: {
-            name: identification_param
+            id: identification_param
         }
     })
 }

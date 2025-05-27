@@ -11,7 +11,6 @@ router.post("/new_image", async(req, res)=>{
     const dataURL = req.body.dataURL;
     //Strip out prefix
     const UUID = crypto.randomUUID();
-    console.log("Incoming Data URL starts with:", dataURL.slice(0, 30));
     const base64Data = dataURL.replace(/^data:image\/\w+;base64,/, '');
     const buffer = Buffer.from(base64Data, 'base64');
     const imagePath = path.join(__dirname, '..', 'cam-cache', `${UUID}.jpg`);
@@ -30,7 +29,7 @@ router.post("/new_image", async(req, res)=>{
             }
             else{
                 try{
-                    await fs.unlink(imagePath);
+                    await fs.promises.unlink(imagePath);
                     console.log(`File at ${imagePath} deleted successfully`);
                 }catch(error){
                     console.error(`Error deleting file at ${imagePath}, caused by: `+error)
@@ -65,7 +64,7 @@ function runDetection(imagePath) {
 
         process.on("close", (code) => {
             if (code !== 0) {
-                reject(new Error(`Process exited with code ${code}\n${error}`));
+                reject(new Error(`Process exited with code: ${code}`));
             } else {
                 try {
                     const lines = data.trim().split('\n').filter(line => line.trim().length > 0);
