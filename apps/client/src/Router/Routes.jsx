@@ -22,7 +22,7 @@ const routes = [
         element: <CameraPage />
     },
     {
-        path: '/dashboard',
+        path: '/dashboard/:dashboardURL',
         element: <Dashboard />
     },
     {

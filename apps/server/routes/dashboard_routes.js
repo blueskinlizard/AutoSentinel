@@ -35,7 +35,7 @@ router.post("/create_dashboard", async(req, res) =>{
     }
 })
 
-router.post("/all_dashboards", async(req, res) =>{
+router.get("/all_dashboards", async(req, res) =>{
     if(!req.user){ return res.status(500).json({message: `Error in fetching all user dashboards, user is not signed in`})}
 
     const { user_id } = await db.findUserByName(req.user.name).id; //Need to be fact checked on the validity of this novel property access
@@ -71,8 +71,6 @@ router.post("/received_dashboards", async(req, res) =>{
     }
 
 })
-
-
 
 
 module.exports = router;

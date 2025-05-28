@@ -1,20 +1,23 @@
 import { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import IncidentComponent from "../Components/incidentComponent";
+import { useNavigate } from "react-router-dom";
 
 export default function Dashboard(){
     const [dashboardData, setDashboardData] = useState([null]);
     //Simply stores incident ID for comparison, whole object storage is unecessary
     const [incidents, setIncidents] = useState(null);
     //Quality of life access for incident management, technically unecessary, but makes my life easier
+    const { dashboardURL } = useParams();
     useEffect(() =>{
         const fetchDashboardInformation = (async() =>{
             const fetchedDashboardInformation = await fetch(`http://localhost:8080/api/fetch_dashboard`, {
-                method: 'GET',
+                method: 'POST',
                 headers: {
                 "Content-Type": "application/json",
                 },
                 credentials: "include",
+                body: JSON.stringify({ dashboardURL }),
             })
             setDashboardData(fetchedDashboardInformation);
             setIncidents(fetchedDashboardInformation.IncidentCollection)
@@ -32,7 +35,7 @@ export default function Dashboard(){
                 },
                 credentials: "include",
             })
-            if(fetchedLastIncident.id != incidents[incidents.length - 1]){
+            if(fetchedLastIncident.id != incidents[incidents.length - 1].id){
                 //Incidents.length - 1 refers to our last incident
                 setIncidents(prevIncidents => [...prevIncidents, fetchedLastIncident]) //Append new incident
             }
