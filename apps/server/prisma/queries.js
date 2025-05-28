@@ -16,7 +16,7 @@ export const findUserById = async(identification_param) =>{
     })
 }
 export const createNewUser = async(username_param, hashed_password_param) =>{
-    return await prisma.user.create({
+    await prisma.user.create({
         data:{
             name: username_param,
             password: hashed_password_param
@@ -24,34 +24,36 @@ export const createNewUser = async(username_param, hashed_password_param) =>{
     })
 }
 export const deleteIncident = async(identification_param) =>{
-    return await prisma.incident.delete({
+    await prisma.incident.delete({
         where:{
             id: identification_param
         }
     })
 }
-export const createIncident = async(incidentOject_param, incidentData_param) =>{
-    return await prisma.incident.create({
+export const createIncident = async(incidentOject_param, incidentData_param, dashboardIdentification_param) =>{
+    await prisma.incident.create({
         data:{
-            imagedata: incidentData_param,
+            imageData: incidentData_param,
             incidentConfidence: incidentOject_param.confidence,
-            incidentCoords: incidentOject_param.bbox
+            incidentCoords: incidentOject_param.bbox,
+            dashboardId: dashboardIdentification_param
         }
     })
 }
-export const createDashboard = async(dashboardName_param) =>{
-    return await prisma.dashboard.create({
+export const createDashboard = async(dashboardName_param, identification_param) =>{
+    await prisma.dashboard.create({
         data:{
-            name: dashboardName_param
+            name: dashboardName_param,
+            dashboardOwnerId: identification_param
         }
     })
 }
 
-export const fetchDashboard = async(identification_param) =>{ 
-    //user identification not dashboard identification
+export const fetchDashboard = async(dashboardIdentification_param) =>{ 
+    //dashboard identification not user identification
     return await prisma.dashboard.findUnique({
         where:{
-            dashboardOwnerId: identification_param
+            id: dashboardIdentification_param
         },
         select:{
             IncidentCollection: true,
@@ -60,8 +62,30 @@ export const fetchDashboard = async(identification_param) =>{
     })
 }
 
+export const fetchUserDashboards = async(identification_param) =>{
+    //User id for identification_param, returns all dashboards under specific user
+    return await prisma.dashboard.findMany({
+        where:{
+            dashboardOwnerId: identification_param
+        }
+    })
+}
+
 export const fetchIncident = async(identification_param) =>{
     return await prisma.incident.findUnique({
         where: {id: identification_param}
+    })
+}
+
+export const deleteDashboard = async(dashboardIdentification_param) =>{
+    await prisma.incident.deleteMany({
+        where: {
+            dashboardId: dashboardIdentification_param   
+        }
+    })
+    await prisma.dashboard.delete({
+        where:{
+            id: dashboardIdentification_param
+        }
     })
 }

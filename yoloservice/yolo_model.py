@@ -11,7 +11,7 @@ if image is None:
     print(json.dumps([]))
     sys.exit(0)
 
-results = model(image, conf=0.65)
+results = model(image, conf=0.5)
 
 output = []
 

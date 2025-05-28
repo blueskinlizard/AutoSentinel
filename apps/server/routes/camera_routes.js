@@ -48,10 +48,6 @@ router.post("/new_image", async(req, res)=>{
     
 })
 
-router.post("/deleteImage", async(req, res)=>{
-    res.json({ message: "Delete not yet implemented" });
-})
-
 function runDetection(imagePath) {
 
     return new Promise((resolve, reject) => {
