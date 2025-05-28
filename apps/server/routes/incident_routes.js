@@ -20,7 +20,7 @@ router.get("/latest_incident", async(req, res) =>{
         const latest_incident = incidents[incidents.length - 1] || null;
         return res.status(200).json({latest_incident})
     }catch(error){
-        return res.status(500).json({message: `Error in fetching latest dashboard incident for user: ${user_id}, returned with error: ${error}`})
+        return res.status(500).json({message: `Syntax error in fetching latest dashboard incident for user: ${user_id}, returned with error: ${error}`})
     }
 })
 
@@ -31,7 +31,7 @@ router.post("/find_incident", async(req, res) =>{
         return res.status(200).json({found_incident})
     }
     catch(error){
-        return res.status(500).json({message: `Error in fetching incident ${incident_id}, returned with error: ${error}`})
+        return res.status(500).json({message: `Syntax error in fetching incident ${incident_id}, returned with error: ${error}`})
     }
 })
 

@@ -89,3 +89,11 @@ export const deleteDashboard = async(dashboardIdentification_param) =>{
         }
     })
 }
+
+export const fetchSharedDashboards = async(identification_param) =>{
+    return await prisma.dashboardRecipients.findMany({
+        where:{
+            userId: identification_param
+        }
+    })
+}
