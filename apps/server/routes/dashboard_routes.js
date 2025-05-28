@@ -26,7 +26,7 @@ router.post("/delete_dashboard", async(req, res) =>{
 router.post("/create_dashboard", async(req, res) =>{
     const { dashboard_name } = req.body;
     try{
-        if(!req.user.name){ return res.status(500).json({message: `Error in creating dashboard, user not logged in `})}
+        if(!req.user){ return res.status(500).json({message: `Error in creating dashboard, user not logged in3 `})}
         const fetched_userObject = await db.findUserByName(req.user.name);
         await db.createDashboard(dashboard_name, fetched_userObject.id);
         return res.status(200).json({message: `Successfully created dashboard with name ${dashboard_name} for user: ${req.user.name}`})

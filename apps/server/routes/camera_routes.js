@@ -8,6 +8,7 @@ const { spawn } = require("child_process");
 
 
 router.post("/new_image", async(req, res)=>{
+    if(!req.user){ return res.status(500).json({message: `Failed to add image to local cam-cache, caused by lack of current user`})}
     const dataURL = req.body.dataURL;
     //Strip out prefix
     const UUID = crypto.randomUUID();
