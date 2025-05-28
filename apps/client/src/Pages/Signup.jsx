@@ -24,7 +24,7 @@ export default function SignUp(){
                 body: JSON.stringify({ username: username, password: password}),
                 credentials: "include"
             })
-            const responseData = await fetchedDataJson.json().catch(e => ({ message: "Could not parse JSON response" }));
+            const responseData = await fetchedDataJson.json().catch(error => ({ message: "Could not parse JSON response" }));
             console.log("Response status:", fetchedDataJson.status, "Response data:", responseData);
             if(fetchedDataJson.ok){
                 setSignUpStatus("Succesfully logged in, redirecting now")

@@ -6,7 +6,7 @@ export default function CameraCapture(){
   //Store video references to dom
   const videoRefs = useRef([]);
   const canvasRef = useRef([]);
-  const snapshotInterval = 15003;
+  const snapshotInterval = 1500;
   useEffect(() => {
     const setupStreams = async () => {
         //Grant permissions first

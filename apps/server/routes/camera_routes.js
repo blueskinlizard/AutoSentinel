@@ -59,6 +59,10 @@ function runDetection(imagePath) {
             data += chunk;
         });
 
+        process.stderr.on("data", (chunk) => {
+            console.error("Python stderr:", chunk.toString());
+        });
+
         process.on("close", (code) => {
             if (code !== 0) {
                 reject(new Error(`Process exited with code: ${code}`));

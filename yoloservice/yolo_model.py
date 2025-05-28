@@ -11,7 +11,11 @@ if image is None:
     print(json.dumps([]))
     sys.exit(0)
 
-results = model(image, conf=0.5)
+try:
+    results = model(image, conf=0.5)
+except Exception as error:
+    print(f"Model inference failed: {error}", file=sys.stderr)
+    sys.exit(1)
 
 output = []
 
@@ -25,4 +29,8 @@ for result in results:
             "path": image_path
         }
         output.append(detectedObject)
-print(json.dumps(output)) 
+
+if output:
+    print(json.dumps(output))
+else:
+    print(json.dumps([]))
