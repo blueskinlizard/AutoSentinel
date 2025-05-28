@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function Dashboard(){
     const [dashboardData, setDashboardData] = useState([null]);
+    const [loading, setLoading] = useState(true);
     //Simply stores incident ID for comparison, whole object storage is unecessary
     const [incidents, setIncidents] = useState(null);
     //Quality of life access for incident management, technically unecessary, but makes my life easier
@@ -22,6 +23,8 @@ export default function Dashboard(){
             setDashboardData(fetchedDashboardInformation);
             setIncidents(fetchedDashboardInformation.IncidentCollection)
         })
+        fetchDashboardInformation();
+        setLoading(false);
     })
 
     const latestIncidentQuery = useQuery({
@@ -43,12 +46,15 @@ export default function Dashboard(){
         refetchInterval: 1000 * 2,
         refetchIntervalInBackground: false
     })
+    if(loading){
+        return <><h2>Loading...</h2></>
+    }
     return(
-        <>
+        <div className="incidentListWrapper">
             {incidents.map((incident) =>{
                 <IncidentComponent incidentId={incident.id} incidentConfidence={incident.incidentConfidence} incidentTime={incident.dateCreated}></IncidentComponent>
                 //Might have to convert our incidentTime to actually be readable
             })}
-        </>
+        </div>
     )
 }

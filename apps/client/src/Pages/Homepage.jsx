@@ -4,8 +4,8 @@ import CameraCapture from "../Components/CameraCapture";
 import DashboardHomeComponent from "../Components/DashboardHomeComponent";
 
 export default function Homepage(){
-  const [dashboards, setDashboards] = useState([null]);
-
+  const [dashboards, setDashboards] = useState([]);
+  const [loading, setLoading] = useState(true);
     useEffect(() =>{
         const fetchUserInformation = async() =>{
           const fetchedCurrentUser = await fetch(`http://localhost:8080/api/current_user`, {
@@ -30,7 +30,13 @@ export default function Homepage(){
                   },
                   credentials: "include"
                 })
-                if(fetchedUserDashboards.ok){ setDashboards(fetchedUserDashboards) }
+                if(fetchedUserDashboards.ok){
+                  const parsedUserDashboards = await fetchedUserDashboards.json(); 
+                  console.log("Fetched dashboards JSON:", parsedUserDashboards.ownedBoards);
+                  setDashboards(parsedUserDashboards.ownedBoards); 
+                  setLoading(false);
+                }
+                
                 else{ console.log("Error in fetching owned dashboards, returned with status 500") }
               }catch(error){
                 console.log("Error in fetching owned dashboards, returned with error: "+error)
@@ -39,15 +45,23 @@ export default function Homepage(){
     }
         fetchUserInformation();
 
-    })
+    }, [])
+    if(loading){
+      return(
+        <>
+          <h1>Welcome to the homepage!</h1>
+          <h2>Sign in to acquire knowledge about your dashboards</h2>
+        </>
+      )
+    }
     return(
         <div>
             <h1>Great Debug session king, this is the homepage</h1>
             <h2>Owned dashboards</h2>
             {dashboards.map((dashboard) =>{
-              <DashboardHomeComponent dashboardTitle={dashboard.name} 
+              return (<DashboardHomeComponent dashboardTitle={dashboard.name} 
               dashboardId={dashboard.id} 
-              dashboardOwner={dashboard.dashboardOwner} />
+              dashboardOwner={dashboard.dashboardOwner} /> )
             })}
         </div>
     )

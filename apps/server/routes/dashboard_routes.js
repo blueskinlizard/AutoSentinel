@@ -38,9 +38,11 @@ router.post("/create_dashboard", async(req, res) =>{
 router.get("/all_dashboards", async(req, res) =>{
     if(!req.user){ return res.status(500).json({message: `Error in fetching all user dashboards, user is not signed in`})}
 
-    const { user_id } = await db.findUserByName(req.user.name).id; //Need to be fact checked on the validity of this novel property access
+    console.log("req.user:", req.user);
+    const user = await db.findUserByName(req.user.name);
+    const user_id = user.id;
 
-    if(user_id){ return res.status(500).json({message: `Error in fetching all user dashboards, failed to fetch id of user: ${req.user.name}`})}
+    if(!user_id){ return res.status(404).json({message: `Error in fetching all user dashboards, failed to fetch id of user: ${req.user.name}`})}
 
     try{
         const ownedBoards = await db.fetchUserDashboards(user_id);
