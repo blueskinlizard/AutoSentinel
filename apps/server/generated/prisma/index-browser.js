@@ -141,6 +141,19 @@ exports.Prisma.IncidentScalarFieldEnum = {
   dashboardId: 'dashboardId'
 };
 
+exports.Prisma.DashboardShareScalarFieldEnum = {
+  id: 'id',
+  dashboardId: 'dashboardId',
+  sharerId: 'sharerId',
+  SharedAt: 'SharedAt'
+};
+
+exports.Prisma.DashboardRecipientScalarFieldEnum = {
+  id: 'id',
+  dashboardShareId: 'dashboardShareId',
+  userId: 'userId'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -155,7 +168,9 @@ exports.Prisma.QueryMode = {
 exports.Prisma.ModelName = {
   User: 'User',
   Dashboard: 'Dashboard',
-  Incident: 'Incident'
+  Incident: 'Incident',
+  DashboardShare: 'DashboardShare',
+  DashboardRecipient: 'DashboardRecipient'
 };
 
 /**

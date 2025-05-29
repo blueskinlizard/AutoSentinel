@@ -30,12 +30,12 @@ export const deleteIncident = async(identification_param) =>{
         }
     })
 }
-export const createIncident = async(incidentOject_param, incidentData_param, dashboardIdentification_param) =>{
+export const createIncident = async(incidentObject_param, incidentData_param, dashboardIdentification_param) =>{
     await prisma.incident.create({
         data:{
             imageData: incidentData_param,
-            incidentConfidence: incidentOject_param.confidence,
-            incidentCoords: incidentOject_param.bbox,
+            incidentConfidence: incidentObject_param.confidence,
+            incidentCoords: incidentObject_param.bbox,
             dashboardId: dashboardIdentification_param
         }
     })
@@ -55,9 +55,9 @@ export const fetchDashboard = async(dashboardIdentification_param) =>{
         where:{
             id: dashboardIdentification_param
         },
-        select:{
+        include:{
             IncidentCollection: true,
-            DashboardViewers: true
+            DashboardShare: true
         }
     })
 }
@@ -91,7 +91,7 @@ export const deleteDashboard = async(dashboardIdentification_param) =>{
 }
 
 export const fetchSharedDashboards = async(identification_param) =>{
-    return await prisma.dashboardRecipients.findMany({
+    return await prisma.dashboardRecipient.findMany({
         where:{
             userId: identification_param
         }

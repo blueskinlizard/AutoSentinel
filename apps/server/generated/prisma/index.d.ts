@@ -28,6 +28,16 @@ export type Dashboard = $Result.DefaultSelection<Prisma.$DashboardPayload>
  * 
  */
 export type Incident = $Result.DefaultSelection<Prisma.$IncidentPayload>
+/**
+ * Model DashboardShare
+ * 
+ */
+export type DashboardShare = $Result.DefaultSelection<Prisma.$DashboardSharePayload>
+/**
+ * Model DashboardRecipient
+ * 
+ */
+export type DashboardRecipient = $Result.DefaultSelection<Prisma.$DashboardRecipientPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -183,6 +193,26 @@ export class PrismaClient<
     * ```
     */
   get incident(): Prisma.IncidentDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.dashboardShare`: Exposes CRUD operations for the **DashboardShare** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more DashboardShares
+    * const dashboardShares = await prisma.dashboardShare.findMany()
+    * ```
+    */
+  get dashboardShare(): Prisma.DashboardShareDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.dashboardRecipient`: Exposes CRUD operations for the **DashboardRecipient** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more DashboardRecipients
+    * const dashboardRecipients = await prisma.dashboardRecipient.findMany()
+    * ```
+    */
+  get dashboardRecipient(): Prisma.DashboardRecipientDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -625,7 +655,9 @@ export namespace Prisma {
   export const ModelName: {
     User: 'User',
     Dashboard: 'Dashboard',
-    Incident: 'Incident'
+    Incident: 'Incident',
+    DashboardShare: 'DashboardShare',
+    DashboardRecipient: 'DashboardRecipient'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -644,7 +676,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "dashboard" | "incident"
+      modelProps: "user" | "dashboard" | "incident" | "dashboardShare" | "dashboardRecipient"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -870,6 +902,154 @@ export namespace Prisma {
           }
         }
       }
+      DashboardShare: {
+        payload: Prisma.$DashboardSharePayload<ExtArgs>
+        fields: Prisma.DashboardShareFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.DashboardShareFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DashboardSharePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.DashboardShareFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DashboardSharePayload>
+          }
+          findFirst: {
+            args: Prisma.DashboardShareFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DashboardSharePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.DashboardShareFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DashboardSharePayload>
+          }
+          findMany: {
+            args: Prisma.DashboardShareFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DashboardSharePayload>[]
+          }
+          create: {
+            args: Prisma.DashboardShareCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DashboardSharePayload>
+          }
+          createMany: {
+            args: Prisma.DashboardShareCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.DashboardShareCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DashboardSharePayload>[]
+          }
+          delete: {
+            args: Prisma.DashboardShareDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DashboardSharePayload>
+          }
+          update: {
+            args: Prisma.DashboardShareUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DashboardSharePayload>
+          }
+          deleteMany: {
+            args: Prisma.DashboardShareDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.DashboardShareUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.DashboardShareUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DashboardSharePayload>[]
+          }
+          upsert: {
+            args: Prisma.DashboardShareUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DashboardSharePayload>
+          }
+          aggregate: {
+            args: Prisma.DashboardShareAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateDashboardShare>
+          }
+          groupBy: {
+            args: Prisma.DashboardShareGroupByArgs<ExtArgs>
+            result: $Utils.Optional<DashboardShareGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.DashboardShareCountArgs<ExtArgs>
+            result: $Utils.Optional<DashboardShareCountAggregateOutputType> | number
+          }
+        }
+      }
+      DashboardRecipient: {
+        payload: Prisma.$DashboardRecipientPayload<ExtArgs>
+        fields: Prisma.DashboardRecipientFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.DashboardRecipientFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DashboardRecipientPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.DashboardRecipientFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DashboardRecipientPayload>
+          }
+          findFirst: {
+            args: Prisma.DashboardRecipientFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DashboardRecipientPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.DashboardRecipientFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DashboardRecipientPayload>
+          }
+          findMany: {
+            args: Prisma.DashboardRecipientFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DashboardRecipientPayload>[]
+          }
+          create: {
+            args: Prisma.DashboardRecipientCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DashboardRecipientPayload>
+          }
+          createMany: {
+            args: Prisma.DashboardRecipientCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.DashboardRecipientCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DashboardRecipientPayload>[]
+          }
+          delete: {
+            args: Prisma.DashboardRecipientDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DashboardRecipientPayload>
+          }
+          update: {
+            args: Prisma.DashboardRecipientUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DashboardRecipientPayload>
+          }
+          deleteMany: {
+            args: Prisma.DashboardRecipientDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.DashboardRecipientUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.DashboardRecipientUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DashboardRecipientPayload>[]
+          }
+          upsert: {
+            args: Prisma.DashboardRecipientUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DashboardRecipientPayload>
+          }
+          aggregate: {
+            args: Prisma.DashboardRecipientAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateDashboardRecipient>
+          }
+          groupBy: {
+            args: Prisma.DashboardRecipientGroupByArgs<ExtArgs>
+            result: $Utils.Optional<DashboardRecipientGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.DashboardRecipientCountArgs<ExtArgs>
+            result: $Utils.Optional<DashboardRecipientCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -957,6 +1137,8 @@ export namespace Prisma {
     user?: UserOmit
     dashboard?: DashboardOmit
     incident?: IncidentOmit
+    dashboardShare?: DashboardShareOmit
+    dashboardRecipient?: DashboardRecipientOmit
   }
 
   /* Types for Logging */
@@ -1053,11 +1235,13 @@ export namespace Prisma {
   export type UserCountOutputType = {
     DashboardsOwned: number
     DashboardsShared: number
+    DashboardsReceived: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     DashboardsOwned?: boolean | UserCountOutputTypeCountDashboardsOwnedArgs
     DashboardsShared?: boolean | UserCountOutputTypeCountDashboardsSharedArgs
+    DashboardsReceived?: boolean | UserCountOutputTypeCountDashboardsReceivedArgs
   }
 
   // Custom InputTypes
@@ -1082,7 +1266,14 @@ export namespace Prisma {
    * UserCountOutputType without action
    */
   export type UserCountOutputTypeCountDashboardsSharedArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: DashboardWhereInput
+    where?: DashboardShareWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountDashboardsReceivedArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: DashboardRecipientWhereInput
   }
 
 
@@ -1091,13 +1282,13 @@ export namespace Prisma {
    */
 
   export type DashboardCountOutputType = {
-    DashboardViewers: number
     IncidentCollection: number
+    DashboardShare: number
   }
 
   export type DashboardCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    DashboardViewers?: boolean | DashboardCountOutputTypeCountDashboardViewersArgs
     IncidentCollection?: boolean | DashboardCountOutputTypeCountIncidentCollectionArgs
+    DashboardShare?: boolean | DashboardCountOutputTypeCountDashboardShareArgs
   }
 
   // Custom InputTypes
@@ -1114,15 +1305,46 @@ export namespace Prisma {
   /**
    * DashboardCountOutputType without action
    */
-  export type DashboardCountOutputTypeCountDashboardViewersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: UserWhereInput
+  export type DashboardCountOutputTypeCountIncidentCollectionArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: IncidentWhereInput
   }
 
   /**
    * DashboardCountOutputType without action
    */
-  export type DashboardCountOutputTypeCountIncidentCollectionArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: IncidentWhereInput
+  export type DashboardCountOutputTypeCountDashboardShareArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: DashboardShareWhereInput
+  }
+
+
+  /**
+   * Count Type DashboardShareCountOutputType
+   */
+
+  export type DashboardShareCountOutputType = {
+    Recipients: number
+  }
+
+  export type DashboardShareCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    Recipients?: boolean | DashboardShareCountOutputTypeCountRecipientsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * DashboardShareCountOutputType without action
+   */
+  export type DashboardShareCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DashboardShareCountOutputType
+     */
+    select?: DashboardShareCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * DashboardShareCountOutputType without action
+   */
+  export type DashboardShareCountOutputTypeCountRecipientsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: DashboardRecipientWhereInput
   }
 
 
@@ -1280,6 +1502,7 @@ export namespace Prisma {
     password?: boolean
     DashboardsOwned?: boolean | User$DashboardsOwnedArgs<ExtArgs>
     DashboardsShared?: boolean | User$DashboardsSharedArgs<ExtArgs>
+    DashboardsReceived?: boolean | User$DashboardsReceivedArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -1305,6 +1528,7 @@ export namespace Prisma {
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     DashboardsOwned?: boolean | User$DashboardsOwnedArgs<ExtArgs>
     DashboardsShared?: boolean | User$DashboardsSharedArgs<ExtArgs>
+    DashboardsReceived?: boolean | User$DashboardsReceivedArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -1314,7 +1538,8 @@ export namespace Prisma {
     name: "User"
     objects: {
       DashboardsOwned: Prisma.$DashboardPayload<ExtArgs>[]
-      DashboardsShared: Prisma.$DashboardPayload<ExtArgs>[]
+      DashboardsShared: Prisma.$DashboardSharePayload<ExtArgs>[]
+      DashboardsReceived: Prisma.$DashboardRecipientPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -1715,7 +1940,8 @@ export namespace Prisma {
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     DashboardsOwned<T extends User$DashboardsOwnedArgs<ExtArgs> = {}>(args?: Subset<T, User$DashboardsOwnedArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DashboardPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    DashboardsShared<T extends User$DashboardsSharedArgs<ExtArgs> = {}>(args?: Subset<T, User$DashboardsSharedArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DashboardPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    DashboardsShared<T extends User$DashboardsSharedArgs<ExtArgs> = {}>(args?: Subset<T, User$DashboardsSharedArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DashboardSharePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    DashboardsReceived<T extends User$DashboardsReceivedArgs<ExtArgs> = {}>(args?: Subset<T, User$DashboardsReceivedArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DashboardRecipientPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2164,23 +2390,47 @@ export namespace Prisma {
    */
   export type User$DashboardsSharedArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Dashboard
+     * Select specific fields to fetch from the DashboardShare
      */
-    select?: DashboardSelect<ExtArgs> | null
+    select?: DashboardShareSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Dashboard
+     * Omit specific fields from the DashboardShare
      */
-    omit?: DashboardOmit<ExtArgs> | null
+    omit?: DashboardShareOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: DashboardInclude<ExtArgs> | null
-    where?: DashboardWhereInput
-    orderBy?: DashboardOrderByWithRelationInput | DashboardOrderByWithRelationInput[]
-    cursor?: DashboardWhereUniqueInput
+    include?: DashboardShareInclude<ExtArgs> | null
+    where?: DashboardShareWhereInput
+    orderBy?: DashboardShareOrderByWithRelationInput | DashboardShareOrderByWithRelationInput[]
+    cursor?: DashboardShareWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: DashboardScalarFieldEnum | DashboardScalarFieldEnum[]
+    distinct?: DashboardShareScalarFieldEnum | DashboardShareScalarFieldEnum[]
+  }
+
+  /**
+   * User.DashboardsReceived
+   */
+  export type User$DashboardsReceivedArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DashboardRecipient
+     */
+    select?: DashboardRecipientSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DashboardRecipient
+     */
+    omit?: DashboardRecipientOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DashboardRecipientInclude<ExtArgs> | null
+    where?: DashboardRecipientWhereInput
+    orderBy?: DashboardRecipientOrderByWithRelationInput | DashboardRecipientOrderByWithRelationInput[]
+    cursor?: DashboardRecipientWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: DashboardRecipientScalarFieldEnum | DashboardRecipientScalarFieldEnum[]
   }
 
   /**
@@ -2351,8 +2601,8 @@ export namespace Prisma {
     name?: boolean
     dashboardOwnerId?: boolean
     DashboardOwner?: boolean | UserDefaultArgs<ExtArgs>
-    DashboardViewers?: boolean | Dashboard$DashboardViewersArgs<ExtArgs>
     IncidentCollection?: boolean | Dashboard$IncidentCollectionArgs<ExtArgs>
+    DashboardShare?: boolean | Dashboard$DashboardShareArgs<ExtArgs>
     _count?: boolean | DashboardCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["dashboard"]>
 
@@ -2379,8 +2629,8 @@ export namespace Prisma {
   export type DashboardOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "dashboardOwnerId", ExtArgs["result"]["dashboard"]>
   export type DashboardInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     DashboardOwner?: boolean | UserDefaultArgs<ExtArgs>
-    DashboardViewers?: boolean | Dashboard$DashboardViewersArgs<ExtArgs>
     IncidentCollection?: boolean | Dashboard$IncidentCollectionArgs<ExtArgs>
+    DashboardShare?: boolean | Dashboard$DashboardShareArgs<ExtArgs>
     _count?: boolean | DashboardCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type DashboardIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2394,8 +2644,8 @@ export namespace Prisma {
     name: "Dashboard"
     objects: {
       DashboardOwner: Prisma.$UserPayload<ExtArgs>
-      DashboardViewers: Prisma.$UserPayload<ExtArgs>[]
       IncidentCollection: Prisma.$IncidentPayload<ExtArgs>[]
+      DashboardShare: Prisma.$DashboardSharePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -2796,8 +3046,8 @@ export namespace Prisma {
   export interface Prisma__DashboardClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     DashboardOwner<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    DashboardViewers<T extends Dashboard$DashboardViewersArgs<ExtArgs> = {}>(args?: Subset<T, Dashboard$DashboardViewersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     IncidentCollection<T extends Dashboard$IncidentCollectionArgs<ExtArgs> = {}>(args?: Subset<T, Dashboard$IncidentCollectionArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$IncidentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    DashboardShare<T extends Dashboard$DashboardShareArgs<ExtArgs> = {}>(args?: Subset<T, Dashboard$DashboardShareArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DashboardSharePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3226,30 +3476,6 @@ export namespace Prisma {
   }
 
   /**
-   * Dashboard.DashboardViewers
-   */
-  export type Dashboard$DashboardViewersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the User
-     */
-    select?: UserSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the User
-     */
-    omit?: UserOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UserInclude<ExtArgs> | null
-    where?: UserWhereInput
-    orderBy?: UserOrderByWithRelationInput | UserOrderByWithRelationInput[]
-    cursor?: UserWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: UserScalarFieldEnum | UserScalarFieldEnum[]
-  }
-
-  /**
    * Dashboard.IncidentCollection
    */
   export type Dashboard$IncidentCollectionArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3271,6 +3497,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: IncidentScalarFieldEnum | IncidentScalarFieldEnum[]
+  }
+
+  /**
+   * Dashboard.DashboardShare
+   */
+  export type Dashboard$DashboardShareArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DashboardShare
+     */
+    select?: DashboardShareSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DashboardShare
+     */
+    omit?: DashboardShareOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DashboardShareInclude<ExtArgs> | null
+    where?: DashboardShareWhereInput
+    orderBy?: DashboardShareOrderByWithRelationInput | DashboardShareOrderByWithRelationInput[]
+    cursor?: DashboardShareWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: DashboardShareScalarFieldEnum | DashboardShareScalarFieldEnum[]
   }
 
   /**
@@ -4398,6 +4648,2129 @@ export namespace Prisma {
 
 
   /**
+   * Model DashboardShare
+   */
+
+  export type AggregateDashboardShare = {
+    _count: DashboardShareCountAggregateOutputType | null
+    _min: DashboardShareMinAggregateOutputType | null
+    _max: DashboardShareMaxAggregateOutputType | null
+  }
+
+  export type DashboardShareMinAggregateOutputType = {
+    id: string | null
+    dashboardId: string | null
+    sharerId: string | null
+    SharedAt: Date | null
+  }
+
+  export type DashboardShareMaxAggregateOutputType = {
+    id: string | null
+    dashboardId: string | null
+    sharerId: string | null
+    SharedAt: Date | null
+  }
+
+  export type DashboardShareCountAggregateOutputType = {
+    id: number
+    dashboardId: number
+    sharerId: number
+    SharedAt: number
+    _all: number
+  }
+
+
+  export type DashboardShareMinAggregateInputType = {
+    id?: true
+    dashboardId?: true
+    sharerId?: true
+    SharedAt?: true
+  }
+
+  export type DashboardShareMaxAggregateInputType = {
+    id?: true
+    dashboardId?: true
+    sharerId?: true
+    SharedAt?: true
+  }
+
+  export type DashboardShareCountAggregateInputType = {
+    id?: true
+    dashboardId?: true
+    sharerId?: true
+    SharedAt?: true
+    _all?: true
+  }
+
+  export type DashboardShareAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which DashboardShare to aggregate.
+     */
+    where?: DashboardShareWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DashboardShares to fetch.
+     */
+    orderBy?: DashboardShareOrderByWithRelationInput | DashboardShareOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: DashboardShareWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DashboardShares from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DashboardShares.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned DashboardShares
+    **/
+    _count?: true | DashboardShareCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: DashboardShareMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: DashboardShareMaxAggregateInputType
+  }
+
+  export type GetDashboardShareAggregateType<T extends DashboardShareAggregateArgs> = {
+        [P in keyof T & keyof AggregateDashboardShare]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateDashboardShare[P]>
+      : GetScalarType<T[P], AggregateDashboardShare[P]>
+  }
+
+
+
+
+  export type DashboardShareGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: DashboardShareWhereInput
+    orderBy?: DashboardShareOrderByWithAggregationInput | DashboardShareOrderByWithAggregationInput[]
+    by: DashboardShareScalarFieldEnum[] | DashboardShareScalarFieldEnum
+    having?: DashboardShareScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: DashboardShareCountAggregateInputType | true
+    _min?: DashboardShareMinAggregateInputType
+    _max?: DashboardShareMaxAggregateInputType
+  }
+
+  export type DashboardShareGroupByOutputType = {
+    id: string
+    dashboardId: string
+    sharerId: string
+    SharedAt: Date
+    _count: DashboardShareCountAggregateOutputType | null
+    _min: DashboardShareMinAggregateOutputType | null
+    _max: DashboardShareMaxAggregateOutputType | null
+  }
+
+  type GetDashboardShareGroupByPayload<T extends DashboardShareGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<DashboardShareGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof DashboardShareGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], DashboardShareGroupByOutputType[P]>
+            : GetScalarType<T[P], DashboardShareGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type DashboardShareSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    dashboardId?: boolean
+    sharerId?: boolean
+    SharedAt?: boolean
+    Dashboard?: boolean | DashboardDefaultArgs<ExtArgs>
+    SharedBy?: boolean | UserDefaultArgs<ExtArgs>
+    Recipients?: boolean | DashboardShare$RecipientsArgs<ExtArgs>
+    _count?: boolean | DashboardShareCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["dashboardShare"]>
+
+  export type DashboardShareSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    dashboardId?: boolean
+    sharerId?: boolean
+    SharedAt?: boolean
+    Dashboard?: boolean | DashboardDefaultArgs<ExtArgs>
+    SharedBy?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["dashboardShare"]>
+
+  export type DashboardShareSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    dashboardId?: boolean
+    sharerId?: boolean
+    SharedAt?: boolean
+    Dashboard?: boolean | DashboardDefaultArgs<ExtArgs>
+    SharedBy?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["dashboardShare"]>
+
+  export type DashboardShareSelectScalar = {
+    id?: boolean
+    dashboardId?: boolean
+    sharerId?: boolean
+    SharedAt?: boolean
+  }
+
+  export type DashboardShareOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "dashboardId" | "sharerId" | "SharedAt", ExtArgs["result"]["dashboardShare"]>
+  export type DashboardShareInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    Dashboard?: boolean | DashboardDefaultArgs<ExtArgs>
+    SharedBy?: boolean | UserDefaultArgs<ExtArgs>
+    Recipients?: boolean | DashboardShare$RecipientsArgs<ExtArgs>
+    _count?: boolean | DashboardShareCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type DashboardShareIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    Dashboard?: boolean | DashboardDefaultArgs<ExtArgs>
+    SharedBy?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type DashboardShareIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    Dashboard?: boolean | DashboardDefaultArgs<ExtArgs>
+    SharedBy?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $DashboardSharePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "DashboardShare"
+    objects: {
+      Dashboard: Prisma.$DashboardPayload<ExtArgs>
+      SharedBy: Prisma.$UserPayload<ExtArgs>
+      Recipients: Prisma.$DashboardRecipientPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      dashboardId: string
+      sharerId: string
+      SharedAt: Date
+    }, ExtArgs["result"]["dashboardShare"]>
+    composites: {}
+  }
+
+  type DashboardShareGetPayload<S extends boolean | null | undefined | DashboardShareDefaultArgs> = $Result.GetResult<Prisma.$DashboardSharePayload, S>
+
+  type DashboardShareCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<DashboardShareFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: DashboardShareCountAggregateInputType | true
+    }
+
+  export interface DashboardShareDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['DashboardShare'], meta: { name: 'DashboardShare' } }
+    /**
+     * Find zero or one DashboardShare that matches the filter.
+     * @param {DashboardShareFindUniqueArgs} args - Arguments to find a DashboardShare
+     * @example
+     * // Get one DashboardShare
+     * const dashboardShare = await prisma.dashboardShare.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends DashboardShareFindUniqueArgs>(args: SelectSubset<T, DashboardShareFindUniqueArgs<ExtArgs>>): Prisma__DashboardShareClient<$Result.GetResult<Prisma.$DashboardSharePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one DashboardShare that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {DashboardShareFindUniqueOrThrowArgs} args - Arguments to find a DashboardShare
+     * @example
+     * // Get one DashboardShare
+     * const dashboardShare = await prisma.dashboardShare.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends DashboardShareFindUniqueOrThrowArgs>(args: SelectSubset<T, DashboardShareFindUniqueOrThrowArgs<ExtArgs>>): Prisma__DashboardShareClient<$Result.GetResult<Prisma.$DashboardSharePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first DashboardShare that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DashboardShareFindFirstArgs} args - Arguments to find a DashboardShare
+     * @example
+     * // Get one DashboardShare
+     * const dashboardShare = await prisma.dashboardShare.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends DashboardShareFindFirstArgs>(args?: SelectSubset<T, DashboardShareFindFirstArgs<ExtArgs>>): Prisma__DashboardShareClient<$Result.GetResult<Prisma.$DashboardSharePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first DashboardShare that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DashboardShareFindFirstOrThrowArgs} args - Arguments to find a DashboardShare
+     * @example
+     * // Get one DashboardShare
+     * const dashboardShare = await prisma.dashboardShare.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends DashboardShareFindFirstOrThrowArgs>(args?: SelectSubset<T, DashboardShareFindFirstOrThrowArgs<ExtArgs>>): Prisma__DashboardShareClient<$Result.GetResult<Prisma.$DashboardSharePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more DashboardShares that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DashboardShareFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all DashboardShares
+     * const dashboardShares = await prisma.dashboardShare.findMany()
+     * 
+     * // Get first 10 DashboardShares
+     * const dashboardShares = await prisma.dashboardShare.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const dashboardShareWithIdOnly = await prisma.dashboardShare.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends DashboardShareFindManyArgs>(args?: SelectSubset<T, DashboardShareFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DashboardSharePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a DashboardShare.
+     * @param {DashboardShareCreateArgs} args - Arguments to create a DashboardShare.
+     * @example
+     * // Create one DashboardShare
+     * const DashboardShare = await prisma.dashboardShare.create({
+     *   data: {
+     *     // ... data to create a DashboardShare
+     *   }
+     * })
+     * 
+     */
+    create<T extends DashboardShareCreateArgs>(args: SelectSubset<T, DashboardShareCreateArgs<ExtArgs>>): Prisma__DashboardShareClient<$Result.GetResult<Prisma.$DashboardSharePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many DashboardShares.
+     * @param {DashboardShareCreateManyArgs} args - Arguments to create many DashboardShares.
+     * @example
+     * // Create many DashboardShares
+     * const dashboardShare = await prisma.dashboardShare.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends DashboardShareCreateManyArgs>(args?: SelectSubset<T, DashboardShareCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many DashboardShares and returns the data saved in the database.
+     * @param {DashboardShareCreateManyAndReturnArgs} args - Arguments to create many DashboardShares.
+     * @example
+     * // Create many DashboardShares
+     * const dashboardShare = await prisma.dashboardShare.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many DashboardShares and only return the `id`
+     * const dashboardShareWithIdOnly = await prisma.dashboardShare.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends DashboardShareCreateManyAndReturnArgs>(args?: SelectSubset<T, DashboardShareCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DashboardSharePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a DashboardShare.
+     * @param {DashboardShareDeleteArgs} args - Arguments to delete one DashboardShare.
+     * @example
+     * // Delete one DashboardShare
+     * const DashboardShare = await prisma.dashboardShare.delete({
+     *   where: {
+     *     // ... filter to delete one DashboardShare
+     *   }
+     * })
+     * 
+     */
+    delete<T extends DashboardShareDeleteArgs>(args: SelectSubset<T, DashboardShareDeleteArgs<ExtArgs>>): Prisma__DashboardShareClient<$Result.GetResult<Prisma.$DashboardSharePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one DashboardShare.
+     * @param {DashboardShareUpdateArgs} args - Arguments to update one DashboardShare.
+     * @example
+     * // Update one DashboardShare
+     * const dashboardShare = await prisma.dashboardShare.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends DashboardShareUpdateArgs>(args: SelectSubset<T, DashboardShareUpdateArgs<ExtArgs>>): Prisma__DashboardShareClient<$Result.GetResult<Prisma.$DashboardSharePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more DashboardShares.
+     * @param {DashboardShareDeleteManyArgs} args - Arguments to filter DashboardShares to delete.
+     * @example
+     * // Delete a few DashboardShares
+     * const { count } = await prisma.dashboardShare.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends DashboardShareDeleteManyArgs>(args?: SelectSubset<T, DashboardShareDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more DashboardShares.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DashboardShareUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many DashboardShares
+     * const dashboardShare = await prisma.dashboardShare.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends DashboardShareUpdateManyArgs>(args: SelectSubset<T, DashboardShareUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more DashboardShares and returns the data updated in the database.
+     * @param {DashboardShareUpdateManyAndReturnArgs} args - Arguments to update many DashboardShares.
+     * @example
+     * // Update many DashboardShares
+     * const dashboardShare = await prisma.dashboardShare.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more DashboardShares and only return the `id`
+     * const dashboardShareWithIdOnly = await prisma.dashboardShare.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends DashboardShareUpdateManyAndReturnArgs>(args: SelectSubset<T, DashboardShareUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DashboardSharePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one DashboardShare.
+     * @param {DashboardShareUpsertArgs} args - Arguments to update or create a DashboardShare.
+     * @example
+     * // Update or create a DashboardShare
+     * const dashboardShare = await prisma.dashboardShare.upsert({
+     *   create: {
+     *     // ... data to create a DashboardShare
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the DashboardShare we want to update
+     *   }
+     * })
+     */
+    upsert<T extends DashboardShareUpsertArgs>(args: SelectSubset<T, DashboardShareUpsertArgs<ExtArgs>>): Prisma__DashboardShareClient<$Result.GetResult<Prisma.$DashboardSharePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of DashboardShares.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DashboardShareCountArgs} args - Arguments to filter DashboardShares to count.
+     * @example
+     * // Count the number of DashboardShares
+     * const count = await prisma.dashboardShare.count({
+     *   where: {
+     *     // ... the filter for the DashboardShares we want to count
+     *   }
+     * })
+    **/
+    count<T extends DashboardShareCountArgs>(
+      args?: Subset<T, DashboardShareCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], DashboardShareCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a DashboardShare.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DashboardShareAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends DashboardShareAggregateArgs>(args: Subset<T, DashboardShareAggregateArgs>): Prisma.PrismaPromise<GetDashboardShareAggregateType<T>>
+
+    /**
+     * Group by DashboardShare.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DashboardShareGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends DashboardShareGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: DashboardShareGroupByArgs['orderBy'] }
+        : { orderBy?: DashboardShareGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, DashboardShareGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetDashboardShareGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the DashboardShare model
+   */
+  readonly fields: DashboardShareFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for DashboardShare.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__DashboardShareClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    Dashboard<T extends DashboardDefaultArgs<ExtArgs> = {}>(args?: Subset<T, DashboardDefaultArgs<ExtArgs>>): Prisma__DashboardClient<$Result.GetResult<Prisma.$DashboardPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    SharedBy<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    Recipients<T extends DashboardShare$RecipientsArgs<ExtArgs> = {}>(args?: Subset<T, DashboardShare$RecipientsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DashboardRecipientPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the DashboardShare model
+   */
+  interface DashboardShareFieldRefs {
+    readonly id: FieldRef<"DashboardShare", 'String'>
+    readonly dashboardId: FieldRef<"DashboardShare", 'String'>
+    readonly sharerId: FieldRef<"DashboardShare", 'String'>
+    readonly SharedAt: FieldRef<"DashboardShare", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * DashboardShare findUnique
+   */
+  export type DashboardShareFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DashboardShare
+     */
+    select?: DashboardShareSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DashboardShare
+     */
+    omit?: DashboardShareOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DashboardShareInclude<ExtArgs> | null
+    /**
+     * Filter, which DashboardShare to fetch.
+     */
+    where: DashboardShareWhereUniqueInput
+  }
+
+  /**
+   * DashboardShare findUniqueOrThrow
+   */
+  export type DashboardShareFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DashboardShare
+     */
+    select?: DashboardShareSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DashboardShare
+     */
+    omit?: DashboardShareOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DashboardShareInclude<ExtArgs> | null
+    /**
+     * Filter, which DashboardShare to fetch.
+     */
+    where: DashboardShareWhereUniqueInput
+  }
+
+  /**
+   * DashboardShare findFirst
+   */
+  export type DashboardShareFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DashboardShare
+     */
+    select?: DashboardShareSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DashboardShare
+     */
+    omit?: DashboardShareOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DashboardShareInclude<ExtArgs> | null
+    /**
+     * Filter, which DashboardShare to fetch.
+     */
+    where?: DashboardShareWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DashboardShares to fetch.
+     */
+    orderBy?: DashboardShareOrderByWithRelationInput | DashboardShareOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for DashboardShares.
+     */
+    cursor?: DashboardShareWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DashboardShares from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DashboardShares.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of DashboardShares.
+     */
+    distinct?: DashboardShareScalarFieldEnum | DashboardShareScalarFieldEnum[]
+  }
+
+  /**
+   * DashboardShare findFirstOrThrow
+   */
+  export type DashboardShareFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DashboardShare
+     */
+    select?: DashboardShareSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DashboardShare
+     */
+    omit?: DashboardShareOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DashboardShareInclude<ExtArgs> | null
+    /**
+     * Filter, which DashboardShare to fetch.
+     */
+    where?: DashboardShareWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DashboardShares to fetch.
+     */
+    orderBy?: DashboardShareOrderByWithRelationInput | DashboardShareOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for DashboardShares.
+     */
+    cursor?: DashboardShareWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DashboardShares from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DashboardShares.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of DashboardShares.
+     */
+    distinct?: DashboardShareScalarFieldEnum | DashboardShareScalarFieldEnum[]
+  }
+
+  /**
+   * DashboardShare findMany
+   */
+  export type DashboardShareFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DashboardShare
+     */
+    select?: DashboardShareSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DashboardShare
+     */
+    omit?: DashboardShareOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DashboardShareInclude<ExtArgs> | null
+    /**
+     * Filter, which DashboardShares to fetch.
+     */
+    where?: DashboardShareWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DashboardShares to fetch.
+     */
+    orderBy?: DashboardShareOrderByWithRelationInput | DashboardShareOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing DashboardShares.
+     */
+    cursor?: DashboardShareWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DashboardShares from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DashboardShares.
+     */
+    skip?: number
+    distinct?: DashboardShareScalarFieldEnum | DashboardShareScalarFieldEnum[]
+  }
+
+  /**
+   * DashboardShare create
+   */
+  export type DashboardShareCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DashboardShare
+     */
+    select?: DashboardShareSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DashboardShare
+     */
+    omit?: DashboardShareOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DashboardShareInclude<ExtArgs> | null
+    /**
+     * The data needed to create a DashboardShare.
+     */
+    data: XOR<DashboardShareCreateInput, DashboardShareUncheckedCreateInput>
+  }
+
+  /**
+   * DashboardShare createMany
+   */
+  export type DashboardShareCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many DashboardShares.
+     */
+    data: DashboardShareCreateManyInput | DashboardShareCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * DashboardShare createManyAndReturn
+   */
+  export type DashboardShareCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DashboardShare
+     */
+    select?: DashboardShareSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the DashboardShare
+     */
+    omit?: DashboardShareOmit<ExtArgs> | null
+    /**
+     * The data used to create many DashboardShares.
+     */
+    data: DashboardShareCreateManyInput | DashboardShareCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DashboardShareIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * DashboardShare update
+   */
+  export type DashboardShareUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DashboardShare
+     */
+    select?: DashboardShareSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DashboardShare
+     */
+    omit?: DashboardShareOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DashboardShareInclude<ExtArgs> | null
+    /**
+     * The data needed to update a DashboardShare.
+     */
+    data: XOR<DashboardShareUpdateInput, DashboardShareUncheckedUpdateInput>
+    /**
+     * Choose, which DashboardShare to update.
+     */
+    where: DashboardShareWhereUniqueInput
+  }
+
+  /**
+   * DashboardShare updateMany
+   */
+  export type DashboardShareUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update DashboardShares.
+     */
+    data: XOR<DashboardShareUpdateManyMutationInput, DashboardShareUncheckedUpdateManyInput>
+    /**
+     * Filter which DashboardShares to update
+     */
+    where?: DashboardShareWhereInput
+    /**
+     * Limit how many DashboardShares to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * DashboardShare updateManyAndReturn
+   */
+  export type DashboardShareUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DashboardShare
+     */
+    select?: DashboardShareSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the DashboardShare
+     */
+    omit?: DashboardShareOmit<ExtArgs> | null
+    /**
+     * The data used to update DashboardShares.
+     */
+    data: XOR<DashboardShareUpdateManyMutationInput, DashboardShareUncheckedUpdateManyInput>
+    /**
+     * Filter which DashboardShares to update
+     */
+    where?: DashboardShareWhereInput
+    /**
+     * Limit how many DashboardShares to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DashboardShareIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * DashboardShare upsert
+   */
+  export type DashboardShareUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DashboardShare
+     */
+    select?: DashboardShareSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DashboardShare
+     */
+    omit?: DashboardShareOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DashboardShareInclude<ExtArgs> | null
+    /**
+     * The filter to search for the DashboardShare to update in case it exists.
+     */
+    where: DashboardShareWhereUniqueInput
+    /**
+     * In case the DashboardShare found by the `where` argument doesn't exist, create a new DashboardShare with this data.
+     */
+    create: XOR<DashboardShareCreateInput, DashboardShareUncheckedCreateInput>
+    /**
+     * In case the DashboardShare was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<DashboardShareUpdateInput, DashboardShareUncheckedUpdateInput>
+  }
+
+  /**
+   * DashboardShare delete
+   */
+  export type DashboardShareDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DashboardShare
+     */
+    select?: DashboardShareSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DashboardShare
+     */
+    omit?: DashboardShareOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DashboardShareInclude<ExtArgs> | null
+    /**
+     * Filter which DashboardShare to delete.
+     */
+    where: DashboardShareWhereUniqueInput
+  }
+
+  /**
+   * DashboardShare deleteMany
+   */
+  export type DashboardShareDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which DashboardShares to delete
+     */
+    where?: DashboardShareWhereInput
+    /**
+     * Limit how many DashboardShares to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * DashboardShare.Recipients
+   */
+  export type DashboardShare$RecipientsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DashboardRecipient
+     */
+    select?: DashboardRecipientSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DashboardRecipient
+     */
+    omit?: DashboardRecipientOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DashboardRecipientInclude<ExtArgs> | null
+    where?: DashboardRecipientWhereInput
+    orderBy?: DashboardRecipientOrderByWithRelationInput | DashboardRecipientOrderByWithRelationInput[]
+    cursor?: DashboardRecipientWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: DashboardRecipientScalarFieldEnum | DashboardRecipientScalarFieldEnum[]
+  }
+
+  /**
+   * DashboardShare without action
+   */
+  export type DashboardShareDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DashboardShare
+     */
+    select?: DashboardShareSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DashboardShare
+     */
+    omit?: DashboardShareOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DashboardShareInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model DashboardRecipient
+   */
+
+  export type AggregateDashboardRecipient = {
+    _count: DashboardRecipientCountAggregateOutputType | null
+    _min: DashboardRecipientMinAggregateOutputType | null
+    _max: DashboardRecipientMaxAggregateOutputType | null
+  }
+
+  export type DashboardRecipientMinAggregateOutputType = {
+    id: string | null
+    dashboardShareId: string | null
+    userId: string | null
+  }
+
+  export type DashboardRecipientMaxAggregateOutputType = {
+    id: string | null
+    dashboardShareId: string | null
+    userId: string | null
+  }
+
+  export type DashboardRecipientCountAggregateOutputType = {
+    id: number
+    dashboardShareId: number
+    userId: number
+    _all: number
+  }
+
+
+  export type DashboardRecipientMinAggregateInputType = {
+    id?: true
+    dashboardShareId?: true
+    userId?: true
+  }
+
+  export type DashboardRecipientMaxAggregateInputType = {
+    id?: true
+    dashboardShareId?: true
+    userId?: true
+  }
+
+  export type DashboardRecipientCountAggregateInputType = {
+    id?: true
+    dashboardShareId?: true
+    userId?: true
+    _all?: true
+  }
+
+  export type DashboardRecipientAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which DashboardRecipient to aggregate.
+     */
+    where?: DashboardRecipientWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DashboardRecipients to fetch.
+     */
+    orderBy?: DashboardRecipientOrderByWithRelationInput | DashboardRecipientOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: DashboardRecipientWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DashboardRecipients from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DashboardRecipients.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned DashboardRecipients
+    **/
+    _count?: true | DashboardRecipientCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: DashboardRecipientMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: DashboardRecipientMaxAggregateInputType
+  }
+
+  export type GetDashboardRecipientAggregateType<T extends DashboardRecipientAggregateArgs> = {
+        [P in keyof T & keyof AggregateDashboardRecipient]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateDashboardRecipient[P]>
+      : GetScalarType<T[P], AggregateDashboardRecipient[P]>
+  }
+
+
+
+
+  export type DashboardRecipientGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: DashboardRecipientWhereInput
+    orderBy?: DashboardRecipientOrderByWithAggregationInput | DashboardRecipientOrderByWithAggregationInput[]
+    by: DashboardRecipientScalarFieldEnum[] | DashboardRecipientScalarFieldEnum
+    having?: DashboardRecipientScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: DashboardRecipientCountAggregateInputType | true
+    _min?: DashboardRecipientMinAggregateInputType
+    _max?: DashboardRecipientMaxAggregateInputType
+  }
+
+  export type DashboardRecipientGroupByOutputType = {
+    id: string
+    dashboardShareId: string
+    userId: string
+    _count: DashboardRecipientCountAggregateOutputType | null
+    _min: DashboardRecipientMinAggregateOutputType | null
+    _max: DashboardRecipientMaxAggregateOutputType | null
+  }
+
+  type GetDashboardRecipientGroupByPayload<T extends DashboardRecipientGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<DashboardRecipientGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof DashboardRecipientGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], DashboardRecipientGroupByOutputType[P]>
+            : GetScalarType<T[P], DashboardRecipientGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type DashboardRecipientSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    dashboardShareId?: boolean
+    userId?: boolean
+    DashboardShare?: boolean | DashboardShareDefaultArgs<ExtArgs>
+    User?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["dashboardRecipient"]>
+
+  export type DashboardRecipientSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    dashboardShareId?: boolean
+    userId?: boolean
+    DashboardShare?: boolean | DashboardShareDefaultArgs<ExtArgs>
+    User?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["dashboardRecipient"]>
+
+  export type DashboardRecipientSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    dashboardShareId?: boolean
+    userId?: boolean
+    DashboardShare?: boolean | DashboardShareDefaultArgs<ExtArgs>
+    User?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["dashboardRecipient"]>
+
+  export type DashboardRecipientSelectScalar = {
+    id?: boolean
+    dashboardShareId?: boolean
+    userId?: boolean
+  }
+
+  export type DashboardRecipientOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "dashboardShareId" | "userId", ExtArgs["result"]["dashboardRecipient"]>
+  export type DashboardRecipientInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    DashboardShare?: boolean | DashboardShareDefaultArgs<ExtArgs>
+    User?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type DashboardRecipientIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    DashboardShare?: boolean | DashboardShareDefaultArgs<ExtArgs>
+    User?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type DashboardRecipientIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    DashboardShare?: boolean | DashboardShareDefaultArgs<ExtArgs>
+    User?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $DashboardRecipientPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "DashboardRecipient"
+    objects: {
+      DashboardShare: Prisma.$DashboardSharePayload<ExtArgs>
+      User: Prisma.$UserPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      dashboardShareId: string
+      userId: string
+    }, ExtArgs["result"]["dashboardRecipient"]>
+    composites: {}
+  }
+
+  type DashboardRecipientGetPayload<S extends boolean | null | undefined | DashboardRecipientDefaultArgs> = $Result.GetResult<Prisma.$DashboardRecipientPayload, S>
+
+  type DashboardRecipientCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<DashboardRecipientFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: DashboardRecipientCountAggregateInputType | true
+    }
+
+  export interface DashboardRecipientDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['DashboardRecipient'], meta: { name: 'DashboardRecipient' } }
+    /**
+     * Find zero or one DashboardRecipient that matches the filter.
+     * @param {DashboardRecipientFindUniqueArgs} args - Arguments to find a DashboardRecipient
+     * @example
+     * // Get one DashboardRecipient
+     * const dashboardRecipient = await prisma.dashboardRecipient.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends DashboardRecipientFindUniqueArgs>(args: SelectSubset<T, DashboardRecipientFindUniqueArgs<ExtArgs>>): Prisma__DashboardRecipientClient<$Result.GetResult<Prisma.$DashboardRecipientPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one DashboardRecipient that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {DashboardRecipientFindUniqueOrThrowArgs} args - Arguments to find a DashboardRecipient
+     * @example
+     * // Get one DashboardRecipient
+     * const dashboardRecipient = await prisma.dashboardRecipient.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends DashboardRecipientFindUniqueOrThrowArgs>(args: SelectSubset<T, DashboardRecipientFindUniqueOrThrowArgs<ExtArgs>>): Prisma__DashboardRecipientClient<$Result.GetResult<Prisma.$DashboardRecipientPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first DashboardRecipient that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DashboardRecipientFindFirstArgs} args - Arguments to find a DashboardRecipient
+     * @example
+     * // Get one DashboardRecipient
+     * const dashboardRecipient = await prisma.dashboardRecipient.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends DashboardRecipientFindFirstArgs>(args?: SelectSubset<T, DashboardRecipientFindFirstArgs<ExtArgs>>): Prisma__DashboardRecipientClient<$Result.GetResult<Prisma.$DashboardRecipientPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first DashboardRecipient that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DashboardRecipientFindFirstOrThrowArgs} args - Arguments to find a DashboardRecipient
+     * @example
+     * // Get one DashboardRecipient
+     * const dashboardRecipient = await prisma.dashboardRecipient.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends DashboardRecipientFindFirstOrThrowArgs>(args?: SelectSubset<T, DashboardRecipientFindFirstOrThrowArgs<ExtArgs>>): Prisma__DashboardRecipientClient<$Result.GetResult<Prisma.$DashboardRecipientPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more DashboardRecipients that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DashboardRecipientFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all DashboardRecipients
+     * const dashboardRecipients = await prisma.dashboardRecipient.findMany()
+     * 
+     * // Get first 10 DashboardRecipients
+     * const dashboardRecipients = await prisma.dashboardRecipient.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const dashboardRecipientWithIdOnly = await prisma.dashboardRecipient.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends DashboardRecipientFindManyArgs>(args?: SelectSubset<T, DashboardRecipientFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DashboardRecipientPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a DashboardRecipient.
+     * @param {DashboardRecipientCreateArgs} args - Arguments to create a DashboardRecipient.
+     * @example
+     * // Create one DashboardRecipient
+     * const DashboardRecipient = await prisma.dashboardRecipient.create({
+     *   data: {
+     *     // ... data to create a DashboardRecipient
+     *   }
+     * })
+     * 
+     */
+    create<T extends DashboardRecipientCreateArgs>(args: SelectSubset<T, DashboardRecipientCreateArgs<ExtArgs>>): Prisma__DashboardRecipientClient<$Result.GetResult<Prisma.$DashboardRecipientPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many DashboardRecipients.
+     * @param {DashboardRecipientCreateManyArgs} args - Arguments to create many DashboardRecipients.
+     * @example
+     * // Create many DashboardRecipients
+     * const dashboardRecipient = await prisma.dashboardRecipient.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends DashboardRecipientCreateManyArgs>(args?: SelectSubset<T, DashboardRecipientCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many DashboardRecipients and returns the data saved in the database.
+     * @param {DashboardRecipientCreateManyAndReturnArgs} args - Arguments to create many DashboardRecipients.
+     * @example
+     * // Create many DashboardRecipients
+     * const dashboardRecipient = await prisma.dashboardRecipient.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many DashboardRecipients and only return the `id`
+     * const dashboardRecipientWithIdOnly = await prisma.dashboardRecipient.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends DashboardRecipientCreateManyAndReturnArgs>(args?: SelectSubset<T, DashboardRecipientCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DashboardRecipientPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a DashboardRecipient.
+     * @param {DashboardRecipientDeleteArgs} args - Arguments to delete one DashboardRecipient.
+     * @example
+     * // Delete one DashboardRecipient
+     * const DashboardRecipient = await prisma.dashboardRecipient.delete({
+     *   where: {
+     *     // ... filter to delete one DashboardRecipient
+     *   }
+     * })
+     * 
+     */
+    delete<T extends DashboardRecipientDeleteArgs>(args: SelectSubset<T, DashboardRecipientDeleteArgs<ExtArgs>>): Prisma__DashboardRecipientClient<$Result.GetResult<Prisma.$DashboardRecipientPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one DashboardRecipient.
+     * @param {DashboardRecipientUpdateArgs} args - Arguments to update one DashboardRecipient.
+     * @example
+     * // Update one DashboardRecipient
+     * const dashboardRecipient = await prisma.dashboardRecipient.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends DashboardRecipientUpdateArgs>(args: SelectSubset<T, DashboardRecipientUpdateArgs<ExtArgs>>): Prisma__DashboardRecipientClient<$Result.GetResult<Prisma.$DashboardRecipientPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more DashboardRecipients.
+     * @param {DashboardRecipientDeleteManyArgs} args - Arguments to filter DashboardRecipients to delete.
+     * @example
+     * // Delete a few DashboardRecipients
+     * const { count } = await prisma.dashboardRecipient.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends DashboardRecipientDeleteManyArgs>(args?: SelectSubset<T, DashboardRecipientDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more DashboardRecipients.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DashboardRecipientUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many DashboardRecipients
+     * const dashboardRecipient = await prisma.dashboardRecipient.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends DashboardRecipientUpdateManyArgs>(args: SelectSubset<T, DashboardRecipientUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more DashboardRecipients and returns the data updated in the database.
+     * @param {DashboardRecipientUpdateManyAndReturnArgs} args - Arguments to update many DashboardRecipients.
+     * @example
+     * // Update many DashboardRecipients
+     * const dashboardRecipient = await prisma.dashboardRecipient.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more DashboardRecipients and only return the `id`
+     * const dashboardRecipientWithIdOnly = await prisma.dashboardRecipient.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends DashboardRecipientUpdateManyAndReturnArgs>(args: SelectSubset<T, DashboardRecipientUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DashboardRecipientPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one DashboardRecipient.
+     * @param {DashboardRecipientUpsertArgs} args - Arguments to update or create a DashboardRecipient.
+     * @example
+     * // Update or create a DashboardRecipient
+     * const dashboardRecipient = await prisma.dashboardRecipient.upsert({
+     *   create: {
+     *     // ... data to create a DashboardRecipient
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the DashboardRecipient we want to update
+     *   }
+     * })
+     */
+    upsert<T extends DashboardRecipientUpsertArgs>(args: SelectSubset<T, DashboardRecipientUpsertArgs<ExtArgs>>): Prisma__DashboardRecipientClient<$Result.GetResult<Prisma.$DashboardRecipientPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of DashboardRecipients.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DashboardRecipientCountArgs} args - Arguments to filter DashboardRecipients to count.
+     * @example
+     * // Count the number of DashboardRecipients
+     * const count = await prisma.dashboardRecipient.count({
+     *   where: {
+     *     // ... the filter for the DashboardRecipients we want to count
+     *   }
+     * })
+    **/
+    count<T extends DashboardRecipientCountArgs>(
+      args?: Subset<T, DashboardRecipientCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], DashboardRecipientCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a DashboardRecipient.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DashboardRecipientAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends DashboardRecipientAggregateArgs>(args: Subset<T, DashboardRecipientAggregateArgs>): Prisma.PrismaPromise<GetDashboardRecipientAggregateType<T>>
+
+    /**
+     * Group by DashboardRecipient.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DashboardRecipientGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends DashboardRecipientGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: DashboardRecipientGroupByArgs['orderBy'] }
+        : { orderBy?: DashboardRecipientGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, DashboardRecipientGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetDashboardRecipientGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the DashboardRecipient model
+   */
+  readonly fields: DashboardRecipientFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for DashboardRecipient.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__DashboardRecipientClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    DashboardShare<T extends DashboardShareDefaultArgs<ExtArgs> = {}>(args?: Subset<T, DashboardShareDefaultArgs<ExtArgs>>): Prisma__DashboardShareClient<$Result.GetResult<Prisma.$DashboardSharePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    User<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the DashboardRecipient model
+   */
+  interface DashboardRecipientFieldRefs {
+    readonly id: FieldRef<"DashboardRecipient", 'String'>
+    readonly dashboardShareId: FieldRef<"DashboardRecipient", 'String'>
+    readonly userId: FieldRef<"DashboardRecipient", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * DashboardRecipient findUnique
+   */
+  export type DashboardRecipientFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DashboardRecipient
+     */
+    select?: DashboardRecipientSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DashboardRecipient
+     */
+    omit?: DashboardRecipientOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DashboardRecipientInclude<ExtArgs> | null
+    /**
+     * Filter, which DashboardRecipient to fetch.
+     */
+    where: DashboardRecipientWhereUniqueInput
+  }
+
+  /**
+   * DashboardRecipient findUniqueOrThrow
+   */
+  export type DashboardRecipientFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DashboardRecipient
+     */
+    select?: DashboardRecipientSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DashboardRecipient
+     */
+    omit?: DashboardRecipientOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DashboardRecipientInclude<ExtArgs> | null
+    /**
+     * Filter, which DashboardRecipient to fetch.
+     */
+    where: DashboardRecipientWhereUniqueInput
+  }
+
+  /**
+   * DashboardRecipient findFirst
+   */
+  export type DashboardRecipientFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DashboardRecipient
+     */
+    select?: DashboardRecipientSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DashboardRecipient
+     */
+    omit?: DashboardRecipientOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DashboardRecipientInclude<ExtArgs> | null
+    /**
+     * Filter, which DashboardRecipient to fetch.
+     */
+    where?: DashboardRecipientWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DashboardRecipients to fetch.
+     */
+    orderBy?: DashboardRecipientOrderByWithRelationInput | DashboardRecipientOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for DashboardRecipients.
+     */
+    cursor?: DashboardRecipientWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DashboardRecipients from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DashboardRecipients.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of DashboardRecipients.
+     */
+    distinct?: DashboardRecipientScalarFieldEnum | DashboardRecipientScalarFieldEnum[]
+  }
+
+  /**
+   * DashboardRecipient findFirstOrThrow
+   */
+  export type DashboardRecipientFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DashboardRecipient
+     */
+    select?: DashboardRecipientSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DashboardRecipient
+     */
+    omit?: DashboardRecipientOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DashboardRecipientInclude<ExtArgs> | null
+    /**
+     * Filter, which DashboardRecipient to fetch.
+     */
+    where?: DashboardRecipientWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DashboardRecipients to fetch.
+     */
+    orderBy?: DashboardRecipientOrderByWithRelationInput | DashboardRecipientOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for DashboardRecipients.
+     */
+    cursor?: DashboardRecipientWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DashboardRecipients from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DashboardRecipients.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of DashboardRecipients.
+     */
+    distinct?: DashboardRecipientScalarFieldEnum | DashboardRecipientScalarFieldEnum[]
+  }
+
+  /**
+   * DashboardRecipient findMany
+   */
+  export type DashboardRecipientFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DashboardRecipient
+     */
+    select?: DashboardRecipientSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DashboardRecipient
+     */
+    omit?: DashboardRecipientOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DashboardRecipientInclude<ExtArgs> | null
+    /**
+     * Filter, which DashboardRecipients to fetch.
+     */
+    where?: DashboardRecipientWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DashboardRecipients to fetch.
+     */
+    orderBy?: DashboardRecipientOrderByWithRelationInput | DashboardRecipientOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing DashboardRecipients.
+     */
+    cursor?: DashboardRecipientWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DashboardRecipients from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DashboardRecipients.
+     */
+    skip?: number
+    distinct?: DashboardRecipientScalarFieldEnum | DashboardRecipientScalarFieldEnum[]
+  }
+
+  /**
+   * DashboardRecipient create
+   */
+  export type DashboardRecipientCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DashboardRecipient
+     */
+    select?: DashboardRecipientSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DashboardRecipient
+     */
+    omit?: DashboardRecipientOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DashboardRecipientInclude<ExtArgs> | null
+    /**
+     * The data needed to create a DashboardRecipient.
+     */
+    data: XOR<DashboardRecipientCreateInput, DashboardRecipientUncheckedCreateInput>
+  }
+
+  /**
+   * DashboardRecipient createMany
+   */
+  export type DashboardRecipientCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many DashboardRecipients.
+     */
+    data: DashboardRecipientCreateManyInput | DashboardRecipientCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * DashboardRecipient createManyAndReturn
+   */
+  export type DashboardRecipientCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DashboardRecipient
+     */
+    select?: DashboardRecipientSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the DashboardRecipient
+     */
+    omit?: DashboardRecipientOmit<ExtArgs> | null
+    /**
+     * The data used to create many DashboardRecipients.
+     */
+    data: DashboardRecipientCreateManyInput | DashboardRecipientCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DashboardRecipientIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * DashboardRecipient update
+   */
+  export type DashboardRecipientUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DashboardRecipient
+     */
+    select?: DashboardRecipientSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DashboardRecipient
+     */
+    omit?: DashboardRecipientOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DashboardRecipientInclude<ExtArgs> | null
+    /**
+     * The data needed to update a DashboardRecipient.
+     */
+    data: XOR<DashboardRecipientUpdateInput, DashboardRecipientUncheckedUpdateInput>
+    /**
+     * Choose, which DashboardRecipient to update.
+     */
+    where: DashboardRecipientWhereUniqueInput
+  }
+
+  /**
+   * DashboardRecipient updateMany
+   */
+  export type DashboardRecipientUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update DashboardRecipients.
+     */
+    data: XOR<DashboardRecipientUpdateManyMutationInput, DashboardRecipientUncheckedUpdateManyInput>
+    /**
+     * Filter which DashboardRecipients to update
+     */
+    where?: DashboardRecipientWhereInput
+    /**
+     * Limit how many DashboardRecipients to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * DashboardRecipient updateManyAndReturn
+   */
+  export type DashboardRecipientUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DashboardRecipient
+     */
+    select?: DashboardRecipientSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the DashboardRecipient
+     */
+    omit?: DashboardRecipientOmit<ExtArgs> | null
+    /**
+     * The data used to update DashboardRecipients.
+     */
+    data: XOR<DashboardRecipientUpdateManyMutationInput, DashboardRecipientUncheckedUpdateManyInput>
+    /**
+     * Filter which DashboardRecipients to update
+     */
+    where?: DashboardRecipientWhereInput
+    /**
+     * Limit how many DashboardRecipients to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DashboardRecipientIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * DashboardRecipient upsert
+   */
+  export type DashboardRecipientUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DashboardRecipient
+     */
+    select?: DashboardRecipientSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DashboardRecipient
+     */
+    omit?: DashboardRecipientOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DashboardRecipientInclude<ExtArgs> | null
+    /**
+     * The filter to search for the DashboardRecipient to update in case it exists.
+     */
+    where: DashboardRecipientWhereUniqueInput
+    /**
+     * In case the DashboardRecipient found by the `where` argument doesn't exist, create a new DashboardRecipient with this data.
+     */
+    create: XOR<DashboardRecipientCreateInput, DashboardRecipientUncheckedCreateInput>
+    /**
+     * In case the DashboardRecipient was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<DashboardRecipientUpdateInput, DashboardRecipientUncheckedUpdateInput>
+  }
+
+  /**
+   * DashboardRecipient delete
+   */
+  export type DashboardRecipientDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DashboardRecipient
+     */
+    select?: DashboardRecipientSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DashboardRecipient
+     */
+    omit?: DashboardRecipientOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DashboardRecipientInclude<ExtArgs> | null
+    /**
+     * Filter which DashboardRecipient to delete.
+     */
+    where: DashboardRecipientWhereUniqueInput
+  }
+
+  /**
+   * DashboardRecipient deleteMany
+   */
+  export type DashboardRecipientDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which DashboardRecipients to delete
+     */
+    where?: DashboardRecipientWhereInput
+    /**
+     * Limit how many DashboardRecipients to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * DashboardRecipient without action
+   */
+  export type DashboardRecipientDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DashboardRecipient
+     */
+    select?: DashboardRecipientSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DashboardRecipient
+     */
+    omit?: DashboardRecipientOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DashboardRecipientInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -4439,6 +6812,25 @@ export namespace Prisma {
   };
 
   export type IncidentScalarFieldEnum = (typeof IncidentScalarFieldEnum)[keyof typeof IncidentScalarFieldEnum]
+
+
+  export const DashboardShareScalarFieldEnum: {
+    id: 'id',
+    dashboardId: 'dashboardId',
+    sharerId: 'sharerId',
+    SharedAt: 'SharedAt'
+  };
+
+  export type DashboardShareScalarFieldEnum = (typeof DashboardShareScalarFieldEnum)[keyof typeof DashboardShareScalarFieldEnum]
+
+
+  export const DashboardRecipientScalarFieldEnum: {
+    id: 'id',
+    dashboardShareId: 'dashboardShareId',
+    userId: 'userId'
+  };
+
+  export type DashboardRecipientScalarFieldEnum = (typeof DashboardRecipientScalarFieldEnum)[keyof typeof DashboardRecipientScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -4543,7 +6935,8 @@ export namespace Prisma {
     name?: StringFilter<"User"> | string
     password?: StringFilter<"User"> | string
     DashboardsOwned?: DashboardListRelationFilter
-    DashboardsShared?: DashboardListRelationFilter
+    DashboardsShared?: DashboardShareListRelationFilter
+    DashboardsReceived?: DashboardRecipientListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -4551,7 +6944,8 @@ export namespace Prisma {
     name?: SortOrder
     password?: SortOrder
     DashboardsOwned?: DashboardOrderByRelationAggregateInput
-    DashboardsShared?: DashboardOrderByRelationAggregateInput
+    DashboardsShared?: DashboardShareOrderByRelationAggregateInput
+    DashboardsReceived?: DashboardRecipientOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -4562,8 +6956,9 @@ export namespace Prisma {
     NOT?: UserWhereInput | UserWhereInput[]
     password?: StringFilter<"User"> | string
     DashboardsOwned?: DashboardListRelationFilter
-    DashboardsShared?: DashboardListRelationFilter
-  }, "id" | "id" | "name">
+    DashboardsShared?: DashboardShareListRelationFilter
+    DashboardsReceived?: DashboardRecipientListRelationFilter
+  }, "id" | "name">
 
   export type UserOrderByWithAggregationInput = {
     id?: SortOrder
@@ -4591,8 +6986,8 @@ export namespace Prisma {
     name?: StringFilter<"Dashboard"> | string
     dashboardOwnerId?: StringFilter<"Dashboard"> | string
     DashboardOwner?: XOR<UserScalarRelationFilter, UserWhereInput>
-    DashboardViewers?: UserListRelationFilter
     IncidentCollection?: IncidentListRelationFilter
+    DashboardShare?: DashboardShareListRelationFilter
   }
 
   export type DashboardOrderByWithRelationInput = {
@@ -4600,8 +6995,8 @@ export namespace Prisma {
     name?: SortOrder
     dashboardOwnerId?: SortOrder
     DashboardOwner?: UserOrderByWithRelationInput
-    DashboardViewers?: UserOrderByRelationAggregateInput
     IncidentCollection?: IncidentOrderByRelationAggregateInput
+    DashboardShare?: DashboardShareOrderByRelationAggregateInput
   }
 
   export type DashboardWhereUniqueInput = Prisma.AtLeast<{
@@ -4612,9 +7007,9 @@ export namespace Prisma {
     name?: StringFilter<"Dashboard"> | string
     dashboardOwnerId?: StringFilter<"Dashboard"> | string
     DashboardOwner?: XOR<UserScalarRelationFilter, UserWhereInput>
-    DashboardViewers?: UserListRelationFilter
     IncidentCollection?: IncidentListRelationFilter
-  }, "id" | "id">
+    DashboardShare?: DashboardShareListRelationFilter
+  }, "id">
 
   export type DashboardOrderByWithAggregationInput = {
     id?: SortOrder
@@ -4668,7 +7063,7 @@ export namespace Prisma {
     incidentCoords?: IntNullableListFilter<"Incident">
     dashboardId?: StringFilter<"Incident"> | string
     Dashboard?: XOR<DashboardScalarRelationFilter, DashboardWhereInput>
-  }, "id" | "id">
+  }, "id">
 
   export type IncidentOrderByWithAggregationInput = {
     id?: SortOrder
@@ -4696,12 +7091,117 @@ export namespace Prisma {
     dashboardId?: StringWithAggregatesFilter<"Incident"> | string
   }
 
+  export type DashboardShareWhereInput = {
+    AND?: DashboardShareWhereInput | DashboardShareWhereInput[]
+    OR?: DashboardShareWhereInput[]
+    NOT?: DashboardShareWhereInput | DashboardShareWhereInput[]
+    id?: StringFilter<"DashboardShare"> | string
+    dashboardId?: StringFilter<"DashboardShare"> | string
+    sharerId?: StringFilter<"DashboardShare"> | string
+    SharedAt?: DateTimeFilter<"DashboardShare"> | Date | string
+    Dashboard?: XOR<DashboardScalarRelationFilter, DashboardWhereInput>
+    SharedBy?: XOR<UserScalarRelationFilter, UserWhereInput>
+    Recipients?: DashboardRecipientListRelationFilter
+  }
+
+  export type DashboardShareOrderByWithRelationInput = {
+    id?: SortOrder
+    dashboardId?: SortOrder
+    sharerId?: SortOrder
+    SharedAt?: SortOrder
+    Dashboard?: DashboardOrderByWithRelationInput
+    SharedBy?: UserOrderByWithRelationInput
+    Recipients?: DashboardRecipientOrderByRelationAggregateInput
+  }
+
+  export type DashboardShareWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: DashboardShareWhereInput | DashboardShareWhereInput[]
+    OR?: DashboardShareWhereInput[]
+    NOT?: DashboardShareWhereInput | DashboardShareWhereInput[]
+    dashboardId?: StringFilter<"DashboardShare"> | string
+    sharerId?: StringFilter<"DashboardShare"> | string
+    SharedAt?: DateTimeFilter<"DashboardShare"> | Date | string
+    Dashboard?: XOR<DashboardScalarRelationFilter, DashboardWhereInput>
+    SharedBy?: XOR<UserScalarRelationFilter, UserWhereInput>
+    Recipients?: DashboardRecipientListRelationFilter
+  }, "id">
+
+  export type DashboardShareOrderByWithAggregationInput = {
+    id?: SortOrder
+    dashboardId?: SortOrder
+    sharerId?: SortOrder
+    SharedAt?: SortOrder
+    _count?: DashboardShareCountOrderByAggregateInput
+    _max?: DashboardShareMaxOrderByAggregateInput
+    _min?: DashboardShareMinOrderByAggregateInput
+  }
+
+  export type DashboardShareScalarWhereWithAggregatesInput = {
+    AND?: DashboardShareScalarWhereWithAggregatesInput | DashboardShareScalarWhereWithAggregatesInput[]
+    OR?: DashboardShareScalarWhereWithAggregatesInput[]
+    NOT?: DashboardShareScalarWhereWithAggregatesInput | DashboardShareScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"DashboardShare"> | string
+    dashboardId?: StringWithAggregatesFilter<"DashboardShare"> | string
+    sharerId?: StringWithAggregatesFilter<"DashboardShare"> | string
+    SharedAt?: DateTimeWithAggregatesFilter<"DashboardShare"> | Date | string
+  }
+
+  export type DashboardRecipientWhereInput = {
+    AND?: DashboardRecipientWhereInput | DashboardRecipientWhereInput[]
+    OR?: DashboardRecipientWhereInput[]
+    NOT?: DashboardRecipientWhereInput | DashboardRecipientWhereInput[]
+    id?: StringFilter<"DashboardRecipient"> | string
+    dashboardShareId?: StringFilter<"DashboardRecipient"> | string
+    userId?: StringFilter<"DashboardRecipient"> | string
+    DashboardShare?: XOR<DashboardShareScalarRelationFilter, DashboardShareWhereInput>
+    User?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }
+
+  export type DashboardRecipientOrderByWithRelationInput = {
+    id?: SortOrder
+    dashboardShareId?: SortOrder
+    userId?: SortOrder
+    DashboardShare?: DashboardShareOrderByWithRelationInput
+    User?: UserOrderByWithRelationInput
+  }
+
+  export type DashboardRecipientWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: DashboardRecipientWhereInput | DashboardRecipientWhereInput[]
+    OR?: DashboardRecipientWhereInput[]
+    NOT?: DashboardRecipientWhereInput | DashboardRecipientWhereInput[]
+    dashboardShareId?: StringFilter<"DashboardRecipient"> | string
+    userId?: StringFilter<"DashboardRecipient"> | string
+    DashboardShare?: XOR<DashboardShareScalarRelationFilter, DashboardShareWhereInput>
+    User?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }, "id">
+
+  export type DashboardRecipientOrderByWithAggregationInput = {
+    id?: SortOrder
+    dashboardShareId?: SortOrder
+    userId?: SortOrder
+    _count?: DashboardRecipientCountOrderByAggregateInput
+    _max?: DashboardRecipientMaxOrderByAggregateInput
+    _min?: DashboardRecipientMinOrderByAggregateInput
+  }
+
+  export type DashboardRecipientScalarWhereWithAggregatesInput = {
+    AND?: DashboardRecipientScalarWhereWithAggregatesInput | DashboardRecipientScalarWhereWithAggregatesInput[]
+    OR?: DashboardRecipientScalarWhereWithAggregatesInput[]
+    NOT?: DashboardRecipientScalarWhereWithAggregatesInput | DashboardRecipientScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"DashboardRecipient"> | string
+    dashboardShareId?: StringWithAggregatesFilter<"DashboardRecipient"> | string
+    userId?: StringWithAggregatesFilter<"DashboardRecipient"> | string
+  }
+
   export type UserCreateInput = {
     id?: string
     name: string
     password: string
     DashboardsOwned?: DashboardCreateNestedManyWithoutDashboardOwnerInput
-    DashboardsShared?: DashboardCreateNestedManyWithoutDashboardViewersInput
+    DashboardsShared?: DashboardShareCreateNestedManyWithoutSharedByInput
+    DashboardsReceived?: DashboardRecipientCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -4709,7 +7209,8 @@ export namespace Prisma {
     name: string
     password: string
     DashboardsOwned?: DashboardUncheckedCreateNestedManyWithoutDashboardOwnerInput
-    DashboardsShared?: DashboardUncheckedCreateNestedManyWithoutDashboardViewersInput
+    DashboardsShared?: DashboardShareUncheckedCreateNestedManyWithoutSharedByInput
+    DashboardsReceived?: DashboardRecipientUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -4717,7 +7218,8 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     DashboardsOwned?: DashboardUpdateManyWithoutDashboardOwnerNestedInput
-    DashboardsShared?: DashboardUpdateManyWithoutDashboardViewersNestedInput
+    DashboardsShared?: DashboardShareUpdateManyWithoutSharedByNestedInput
+    DashboardsReceived?: DashboardRecipientUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -4725,7 +7227,8 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     DashboardsOwned?: DashboardUncheckedUpdateManyWithoutDashboardOwnerNestedInput
-    DashboardsShared?: DashboardUncheckedUpdateManyWithoutDashboardViewersNestedInput
+    DashboardsShared?: DashboardShareUncheckedUpdateManyWithoutSharedByNestedInput
+    DashboardsReceived?: DashboardRecipientUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -4750,32 +7253,32 @@ export namespace Prisma {
     id?: string
     name: string
     DashboardOwner: UserCreateNestedOneWithoutDashboardsOwnedInput
-    DashboardViewers?: UserCreateNestedManyWithoutDashboardsSharedInput
     IncidentCollection?: IncidentCreateNestedManyWithoutDashboardInput
+    DashboardShare?: DashboardShareCreateNestedManyWithoutDashboardInput
   }
 
   export type DashboardUncheckedCreateInput = {
     id?: string
     name: string
     dashboardOwnerId: string
-    DashboardViewers?: UserUncheckedCreateNestedManyWithoutDashboardsSharedInput
     IncidentCollection?: IncidentUncheckedCreateNestedManyWithoutDashboardInput
+    DashboardShare?: DashboardShareUncheckedCreateNestedManyWithoutDashboardInput
   }
 
   export type DashboardUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     DashboardOwner?: UserUpdateOneRequiredWithoutDashboardsOwnedNestedInput
-    DashboardViewers?: UserUpdateManyWithoutDashboardsSharedNestedInput
     IncidentCollection?: IncidentUpdateManyWithoutDashboardNestedInput
+    DashboardShare?: DashboardShareUpdateManyWithoutDashboardNestedInput
   }
 
   export type DashboardUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     dashboardOwnerId?: StringFieldUpdateOperationsInput | string
-    DashboardViewers?: UserUncheckedUpdateManyWithoutDashboardsSharedNestedInput
     IncidentCollection?: IncidentUncheckedUpdateManyWithoutDashboardNestedInput
+    DashboardShare?: DashboardShareUncheckedUpdateManyWithoutDashboardNestedInput
   }
 
   export type DashboardCreateManyInput = {
@@ -4857,6 +7360,97 @@ export namespace Prisma {
     dashboardId?: StringFieldUpdateOperationsInput | string
   }
 
+  export type DashboardShareCreateInput = {
+    id?: string
+    SharedAt?: Date | string
+    Dashboard: DashboardCreateNestedOneWithoutDashboardShareInput
+    SharedBy: UserCreateNestedOneWithoutDashboardsSharedInput
+    Recipients?: DashboardRecipientCreateNestedManyWithoutDashboardShareInput
+  }
+
+  export type DashboardShareUncheckedCreateInput = {
+    id?: string
+    dashboardId: string
+    sharerId: string
+    SharedAt?: Date | string
+    Recipients?: DashboardRecipientUncheckedCreateNestedManyWithoutDashboardShareInput
+  }
+
+  export type DashboardShareUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    SharedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    Dashboard?: DashboardUpdateOneRequiredWithoutDashboardShareNestedInput
+    SharedBy?: UserUpdateOneRequiredWithoutDashboardsSharedNestedInput
+    Recipients?: DashboardRecipientUpdateManyWithoutDashboardShareNestedInput
+  }
+
+  export type DashboardShareUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    dashboardId?: StringFieldUpdateOperationsInput | string
+    sharerId?: StringFieldUpdateOperationsInput | string
+    SharedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    Recipients?: DashboardRecipientUncheckedUpdateManyWithoutDashboardShareNestedInput
+  }
+
+  export type DashboardShareCreateManyInput = {
+    id?: string
+    dashboardId: string
+    sharerId: string
+    SharedAt?: Date | string
+  }
+
+  export type DashboardShareUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    SharedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type DashboardShareUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    dashboardId?: StringFieldUpdateOperationsInput | string
+    sharerId?: StringFieldUpdateOperationsInput | string
+    SharedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type DashboardRecipientCreateInput = {
+    id?: string
+    DashboardShare: DashboardShareCreateNestedOneWithoutRecipientsInput
+    User: UserCreateNestedOneWithoutDashboardsReceivedInput
+  }
+
+  export type DashboardRecipientUncheckedCreateInput = {
+    id?: string
+    dashboardShareId: string
+    userId: string
+  }
+
+  export type DashboardRecipientUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    DashboardShare?: DashboardShareUpdateOneRequiredWithoutRecipientsNestedInput
+    User?: UserUpdateOneRequiredWithoutDashboardsReceivedNestedInput
+  }
+
+  export type DashboardRecipientUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    dashboardShareId?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type DashboardRecipientCreateManyInput = {
+    id?: string
+    dashboardShareId: string
+    userId: string
+  }
+
+  export type DashboardRecipientUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type DashboardRecipientUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    dashboardShareId?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+  }
+
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -4878,7 +7472,27 @@ export namespace Prisma {
     none?: DashboardWhereInput
   }
 
+  export type DashboardShareListRelationFilter = {
+    every?: DashboardShareWhereInput
+    some?: DashboardShareWhereInput
+    none?: DashboardShareWhereInput
+  }
+
+  export type DashboardRecipientListRelationFilter = {
+    every?: DashboardRecipientWhereInput
+    some?: DashboardRecipientWhereInput
+    none?: DashboardRecipientWhereInput
+  }
+
   export type DashboardOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type DashboardShareOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type DashboardRecipientOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -4923,20 +7537,10 @@ export namespace Prisma {
     isNot?: UserWhereInput
   }
 
-  export type UserListRelationFilter = {
-    every?: UserWhereInput
-    some?: UserWhereInput
-    none?: UserWhereInput
-  }
-
   export type IncidentListRelationFilter = {
     every?: IncidentWhereInput
     some?: IncidentWhereInput
     none?: IncidentWhereInput
-  }
-
-  export type UserOrderByRelationAggregateInput = {
-    _count?: SortOrder
   }
 
   export type IncidentOrderByRelationAggregateInput = {
@@ -5078,6 +7682,50 @@ export namespace Prisma {
     _max?: NestedIntFilter<$PrismaModel>
   }
 
+  export type DashboardShareCountOrderByAggregateInput = {
+    id?: SortOrder
+    dashboardId?: SortOrder
+    sharerId?: SortOrder
+    SharedAt?: SortOrder
+  }
+
+  export type DashboardShareMaxOrderByAggregateInput = {
+    id?: SortOrder
+    dashboardId?: SortOrder
+    sharerId?: SortOrder
+    SharedAt?: SortOrder
+  }
+
+  export type DashboardShareMinOrderByAggregateInput = {
+    id?: SortOrder
+    dashboardId?: SortOrder
+    sharerId?: SortOrder
+    SharedAt?: SortOrder
+  }
+
+  export type DashboardShareScalarRelationFilter = {
+    is?: DashboardShareWhereInput
+    isNot?: DashboardShareWhereInput
+  }
+
+  export type DashboardRecipientCountOrderByAggregateInput = {
+    id?: SortOrder
+    dashboardShareId?: SortOrder
+    userId?: SortOrder
+  }
+
+  export type DashboardRecipientMaxOrderByAggregateInput = {
+    id?: SortOrder
+    dashboardShareId?: SortOrder
+    userId?: SortOrder
+  }
+
+  export type DashboardRecipientMinOrderByAggregateInput = {
+    id?: SortOrder
+    dashboardShareId?: SortOrder
+    userId?: SortOrder
+  }
+
   export type DashboardCreateNestedManyWithoutDashboardOwnerInput = {
     create?: XOR<DashboardCreateWithoutDashboardOwnerInput, DashboardUncheckedCreateWithoutDashboardOwnerInput> | DashboardCreateWithoutDashboardOwnerInput[] | DashboardUncheckedCreateWithoutDashboardOwnerInput[]
     connectOrCreate?: DashboardCreateOrConnectWithoutDashboardOwnerInput | DashboardCreateOrConnectWithoutDashboardOwnerInput[]
@@ -5085,10 +7733,18 @@ export namespace Prisma {
     connect?: DashboardWhereUniqueInput | DashboardWhereUniqueInput[]
   }
 
-  export type DashboardCreateNestedManyWithoutDashboardViewersInput = {
-    create?: XOR<DashboardCreateWithoutDashboardViewersInput, DashboardUncheckedCreateWithoutDashboardViewersInput> | DashboardCreateWithoutDashboardViewersInput[] | DashboardUncheckedCreateWithoutDashboardViewersInput[]
-    connectOrCreate?: DashboardCreateOrConnectWithoutDashboardViewersInput | DashboardCreateOrConnectWithoutDashboardViewersInput[]
-    connect?: DashboardWhereUniqueInput | DashboardWhereUniqueInput[]
+  export type DashboardShareCreateNestedManyWithoutSharedByInput = {
+    create?: XOR<DashboardShareCreateWithoutSharedByInput, DashboardShareUncheckedCreateWithoutSharedByInput> | DashboardShareCreateWithoutSharedByInput[] | DashboardShareUncheckedCreateWithoutSharedByInput[]
+    connectOrCreate?: DashboardShareCreateOrConnectWithoutSharedByInput | DashboardShareCreateOrConnectWithoutSharedByInput[]
+    createMany?: DashboardShareCreateManySharedByInputEnvelope
+    connect?: DashboardShareWhereUniqueInput | DashboardShareWhereUniqueInput[]
+  }
+
+  export type DashboardRecipientCreateNestedManyWithoutUserInput = {
+    create?: XOR<DashboardRecipientCreateWithoutUserInput, DashboardRecipientUncheckedCreateWithoutUserInput> | DashboardRecipientCreateWithoutUserInput[] | DashboardRecipientUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: DashboardRecipientCreateOrConnectWithoutUserInput | DashboardRecipientCreateOrConnectWithoutUserInput[]
+    createMany?: DashboardRecipientCreateManyUserInputEnvelope
+    connect?: DashboardRecipientWhereUniqueInput | DashboardRecipientWhereUniqueInput[]
   }
 
   export type DashboardUncheckedCreateNestedManyWithoutDashboardOwnerInput = {
@@ -5098,10 +7754,18 @@ export namespace Prisma {
     connect?: DashboardWhereUniqueInput | DashboardWhereUniqueInput[]
   }
 
-  export type DashboardUncheckedCreateNestedManyWithoutDashboardViewersInput = {
-    create?: XOR<DashboardCreateWithoutDashboardViewersInput, DashboardUncheckedCreateWithoutDashboardViewersInput> | DashboardCreateWithoutDashboardViewersInput[] | DashboardUncheckedCreateWithoutDashboardViewersInput[]
-    connectOrCreate?: DashboardCreateOrConnectWithoutDashboardViewersInput | DashboardCreateOrConnectWithoutDashboardViewersInput[]
-    connect?: DashboardWhereUniqueInput | DashboardWhereUniqueInput[]
+  export type DashboardShareUncheckedCreateNestedManyWithoutSharedByInput = {
+    create?: XOR<DashboardShareCreateWithoutSharedByInput, DashboardShareUncheckedCreateWithoutSharedByInput> | DashboardShareCreateWithoutSharedByInput[] | DashboardShareUncheckedCreateWithoutSharedByInput[]
+    connectOrCreate?: DashboardShareCreateOrConnectWithoutSharedByInput | DashboardShareCreateOrConnectWithoutSharedByInput[]
+    createMany?: DashboardShareCreateManySharedByInputEnvelope
+    connect?: DashboardShareWhereUniqueInput | DashboardShareWhereUniqueInput[]
+  }
+
+  export type DashboardRecipientUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<DashboardRecipientCreateWithoutUserInput, DashboardRecipientUncheckedCreateWithoutUserInput> | DashboardRecipientCreateWithoutUserInput[] | DashboardRecipientUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: DashboardRecipientCreateOrConnectWithoutUserInput | DashboardRecipientCreateOrConnectWithoutUserInput[]
+    createMany?: DashboardRecipientCreateManyUserInputEnvelope
+    connect?: DashboardRecipientWhereUniqueInput | DashboardRecipientWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -5122,17 +7786,32 @@ export namespace Prisma {
     deleteMany?: DashboardScalarWhereInput | DashboardScalarWhereInput[]
   }
 
-  export type DashboardUpdateManyWithoutDashboardViewersNestedInput = {
-    create?: XOR<DashboardCreateWithoutDashboardViewersInput, DashboardUncheckedCreateWithoutDashboardViewersInput> | DashboardCreateWithoutDashboardViewersInput[] | DashboardUncheckedCreateWithoutDashboardViewersInput[]
-    connectOrCreate?: DashboardCreateOrConnectWithoutDashboardViewersInput | DashboardCreateOrConnectWithoutDashboardViewersInput[]
-    upsert?: DashboardUpsertWithWhereUniqueWithoutDashboardViewersInput | DashboardUpsertWithWhereUniqueWithoutDashboardViewersInput[]
-    set?: DashboardWhereUniqueInput | DashboardWhereUniqueInput[]
-    disconnect?: DashboardWhereUniqueInput | DashboardWhereUniqueInput[]
-    delete?: DashboardWhereUniqueInput | DashboardWhereUniqueInput[]
-    connect?: DashboardWhereUniqueInput | DashboardWhereUniqueInput[]
-    update?: DashboardUpdateWithWhereUniqueWithoutDashboardViewersInput | DashboardUpdateWithWhereUniqueWithoutDashboardViewersInput[]
-    updateMany?: DashboardUpdateManyWithWhereWithoutDashboardViewersInput | DashboardUpdateManyWithWhereWithoutDashboardViewersInput[]
-    deleteMany?: DashboardScalarWhereInput | DashboardScalarWhereInput[]
+  export type DashboardShareUpdateManyWithoutSharedByNestedInput = {
+    create?: XOR<DashboardShareCreateWithoutSharedByInput, DashboardShareUncheckedCreateWithoutSharedByInput> | DashboardShareCreateWithoutSharedByInput[] | DashboardShareUncheckedCreateWithoutSharedByInput[]
+    connectOrCreate?: DashboardShareCreateOrConnectWithoutSharedByInput | DashboardShareCreateOrConnectWithoutSharedByInput[]
+    upsert?: DashboardShareUpsertWithWhereUniqueWithoutSharedByInput | DashboardShareUpsertWithWhereUniqueWithoutSharedByInput[]
+    createMany?: DashboardShareCreateManySharedByInputEnvelope
+    set?: DashboardShareWhereUniqueInput | DashboardShareWhereUniqueInput[]
+    disconnect?: DashboardShareWhereUniqueInput | DashboardShareWhereUniqueInput[]
+    delete?: DashboardShareWhereUniqueInput | DashboardShareWhereUniqueInput[]
+    connect?: DashboardShareWhereUniqueInput | DashboardShareWhereUniqueInput[]
+    update?: DashboardShareUpdateWithWhereUniqueWithoutSharedByInput | DashboardShareUpdateWithWhereUniqueWithoutSharedByInput[]
+    updateMany?: DashboardShareUpdateManyWithWhereWithoutSharedByInput | DashboardShareUpdateManyWithWhereWithoutSharedByInput[]
+    deleteMany?: DashboardShareScalarWhereInput | DashboardShareScalarWhereInput[]
+  }
+
+  export type DashboardRecipientUpdateManyWithoutUserNestedInput = {
+    create?: XOR<DashboardRecipientCreateWithoutUserInput, DashboardRecipientUncheckedCreateWithoutUserInput> | DashboardRecipientCreateWithoutUserInput[] | DashboardRecipientUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: DashboardRecipientCreateOrConnectWithoutUserInput | DashboardRecipientCreateOrConnectWithoutUserInput[]
+    upsert?: DashboardRecipientUpsertWithWhereUniqueWithoutUserInput | DashboardRecipientUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: DashboardRecipientCreateManyUserInputEnvelope
+    set?: DashboardRecipientWhereUniqueInput | DashboardRecipientWhereUniqueInput[]
+    disconnect?: DashboardRecipientWhereUniqueInput | DashboardRecipientWhereUniqueInput[]
+    delete?: DashboardRecipientWhereUniqueInput | DashboardRecipientWhereUniqueInput[]
+    connect?: DashboardRecipientWhereUniqueInput | DashboardRecipientWhereUniqueInput[]
+    update?: DashboardRecipientUpdateWithWhereUniqueWithoutUserInput | DashboardRecipientUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: DashboardRecipientUpdateManyWithWhereWithoutUserInput | DashboardRecipientUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: DashboardRecipientScalarWhereInput | DashboardRecipientScalarWhereInput[]
   }
 
   export type DashboardUncheckedUpdateManyWithoutDashboardOwnerNestedInput = {
@@ -5149,29 +7828,38 @@ export namespace Prisma {
     deleteMany?: DashboardScalarWhereInput | DashboardScalarWhereInput[]
   }
 
-  export type DashboardUncheckedUpdateManyWithoutDashboardViewersNestedInput = {
-    create?: XOR<DashboardCreateWithoutDashboardViewersInput, DashboardUncheckedCreateWithoutDashboardViewersInput> | DashboardCreateWithoutDashboardViewersInput[] | DashboardUncheckedCreateWithoutDashboardViewersInput[]
-    connectOrCreate?: DashboardCreateOrConnectWithoutDashboardViewersInput | DashboardCreateOrConnectWithoutDashboardViewersInput[]
-    upsert?: DashboardUpsertWithWhereUniqueWithoutDashboardViewersInput | DashboardUpsertWithWhereUniqueWithoutDashboardViewersInput[]
-    set?: DashboardWhereUniqueInput | DashboardWhereUniqueInput[]
-    disconnect?: DashboardWhereUniqueInput | DashboardWhereUniqueInput[]
-    delete?: DashboardWhereUniqueInput | DashboardWhereUniqueInput[]
-    connect?: DashboardWhereUniqueInput | DashboardWhereUniqueInput[]
-    update?: DashboardUpdateWithWhereUniqueWithoutDashboardViewersInput | DashboardUpdateWithWhereUniqueWithoutDashboardViewersInput[]
-    updateMany?: DashboardUpdateManyWithWhereWithoutDashboardViewersInput | DashboardUpdateManyWithWhereWithoutDashboardViewersInput[]
-    deleteMany?: DashboardScalarWhereInput | DashboardScalarWhereInput[]
+  export type DashboardShareUncheckedUpdateManyWithoutSharedByNestedInput = {
+    create?: XOR<DashboardShareCreateWithoutSharedByInput, DashboardShareUncheckedCreateWithoutSharedByInput> | DashboardShareCreateWithoutSharedByInput[] | DashboardShareUncheckedCreateWithoutSharedByInput[]
+    connectOrCreate?: DashboardShareCreateOrConnectWithoutSharedByInput | DashboardShareCreateOrConnectWithoutSharedByInput[]
+    upsert?: DashboardShareUpsertWithWhereUniqueWithoutSharedByInput | DashboardShareUpsertWithWhereUniqueWithoutSharedByInput[]
+    createMany?: DashboardShareCreateManySharedByInputEnvelope
+    set?: DashboardShareWhereUniqueInput | DashboardShareWhereUniqueInput[]
+    disconnect?: DashboardShareWhereUniqueInput | DashboardShareWhereUniqueInput[]
+    delete?: DashboardShareWhereUniqueInput | DashboardShareWhereUniqueInput[]
+    connect?: DashboardShareWhereUniqueInput | DashboardShareWhereUniqueInput[]
+    update?: DashboardShareUpdateWithWhereUniqueWithoutSharedByInput | DashboardShareUpdateWithWhereUniqueWithoutSharedByInput[]
+    updateMany?: DashboardShareUpdateManyWithWhereWithoutSharedByInput | DashboardShareUpdateManyWithWhereWithoutSharedByInput[]
+    deleteMany?: DashboardShareScalarWhereInput | DashboardShareScalarWhereInput[]
+  }
+
+  export type DashboardRecipientUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<DashboardRecipientCreateWithoutUserInput, DashboardRecipientUncheckedCreateWithoutUserInput> | DashboardRecipientCreateWithoutUserInput[] | DashboardRecipientUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: DashboardRecipientCreateOrConnectWithoutUserInput | DashboardRecipientCreateOrConnectWithoutUserInput[]
+    upsert?: DashboardRecipientUpsertWithWhereUniqueWithoutUserInput | DashboardRecipientUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: DashboardRecipientCreateManyUserInputEnvelope
+    set?: DashboardRecipientWhereUniqueInput | DashboardRecipientWhereUniqueInput[]
+    disconnect?: DashboardRecipientWhereUniqueInput | DashboardRecipientWhereUniqueInput[]
+    delete?: DashboardRecipientWhereUniqueInput | DashboardRecipientWhereUniqueInput[]
+    connect?: DashboardRecipientWhereUniqueInput | DashboardRecipientWhereUniqueInput[]
+    update?: DashboardRecipientUpdateWithWhereUniqueWithoutUserInput | DashboardRecipientUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: DashboardRecipientUpdateManyWithWhereWithoutUserInput | DashboardRecipientUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: DashboardRecipientScalarWhereInput | DashboardRecipientScalarWhereInput[]
   }
 
   export type UserCreateNestedOneWithoutDashboardsOwnedInput = {
     create?: XOR<UserCreateWithoutDashboardsOwnedInput, UserUncheckedCreateWithoutDashboardsOwnedInput>
     connectOrCreate?: UserCreateOrConnectWithoutDashboardsOwnedInput
     connect?: UserWhereUniqueInput
-  }
-
-  export type UserCreateNestedManyWithoutDashboardsSharedInput = {
-    create?: XOR<UserCreateWithoutDashboardsSharedInput, UserUncheckedCreateWithoutDashboardsSharedInput> | UserCreateWithoutDashboardsSharedInput[] | UserUncheckedCreateWithoutDashboardsSharedInput[]
-    connectOrCreate?: UserCreateOrConnectWithoutDashboardsSharedInput | UserCreateOrConnectWithoutDashboardsSharedInput[]
-    connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
   }
 
   export type IncidentCreateNestedManyWithoutDashboardInput = {
@@ -5181,10 +7869,11 @@ export namespace Prisma {
     connect?: IncidentWhereUniqueInput | IncidentWhereUniqueInput[]
   }
 
-  export type UserUncheckedCreateNestedManyWithoutDashboardsSharedInput = {
-    create?: XOR<UserCreateWithoutDashboardsSharedInput, UserUncheckedCreateWithoutDashboardsSharedInput> | UserCreateWithoutDashboardsSharedInput[] | UserUncheckedCreateWithoutDashboardsSharedInput[]
-    connectOrCreate?: UserCreateOrConnectWithoutDashboardsSharedInput | UserCreateOrConnectWithoutDashboardsSharedInput[]
-    connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
+  export type DashboardShareCreateNestedManyWithoutDashboardInput = {
+    create?: XOR<DashboardShareCreateWithoutDashboardInput, DashboardShareUncheckedCreateWithoutDashboardInput> | DashboardShareCreateWithoutDashboardInput[] | DashboardShareUncheckedCreateWithoutDashboardInput[]
+    connectOrCreate?: DashboardShareCreateOrConnectWithoutDashboardInput | DashboardShareCreateOrConnectWithoutDashboardInput[]
+    createMany?: DashboardShareCreateManyDashboardInputEnvelope
+    connect?: DashboardShareWhereUniqueInput | DashboardShareWhereUniqueInput[]
   }
 
   export type IncidentUncheckedCreateNestedManyWithoutDashboardInput = {
@@ -5194,25 +7883,19 @@ export namespace Prisma {
     connect?: IncidentWhereUniqueInput | IncidentWhereUniqueInput[]
   }
 
+  export type DashboardShareUncheckedCreateNestedManyWithoutDashboardInput = {
+    create?: XOR<DashboardShareCreateWithoutDashboardInput, DashboardShareUncheckedCreateWithoutDashboardInput> | DashboardShareCreateWithoutDashboardInput[] | DashboardShareUncheckedCreateWithoutDashboardInput[]
+    connectOrCreate?: DashboardShareCreateOrConnectWithoutDashboardInput | DashboardShareCreateOrConnectWithoutDashboardInput[]
+    createMany?: DashboardShareCreateManyDashboardInputEnvelope
+    connect?: DashboardShareWhereUniqueInput | DashboardShareWhereUniqueInput[]
+  }
+
   export type UserUpdateOneRequiredWithoutDashboardsOwnedNestedInput = {
     create?: XOR<UserCreateWithoutDashboardsOwnedInput, UserUncheckedCreateWithoutDashboardsOwnedInput>
     connectOrCreate?: UserCreateOrConnectWithoutDashboardsOwnedInput
     upsert?: UserUpsertWithoutDashboardsOwnedInput
     connect?: UserWhereUniqueInput
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutDashboardsOwnedInput, UserUpdateWithoutDashboardsOwnedInput>, UserUncheckedUpdateWithoutDashboardsOwnedInput>
-  }
-
-  export type UserUpdateManyWithoutDashboardsSharedNestedInput = {
-    create?: XOR<UserCreateWithoutDashboardsSharedInput, UserUncheckedCreateWithoutDashboardsSharedInput> | UserCreateWithoutDashboardsSharedInput[] | UserUncheckedCreateWithoutDashboardsSharedInput[]
-    connectOrCreate?: UserCreateOrConnectWithoutDashboardsSharedInput | UserCreateOrConnectWithoutDashboardsSharedInput[]
-    upsert?: UserUpsertWithWhereUniqueWithoutDashboardsSharedInput | UserUpsertWithWhereUniqueWithoutDashboardsSharedInput[]
-    set?: UserWhereUniqueInput | UserWhereUniqueInput[]
-    disconnect?: UserWhereUniqueInput | UserWhereUniqueInput[]
-    delete?: UserWhereUniqueInput | UserWhereUniqueInput[]
-    connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
-    update?: UserUpdateWithWhereUniqueWithoutDashboardsSharedInput | UserUpdateWithWhereUniqueWithoutDashboardsSharedInput[]
-    updateMany?: UserUpdateManyWithWhereWithoutDashboardsSharedInput | UserUpdateManyWithWhereWithoutDashboardsSharedInput[]
-    deleteMany?: UserScalarWhereInput | UserScalarWhereInput[]
   }
 
   export type IncidentUpdateManyWithoutDashboardNestedInput = {
@@ -5229,17 +7912,18 @@ export namespace Prisma {
     deleteMany?: IncidentScalarWhereInput | IncidentScalarWhereInput[]
   }
 
-  export type UserUncheckedUpdateManyWithoutDashboardsSharedNestedInput = {
-    create?: XOR<UserCreateWithoutDashboardsSharedInput, UserUncheckedCreateWithoutDashboardsSharedInput> | UserCreateWithoutDashboardsSharedInput[] | UserUncheckedCreateWithoutDashboardsSharedInput[]
-    connectOrCreate?: UserCreateOrConnectWithoutDashboardsSharedInput | UserCreateOrConnectWithoutDashboardsSharedInput[]
-    upsert?: UserUpsertWithWhereUniqueWithoutDashboardsSharedInput | UserUpsertWithWhereUniqueWithoutDashboardsSharedInput[]
-    set?: UserWhereUniqueInput | UserWhereUniqueInput[]
-    disconnect?: UserWhereUniqueInput | UserWhereUniqueInput[]
-    delete?: UserWhereUniqueInput | UserWhereUniqueInput[]
-    connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
-    update?: UserUpdateWithWhereUniqueWithoutDashboardsSharedInput | UserUpdateWithWhereUniqueWithoutDashboardsSharedInput[]
-    updateMany?: UserUpdateManyWithWhereWithoutDashboardsSharedInput | UserUpdateManyWithWhereWithoutDashboardsSharedInput[]
-    deleteMany?: UserScalarWhereInput | UserScalarWhereInput[]
+  export type DashboardShareUpdateManyWithoutDashboardNestedInput = {
+    create?: XOR<DashboardShareCreateWithoutDashboardInput, DashboardShareUncheckedCreateWithoutDashboardInput> | DashboardShareCreateWithoutDashboardInput[] | DashboardShareUncheckedCreateWithoutDashboardInput[]
+    connectOrCreate?: DashboardShareCreateOrConnectWithoutDashboardInput | DashboardShareCreateOrConnectWithoutDashboardInput[]
+    upsert?: DashboardShareUpsertWithWhereUniqueWithoutDashboardInput | DashboardShareUpsertWithWhereUniqueWithoutDashboardInput[]
+    createMany?: DashboardShareCreateManyDashboardInputEnvelope
+    set?: DashboardShareWhereUniqueInput | DashboardShareWhereUniqueInput[]
+    disconnect?: DashboardShareWhereUniqueInput | DashboardShareWhereUniqueInput[]
+    delete?: DashboardShareWhereUniqueInput | DashboardShareWhereUniqueInput[]
+    connect?: DashboardShareWhereUniqueInput | DashboardShareWhereUniqueInput[]
+    update?: DashboardShareUpdateWithWhereUniqueWithoutDashboardInput | DashboardShareUpdateWithWhereUniqueWithoutDashboardInput[]
+    updateMany?: DashboardShareUpdateManyWithWhereWithoutDashboardInput | DashboardShareUpdateManyWithWhereWithoutDashboardInput[]
+    deleteMany?: DashboardShareScalarWhereInput | DashboardShareScalarWhereInput[]
   }
 
   export type IncidentUncheckedUpdateManyWithoutDashboardNestedInput = {
@@ -5254,6 +7938,20 @@ export namespace Prisma {
     update?: IncidentUpdateWithWhereUniqueWithoutDashboardInput | IncidentUpdateWithWhereUniqueWithoutDashboardInput[]
     updateMany?: IncidentUpdateManyWithWhereWithoutDashboardInput | IncidentUpdateManyWithWhereWithoutDashboardInput[]
     deleteMany?: IncidentScalarWhereInput | IncidentScalarWhereInput[]
+  }
+
+  export type DashboardShareUncheckedUpdateManyWithoutDashboardNestedInput = {
+    create?: XOR<DashboardShareCreateWithoutDashboardInput, DashboardShareUncheckedCreateWithoutDashboardInput> | DashboardShareCreateWithoutDashboardInput[] | DashboardShareUncheckedCreateWithoutDashboardInput[]
+    connectOrCreate?: DashboardShareCreateOrConnectWithoutDashboardInput | DashboardShareCreateOrConnectWithoutDashboardInput[]
+    upsert?: DashboardShareUpsertWithWhereUniqueWithoutDashboardInput | DashboardShareUpsertWithWhereUniqueWithoutDashboardInput[]
+    createMany?: DashboardShareCreateManyDashboardInputEnvelope
+    set?: DashboardShareWhereUniqueInput | DashboardShareWhereUniqueInput[]
+    disconnect?: DashboardShareWhereUniqueInput | DashboardShareWhereUniqueInput[]
+    delete?: DashboardShareWhereUniqueInput | DashboardShareWhereUniqueInput[]
+    connect?: DashboardShareWhereUniqueInput | DashboardShareWhereUniqueInput[]
+    update?: DashboardShareUpdateWithWhereUniqueWithoutDashboardInput | DashboardShareUpdateWithWhereUniqueWithoutDashboardInput[]
+    updateMany?: DashboardShareUpdateManyWithWhereWithoutDashboardInput | DashboardShareUpdateManyWithWhereWithoutDashboardInput[]
+    deleteMany?: DashboardShareScalarWhereInput | DashboardShareScalarWhereInput[]
   }
 
   export type IncidentCreateincidentCoordsInput = {
@@ -5293,6 +7991,104 @@ export namespace Prisma {
     upsert?: DashboardUpsertWithoutIncidentCollectionInput
     connect?: DashboardWhereUniqueInput
     update?: XOR<XOR<DashboardUpdateToOneWithWhereWithoutIncidentCollectionInput, DashboardUpdateWithoutIncidentCollectionInput>, DashboardUncheckedUpdateWithoutIncidentCollectionInput>
+  }
+
+  export type DashboardCreateNestedOneWithoutDashboardShareInput = {
+    create?: XOR<DashboardCreateWithoutDashboardShareInput, DashboardUncheckedCreateWithoutDashboardShareInput>
+    connectOrCreate?: DashboardCreateOrConnectWithoutDashboardShareInput
+    connect?: DashboardWhereUniqueInput
+  }
+
+  export type UserCreateNestedOneWithoutDashboardsSharedInput = {
+    create?: XOR<UserCreateWithoutDashboardsSharedInput, UserUncheckedCreateWithoutDashboardsSharedInput>
+    connectOrCreate?: UserCreateOrConnectWithoutDashboardsSharedInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type DashboardRecipientCreateNestedManyWithoutDashboardShareInput = {
+    create?: XOR<DashboardRecipientCreateWithoutDashboardShareInput, DashboardRecipientUncheckedCreateWithoutDashboardShareInput> | DashboardRecipientCreateWithoutDashboardShareInput[] | DashboardRecipientUncheckedCreateWithoutDashboardShareInput[]
+    connectOrCreate?: DashboardRecipientCreateOrConnectWithoutDashboardShareInput | DashboardRecipientCreateOrConnectWithoutDashboardShareInput[]
+    createMany?: DashboardRecipientCreateManyDashboardShareInputEnvelope
+    connect?: DashboardRecipientWhereUniqueInput | DashboardRecipientWhereUniqueInput[]
+  }
+
+  export type DashboardRecipientUncheckedCreateNestedManyWithoutDashboardShareInput = {
+    create?: XOR<DashboardRecipientCreateWithoutDashboardShareInput, DashboardRecipientUncheckedCreateWithoutDashboardShareInput> | DashboardRecipientCreateWithoutDashboardShareInput[] | DashboardRecipientUncheckedCreateWithoutDashboardShareInput[]
+    connectOrCreate?: DashboardRecipientCreateOrConnectWithoutDashboardShareInput | DashboardRecipientCreateOrConnectWithoutDashboardShareInput[]
+    createMany?: DashboardRecipientCreateManyDashboardShareInputEnvelope
+    connect?: DashboardRecipientWhereUniqueInput | DashboardRecipientWhereUniqueInput[]
+  }
+
+  export type DashboardUpdateOneRequiredWithoutDashboardShareNestedInput = {
+    create?: XOR<DashboardCreateWithoutDashboardShareInput, DashboardUncheckedCreateWithoutDashboardShareInput>
+    connectOrCreate?: DashboardCreateOrConnectWithoutDashboardShareInput
+    upsert?: DashboardUpsertWithoutDashboardShareInput
+    connect?: DashboardWhereUniqueInput
+    update?: XOR<XOR<DashboardUpdateToOneWithWhereWithoutDashboardShareInput, DashboardUpdateWithoutDashboardShareInput>, DashboardUncheckedUpdateWithoutDashboardShareInput>
+  }
+
+  export type UserUpdateOneRequiredWithoutDashboardsSharedNestedInput = {
+    create?: XOR<UserCreateWithoutDashboardsSharedInput, UserUncheckedCreateWithoutDashboardsSharedInput>
+    connectOrCreate?: UserCreateOrConnectWithoutDashboardsSharedInput
+    upsert?: UserUpsertWithoutDashboardsSharedInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutDashboardsSharedInput, UserUpdateWithoutDashboardsSharedInput>, UserUncheckedUpdateWithoutDashboardsSharedInput>
+  }
+
+  export type DashboardRecipientUpdateManyWithoutDashboardShareNestedInput = {
+    create?: XOR<DashboardRecipientCreateWithoutDashboardShareInput, DashboardRecipientUncheckedCreateWithoutDashboardShareInput> | DashboardRecipientCreateWithoutDashboardShareInput[] | DashboardRecipientUncheckedCreateWithoutDashboardShareInput[]
+    connectOrCreate?: DashboardRecipientCreateOrConnectWithoutDashboardShareInput | DashboardRecipientCreateOrConnectWithoutDashboardShareInput[]
+    upsert?: DashboardRecipientUpsertWithWhereUniqueWithoutDashboardShareInput | DashboardRecipientUpsertWithWhereUniqueWithoutDashboardShareInput[]
+    createMany?: DashboardRecipientCreateManyDashboardShareInputEnvelope
+    set?: DashboardRecipientWhereUniqueInput | DashboardRecipientWhereUniqueInput[]
+    disconnect?: DashboardRecipientWhereUniqueInput | DashboardRecipientWhereUniqueInput[]
+    delete?: DashboardRecipientWhereUniqueInput | DashboardRecipientWhereUniqueInput[]
+    connect?: DashboardRecipientWhereUniqueInput | DashboardRecipientWhereUniqueInput[]
+    update?: DashboardRecipientUpdateWithWhereUniqueWithoutDashboardShareInput | DashboardRecipientUpdateWithWhereUniqueWithoutDashboardShareInput[]
+    updateMany?: DashboardRecipientUpdateManyWithWhereWithoutDashboardShareInput | DashboardRecipientUpdateManyWithWhereWithoutDashboardShareInput[]
+    deleteMany?: DashboardRecipientScalarWhereInput | DashboardRecipientScalarWhereInput[]
+  }
+
+  export type DashboardRecipientUncheckedUpdateManyWithoutDashboardShareNestedInput = {
+    create?: XOR<DashboardRecipientCreateWithoutDashboardShareInput, DashboardRecipientUncheckedCreateWithoutDashboardShareInput> | DashboardRecipientCreateWithoutDashboardShareInput[] | DashboardRecipientUncheckedCreateWithoutDashboardShareInput[]
+    connectOrCreate?: DashboardRecipientCreateOrConnectWithoutDashboardShareInput | DashboardRecipientCreateOrConnectWithoutDashboardShareInput[]
+    upsert?: DashboardRecipientUpsertWithWhereUniqueWithoutDashboardShareInput | DashboardRecipientUpsertWithWhereUniqueWithoutDashboardShareInput[]
+    createMany?: DashboardRecipientCreateManyDashboardShareInputEnvelope
+    set?: DashboardRecipientWhereUniqueInput | DashboardRecipientWhereUniqueInput[]
+    disconnect?: DashboardRecipientWhereUniqueInput | DashboardRecipientWhereUniqueInput[]
+    delete?: DashboardRecipientWhereUniqueInput | DashboardRecipientWhereUniqueInput[]
+    connect?: DashboardRecipientWhereUniqueInput | DashboardRecipientWhereUniqueInput[]
+    update?: DashboardRecipientUpdateWithWhereUniqueWithoutDashboardShareInput | DashboardRecipientUpdateWithWhereUniqueWithoutDashboardShareInput[]
+    updateMany?: DashboardRecipientUpdateManyWithWhereWithoutDashboardShareInput | DashboardRecipientUpdateManyWithWhereWithoutDashboardShareInput[]
+    deleteMany?: DashboardRecipientScalarWhereInput | DashboardRecipientScalarWhereInput[]
+  }
+
+  export type DashboardShareCreateNestedOneWithoutRecipientsInput = {
+    create?: XOR<DashboardShareCreateWithoutRecipientsInput, DashboardShareUncheckedCreateWithoutRecipientsInput>
+    connectOrCreate?: DashboardShareCreateOrConnectWithoutRecipientsInput
+    connect?: DashboardShareWhereUniqueInput
+  }
+
+  export type UserCreateNestedOneWithoutDashboardsReceivedInput = {
+    create?: XOR<UserCreateWithoutDashboardsReceivedInput, UserUncheckedCreateWithoutDashboardsReceivedInput>
+    connectOrCreate?: UserCreateOrConnectWithoutDashboardsReceivedInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type DashboardShareUpdateOneRequiredWithoutRecipientsNestedInput = {
+    create?: XOR<DashboardShareCreateWithoutRecipientsInput, DashboardShareUncheckedCreateWithoutRecipientsInput>
+    connectOrCreate?: DashboardShareCreateOrConnectWithoutRecipientsInput
+    upsert?: DashboardShareUpsertWithoutRecipientsInput
+    connect?: DashboardShareWhereUniqueInput
+    update?: XOR<XOR<DashboardShareUpdateToOneWithWhereWithoutRecipientsInput, DashboardShareUpdateWithoutRecipientsInput>, DashboardShareUncheckedUpdateWithoutRecipientsInput>
+  }
+
+  export type UserUpdateOneRequiredWithoutDashboardsReceivedNestedInput = {
+    create?: XOR<UserCreateWithoutDashboardsReceivedInput, UserUncheckedCreateWithoutDashboardsReceivedInput>
+    connectOrCreate?: UserCreateOrConnectWithoutDashboardsReceivedInput
+    upsert?: UserUpsertWithoutDashboardsReceivedInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutDashboardsReceivedInput, UserUpdateWithoutDashboardsReceivedInput>, UserUncheckedUpdateWithoutDashboardsReceivedInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -5409,15 +8205,15 @@ export namespace Prisma {
   export type DashboardCreateWithoutDashboardOwnerInput = {
     id?: string
     name: string
-    DashboardViewers?: UserCreateNestedManyWithoutDashboardsSharedInput
     IncidentCollection?: IncidentCreateNestedManyWithoutDashboardInput
+    DashboardShare?: DashboardShareCreateNestedManyWithoutDashboardInput
   }
 
   export type DashboardUncheckedCreateWithoutDashboardOwnerInput = {
     id?: string
     name: string
-    DashboardViewers?: UserUncheckedCreateNestedManyWithoutDashboardsSharedInput
     IncidentCollection?: IncidentUncheckedCreateNestedManyWithoutDashboardInput
+    DashboardShare?: DashboardShareUncheckedCreateNestedManyWithoutDashboardInput
   }
 
   export type DashboardCreateOrConnectWithoutDashboardOwnerInput = {
@@ -5430,23 +8226,48 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type DashboardCreateWithoutDashboardViewersInput = {
+  export type DashboardShareCreateWithoutSharedByInput = {
     id?: string
-    name: string
-    DashboardOwner: UserCreateNestedOneWithoutDashboardsOwnedInput
-    IncidentCollection?: IncidentCreateNestedManyWithoutDashboardInput
+    SharedAt?: Date | string
+    Dashboard: DashboardCreateNestedOneWithoutDashboardShareInput
+    Recipients?: DashboardRecipientCreateNestedManyWithoutDashboardShareInput
   }
 
-  export type DashboardUncheckedCreateWithoutDashboardViewersInput = {
+  export type DashboardShareUncheckedCreateWithoutSharedByInput = {
     id?: string
-    name: string
-    dashboardOwnerId: string
-    IncidentCollection?: IncidentUncheckedCreateNestedManyWithoutDashboardInput
+    dashboardId: string
+    SharedAt?: Date | string
+    Recipients?: DashboardRecipientUncheckedCreateNestedManyWithoutDashboardShareInput
   }
 
-  export type DashboardCreateOrConnectWithoutDashboardViewersInput = {
-    where: DashboardWhereUniqueInput
-    create: XOR<DashboardCreateWithoutDashboardViewersInput, DashboardUncheckedCreateWithoutDashboardViewersInput>
+  export type DashboardShareCreateOrConnectWithoutSharedByInput = {
+    where: DashboardShareWhereUniqueInput
+    create: XOR<DashboardShareCreateWithoutSharedByInput, DashboardShareUncheckedCreateWithoutSharedByInput>
+  }
+
+  export type DashboardShareCreateManySharedByInputEnvelope = {
+    data: DashboardShareCreateManySharedByInput | DashboardShareCreateManySharedByInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type DashboardRecipientCreateWithoutUserInput = {
+    id?: string
+    DashboardShare: DashboardShareCreateNestedOneWithoutRecipientsInput
+  }
+
+  export type DashboardRecipientUncheckedCreateWithoutUserInput = {
+    id?: string
+    dashboardShareId: string
+  }
+
+  export type DashboardRecipientCreateOrConnectWithoutUserInput = {
+    where: DashboardRecipientWhereUniqueInput
+    create: XOR<DashboardRecipientCreateWithoutUserInput, DashboardRecipientUncheckedCreateWithoutUserInput>
+  }
+
+  export type DashboardRecipientCreateManyUserInputEnvelope = {
+    data: DashboardRecipientCreateManyUserInput | DashboardRecipientCreateManyUserInput[]
+    skipDuplicates?: boolean
   }
 
   export type DashboardUpsertWithWhereUniqueWithoutDashboardOwnerInput = {
@@ -5474,58 +8295,76 @@ export namespace Prisma {
     dashboardOwnerId?: StringFilter<"Dashboard"> | string
   }
 
-  export type DashboardUpsertWithWhereUniqueWithoutDashboardViewersInput = {
-    where: DashboardWhereUniqueInput
-    update: XOR<DashboardUpdateWithoutDashboardViewersInput, DashboardUncheckedUpdateWithoutDashboardViewersInput>
-    create: XOR<DashboardCreateWithoutDashboardViewersInput, DashboardUncheckedCreateWithoutDashboardViewersInput>
+  export type DashboardShareUpsertWithWhereUniqueWithoutSharedByInput = {
+    where: DashboardShareWhereUniqueInput
+    update: XOR<DashboardShareUpdateWithoutSharedByInput, DashboardShareUncheckedUpdateWithoutSharedByInput>
+    create: XOR<DashboardShareCreateWithoutSharedByInput, DashboardShareUncheckedCreateWithoutSharedByInput>
   }
 
-  export type DashboardUpdateWithWhereUniqueWithoutDashboardViewersInput = {
-    where: DashboardWhereUniqueInput
-    data: XOR<DashboardUpdateWithoutDashboardViewersInput, DashboardUncheckedUpdateWithoutDashboardViewersInput>
+  export type DashboardShareUpdateWithWhereUniqueWithoutSharedByInput = {
+    where: DashboardShareWhereUniqueInput
+    data: XOR<DashboardShareUpdateWithoutSharedByInput, DashboardShareUncheckedUpdateWithoutSharedByInput>
   }
 
-  export type DashboardUpdateManyWithWhereWithoutDashboardViewersInput = {
-    where: DashboardScalarWhereInput
-    data: XOR<DashboardUpdateManyMutationInput, DashboardUncheckedUpdateManyWithoutDashboardViewersInput>
+  export type DashboardShareUpdateManyWithWhereWithoutSharedByInput = {
+    where: DashboardShareScalarWhereInput
+    data: XOR<DashboardShareUpdateManyMutationInput, DashboardShareUncheckedUpdateManyWithoutSharedByInput>
+  }
+
+  export type DashboardShareScalarWhereInput = {
+    AND?: DashboardShareScalarWhereInput | DashboardShareScalarWhereInput[]
+    OR?: DashboardShareScalarWhereInput[]
+    NOT?: DashboardShareScalarWhereInput | DashboardShareScalarWhereInput[]
+    id?: StringFilter<"DashboardShare"> | string
+    dashboardId?: StringFilter<"DashboardShare"> | string
+    sharerId?: StringFilter<"DashboardShare"> | string
+    SharedAt?: DateTimeFilter<"DashboardShare"> | Date | string
+  }
+
+  export type DashboardRecipientUpsertWithWhereUniqueWithoutUserInput = {
+    where: DashboardRecipientWhereUniqueInput
+    update: XOR<DashboardRecipientUpdateWithoutUserInput, DashboardRecipientUncheckedUpdateWithoutUserInput>
+    create: XOR<DashboardRecipientCreateWithoutUserInput, DashboardRecipientUncheckedCreateWithoutUserInput>
+  }
+
+  export type DashboardRecipientUpdateWithWhereUniqueWithoutUserInput = {
+    where: DashboardRecipientWhereUniqueInput
+    data: XOR<DashboardRecipientUpdateWithoutUserInput, DashboardRecipientUncheckedUpdateWithoutUserInput>
+  }
+
+  export type DashboardRecipientUpdateManyWithWhereWithoutUserInput = {
+    where: DashboardRecipientScalarWhereInput
+    data: XOR<DashboardRecipientUpdateManyMutationInput, DashboardRecipientUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type DashboardRecipientScalarWhereInput = {
+    AND?: DashboardRecipientScalarWhereInput | DashboardRecipientScalarWhereInput[]
+    OR?: DashboardRecipientScalarWhereInput[]
+    NOT?: DashboardRecipientScalarWhereInput | DashboardRecipientScalarWhereInput[]
+    id?: StringFilter<"DashboardRecipient"> | string
+    dashboardShareId?: StringFilter<"DashboardRecipient"> | string
+    userId?: StringFilter<"DashboardRecipient"> | string
   }
 
   export type UserCreateWithoutDashboardsOwnedInput = {
     id?: string
     name: string
     password: string
-    DashboardsShared?: DashboardCreateNestedManyWithoutDashboardViewersInput
+    DashboardsShared?: DashboardShareCreateNestedManyWithoutSharedByInput
+    DashboardsReceived?: DashboardRecipientCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutDashboardsOwnedInput = {
     id?: string
     name: string
     password: string
-    DashboardsShared?: DashboardUncheckedCreateNestedManyWithoutDashboardViewersInput
+    DashboardsShared?: DashboardShareUncheckedCreateNestedManyWithoutSharedByInput
+    DashboardsReceived?: DashboardRecipientUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutDashboardsOwnedInput = {
     where: UserWhereUniqueInput
     create: XOR<UserCreateWithoutDashboardsOwnedInput, UserUncheckedCreateWithoutDashboardsOwnedInput>
-  }
-
-  export type UserCreateWithoutDashboardsSharedInput = {
-    id?: string
-    name: string
-    password: string
-    DashboardsOwned?: DashboardCreateNestedManyWithoutDashboardOwnerInput
-  }
-
-  export type UserUncheckedCreateWithoutDashboardsSharedInput = {
-    id?: string
-    name: string
-    password: string
-    DashboardsOwned?: DashboardUncheckedCreateNestedManyWithoutDashboardOwnerInput
-  }
-
-  export type UserCreateOrConnectWithoutDashboardsSharedInput = {
-    where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutDashboardsSharedInput, UserUncheckedCreateWithoutDashboardsSharedInput>
   }
 
   export type IncidentCreateWithoutDashboardInput = {
@@ -5554,6 +8393,30 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type DashboardShareCreateWithoutDashboardInput = {
+    id?: string
+    SharedAt?: Date | string
+    SharedBy: UserCreateNestedOneWithoutDashboardsSharedInput
+    Recipients?: DashboardRecipientCreateNestedManyWithoutDashboardShareInput
+  }
+
+  export type DashboardShareUncheckedCreateWithoutDashboardInput = {
+    id?: string
+    sharerId: string
+    SharedAt?: Date | string
+    Recipients?: DashboardRecipientUncheckedCreateNestedManyWithoutDashboardShareInput
+  }
+
+  export type DashboardShareCreateOrConnectWithoutDashboardInput = {
+    where: DashboardShareWhereUniqueInput
+    create: XOR<DashboardShareCreateWithoutDashboardInput, DashboardShareUncheckedCreateWithoutDashboardInput>
+  }
+
+  export type DashboardShareCreateManyDashboardInputEnvelope = {
+    data: DashboardShareCreateManyDashboardInput | DashboardShareCreateManyDashboardInput[]
+    skipDuplicates?: boolean
+  }
+
   export type UserUpsertWithoutDashboardsOwnedInput = {
     update: XOR<UserUpdateWithoutDashboardsOwnedInput, UserUncheckedUpdateWithoutDashboardsOwnedInput>
     create: XOR<UserCreateWithoutDashboardsOwnedInput, UserUncheckedCreateWithoutDashboardsOwnedInput>
@@ -5569,39 +8432,16 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
-    DashboardsShared?: DashboardUpdateManyWithoutDashboardViewersNestedInput
+    DashboardsShared?: DashboardShareUpdateManyWithoutSharedByNestedInput
+    DashboardsReceived?: DashboardRecipientUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutDashboardsOwnedInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
-    DashboardsShared?: DashboardUncheckedUpdateManyWithoutDashboardViewersNestedInput
-  }
-
-  export type UserUpsertWithWhereUniqueWithoutDashboardsSharedInput = {
-    where: UserWhereUniqueInput
-    update: XOR<UserUpdateWithoutDashboardsSharedInput, UserUncheckedUpdateWithoutDashboardsSharedInput>
-    create: XOR<UserCreateWithoutDashboardsSharedInput, UserUncheckedCreateWithoutDashboardsSharedInput>
-  }
-
-  export type UserUpdateWithWhereUniqueWithoutDashboardsSharedInput = {
-    where: UserWhereUniqueInput
-    data: XOR<UserUpdateWithoutDashboardsSharedInput, UserUncheckedUpdateWithoutDashboardsSharedInput>
-  }
-
-  export type UserUpdateManyWithWhereWithoutDashboardsSharedInput = {
-    where: UserScalarWhereInput
-    data: XOR<UserUpdateManyMutationInput, UserUncheckedUpdateManyWithoutDashboardsSharedInput>
-  }
-
-  export type UserScalarWhereInput = {
-    AND?: UserScalarWhereInput | UserScalarWhereInput[]
-    OR?: UserScalarWhereInput[]
-    NOT?: UserScalarWhereInput | UserScalarWhereInput[]
-    id?: StringFilter<"User"> | string
-    name?: StringFilter<"User"> | string
-    password?: StringFilter<"User"> | string
+    DashboardsShared?: DashboardShareUncheckedUpdateManyWithoutSharedByNestedInput
+    DashboardsReceived?: DashboardRecipientUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type IncidentUpsertWithWhereUniqueWithoutDashboardInput = {
@@ -5632,18 +8472,34 @@ export namespace Prisma {
     dashboardId?: StringFilter<"Incident"> | string
   }
 
+  export type DashboardShareUpsertWithWhereUniqueWithoutDashboardInput = {
+    where: DashboardShareWhereUniqueInput
+    update: XOR<DashboardShareUpdateWithoutDashboardInput, DashboardShareUncheckedUpdateWithoutDashboardInput>
+    create: XOR<DashboardShareCreateWithoutDashboardInput, DashboardShareUncheckedCreateWithoutDashboardInput>
+  }
+
+  export type DashboardShareUpdateWithWhereUniqueWithoutDashboardInput = {
+    where: DashboardShareWhereUniqueInput
+    data: XOR<DashboardShareUpdateWithoutDashboardInput, DashboardShareUncheckedUpdateWithoutDashboardInput>
+  }
+
+  export type DashboardShareUpdateManyWithWhereWithoutDashboardInput = {
+    where: DashboardShareScalarWhereInput
+    data: XOR<DashboardShareUpdateManyMutationInput, DashboardShareUncheckedUpdateManyWithoutDashboardInput>
+  }
+
   export type DashboardCreateWithoutIncidentCollectionInput = {
     id?: string
     name: string
     DashboardOwner: UserCreateNestedOneWithoutDashboardsOwnedInput
-    DashboardViewers?: UserCreateNestedManyWithoutDashboardsSharedInput
+    DashboardShare?: DashboardShareCreateNestedManyWithoutDashboardInput
   }
 
   export type DashboardUncheckedCreateWithoutIncidentCollectionInput = {
     id?: string
     name: string
     dashboardOwnerId: string
-    DashboardViewers?: UserUncheckedCreateNestedManyWithoutDashboardsSharedInput
+    DashboardShare?: DashboardShareUncheckedCreateNestedManyWithoutDashboardInput
   }
 
   export type DashboardCreateOrConnectWithoutIncidentCollectionInput = {
@@ -5666,14 +8522,234 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     DashboardOwner?: UserUpdateOneRequiredWithoutDashboardsOwnedNestedInput
-    DashboardViewers?: UserUpdateManyWithoutDashboardsSharedNestedInput
+    DashboardShare?: DashboardShareUpdateManyWithoutDashboardNestedInput
   }
 
   export type DashboardUncheckedUpdateWithoutIncidentCollectionInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     dashboardOwnerId?: StringFieldUpdateOperationsInput | string
-    DashboardViewers?: UserUncheckedUpdateManyWithoutDashboardsSharedNestedInput
+    DashboardShare?: DashboardShareUncheckedUpdateManyWithoutDashboardNestedInput
+  }
+
+  export type DashboardCreateWithoutDashboardShareInput = {
+    id?: string
+    name: string
+    DashboardOwner: UserCreateNestedOneWithoutDashboardsOwnedInput
+    IncidentCollection?: IncidentCreateNestedManyWithoutDashboardInput
+  }
+
+  export type DashboardUncheckedCreateWithoutDashboardShareInput = {
+    id?: string
+    name: string
+    dashboardOwnerId: string
+    IncidentCollection?: IncidentUncheckedCreateNestedManyWithoutDashboardInput
+  }
+
+  export type DashboardCreateOrConnectWithoutDashboardShareInput = {
+    where: DashboardWhereUniqueInput
+    create: XOR<DashboardCreateWithoutDashboardShareInput, DashboardUncheckedCreateWithoutDashboardShareInput>
+  }
+
+  export type UserCreateWithoutDashboardsSharedInput = {
+    id?: string
+    name: string
+    password: string
+    DashboardsOwned?: DashboardCreateNestedManyWithoutDashboardOwnerInput
+    DashboardsReceived?: DashboardRecipientCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutDashboardsSharedInput = {
+    id?: string
+    name: string
+    password: string
+    DashboardsOwned?: DashboardUncheckedCreateNestedManyWithoutDashboardOwnerInput
+    DashboardsReceived?: DashboardRecipientUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutDashboardsSharedInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutDashboardsSharedInput, UserUncheckedCreateWithoutDashboardsSharedInput>
+  }
+
+  export type DashboardRecipientCreateWithoutDashboardShareInput = {
+    id?: string
+    User: UserCreateNestedOneWithoutDashboardsReceivedInput
+  }
+
+  export type DashboardRecipientUncheckedCreateWithoutDashboardShareInput = {
+    id?: string
+    userId: string
+  }
+
+  export type DashboardRecipientCreateOrConnectWithoutDashboardShareInput = {
+    where: DashboardRecipientWhereUniqueInput
+    create: XOR<DashboardRecipientCreateWithoutDashboardShareInput, DashboardRecipientUncheckedCreateWithoutDashboardShareInput>
+  }
+
+  export type DashboardRecipientCreateManyDashboardShareInputEnvelope = {
+    data: DashboardRecipientCreateManyDashboardShareInput | DashboardRecipientCreateManyDashboardShareInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type DashboardUpsertWithoutDashboardShareInput = {
+    update: XOR<DashboardUpdateWithoutDashboardShareInput, DashboardUncheckedUpdateWithoutDashboardShareInput>
+    create: XOR<DashboardCreateWithoutDashboardShareInput, DashboardUncheckedCreateWithoutDashboardShareInput>
+    where?: DashboardWhereInput
+  }
+
+  export type DashboardUpdateToOneWithWhereWithoutDashboardShareInput = {
+    where?: DashboardWhereInput
+    data: XOR<DashboardUpdateWithoutDashboardShareInput, DashboardUncheckedUpdateWithoutDashboardShareInput>
+  }
+
+  export type DashboardUpdateWithoutDashboardShareInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    DashboardOwner?: UserUpdateOneRequiredWithoutDashboardsOwnedNestedInput
+    IncidentCollection?: IncidentUpdateManyWithoutDashboardNestedInput
+  }
+
+  export type DashboardUncheckedUpdateWithoutDashboardShareInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    dashboardOwnerId?: StringFieldUpdateOperationsInput | string
+    IncidentCollection?: IncidentUncheckedUpdateManyWithoutDashboardNestedInput
+  }
+
+  export type UserUpsertWithoutDashboardsSharedInput = {
+    update: XOR<UserUpdateWithoutDashboardsSharedInput, UserUncheckedUpdateWithoutDashboardsSharedInput>
+    create: XOR<UserCreateWithoutDashboardsSharedInput, UserUncheckedCreateWithoutDashboardsSharedInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutDashboardsSharedInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutDashboardsSharedInput, UserUncheckedUpdateWithoutDashboardsSharedInput>
+  }
+
+  export type UserUpdateWithoutDashboardsSharedInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    DashboardsOwned?: DashboardUpdateManyWithoutDashboardOwnerNestedInput
+    DashboardsReceived?: DashboardRecipientUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutDashboardsSharedInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    DashboardsOwned?: DashboardUncheckedUpdateManyWithoutDashboardOwnerNestedInput
+    DashboardsReceived?: DashboardRecipientUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type DashboardRecipientUpsertWithWhereUniqueWithoutDashboardShareInput = {
+    where: DashboardRecipientWhereUniqueInput
+    update: XOR<DashboardRecipientUpdateWithoutDashboardShareInput, DashboardRecipientUncheckedUpdateWithoutDashboardShareInput>
+    create: XOR<DashboardRecipientCreateWithoutDashboardShareInput, DashboardRecipientUncheckedCreateWithoutDashboardShareInput>
+  }
+
+  export type DashboardRecipientUpdateWithWhereUniqueWithoutDashboardShareInput = {
+    where: DashboardRecipientWhereUniqueInput
+    data: XOR<DashboardRecipientUpdateWithoutDashboardShareInput, DashboardRecipientUncheckedUpdateWithoutDashboardShareInput>
+  }
+
+  export type DashboardRecipientUpdateManyWithWhereWithoutDashboardShareInput = {
+    where: DashboardRecipientScalarWhereInput
+    data: XOR<DashboardRecipientUpdateManyMutationInput, DashboardRecipientUncheckedUpdateManyWithoutDashboardShareInput>
+  }
+
+  export type DashboardShareCreateWithoutRecipientsInput = {
+    id?: string
+    SharedAt?: Date | string
+    Dashboard: DashboardCreateNestedOneWithoutDashboardShareInput
+    SharedBy: UserCreateNestedOneWithoutDashboardsSharedInput
+  }
+
+  export type DashboardShareUncheckedCreateWithoutRecipientsInput = {
+    id?: string
+    dashboardId: string
+    sharerId: string
+    SharedAt?: Date | string
+  }
+
+  export type DashboardShareCreateOrConnectWithoutRecipientsInput = {
+    where: DashboardShareWhereUniqueInput
+    create: XOR<DashboardShareCreateWithoutRecipientsInput, DashboardShareUncheckedCreateWithoutRecipientsInput>
+  }
+
+  export type UserCreateWithoutDashboardsReceivedInput = {
+    id?: string
+    name: string
+    password: string
+    DashboardsOwned?: DashboardCreateNestedManyWithoutDashboardOwnerInput
+    DashboardsShared?: DashboardShareCreateNestedManyWithoutSharedByInput
+  }
+
+  export type UserUncheckedCreateWithoutDashboardsReceivedInput = {
+    id?: string
+    name: string
+    password: string
+    DashboardsOwned?: DashboardUncheckedCreateNestedManyWithoutDashboardOwnerInput
+    DashboardsShared?: DashboardShareUncheckedCreateNestedManyWithoutSharedByInput
+  }
+
+  export type UserCreateOrConnectWithoutDashboardsReceivedInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutDashboardsReceivedInput, UserUncheckedCreateWithoutDashboardsReceivedInput>
+  }
+
+  export type DashboardShareUpsertWithoutRecipientsInput = {
+    update: XOR<DashboardShareUpdateWithoutRecipientsInput, DashboardShareUncheckedUpdateWithoutRecipientsInput>
+    create: XOR<DashboardShareCreateWithoutRecipientsInput, DashboardShareUncheckedCreateWithoutRecipientsInput>
+    where?: DashboardShareWhereInput
+  }
+
+  export type DashboardShareUpdateToOneWithWhereWithoutRecipientsInput = {
+    where?: DashboardShareWhereInput
+    data: XOR<DashboardShareUpdateWithoutRecipientsInput, DashboardShareUncheckedUpdateWithoutRecipientsInput>
+  }
+
+  export type DashboardShareUpdateWithoutRecipientsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    SharedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    Dashboard?: DashboardUpdateOneRequiredWithoutDashboardShareNestedInput
+    SharedBy?: UserUpdateOneRequiredWithoutDashboardsSharedNestedInput
+  }
+
+  export type DashboardShareUncheckedUpdateWithoutRecipientsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    dashboardId?: StringFieldUpdateOperationsInput | string
+    sharerId?: StringFieldUpdateOperationsInput | string
+    SharedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserUpsertWithoutDashboardsReceivedInput = {
+    update: XOR<UserUpdateWithoutDashboardsReceivedInput, UserUncheckedUpdateWithoutDashboardsReceivedInput>
+    create: XOR<UserCreateWithoutDashboardsReceivedInput, UserUncheckedCreateWithoutDashboardsReceivedInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutDashboardsReceivedInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutDashboardsReceivedInput, UserUncheckedUpdateWithoutDashboardsReceivedInput>
+  }
+
+  export type UserUpdateWithoutDashboardsReceivedInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    DashboardsOwned?: DashboardUpdateManyWithoutDashboardOwnerNestedInput
+    DashboardsShared?: DashboardShareUpdateManyWithoutSharedByNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutDashboardsReceivedInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    DashboardsOwned?: DashboardUncheckedUpdateManyWithoutDashboardOwnerNestedInput
+    DashboardsShared?: DashboardShareUncheckedUpdateManyWithoutSharedByNestedInput
   }
 
   export type DashboardCreateManyDashboardOwnerInput = {
@@ -5681,18 +8757,29 @@ export namespace Prisma {
     name: string
   }
 
+  export type DashboardShareCreateManySharedByInput = {
+    id?: string
+    dashboardId: string
+    SharedAt?: Date | string
+  }
+
+  export type DashboardRecipientCreateManyUserInput = {
+    id?: string
+    dashboardShareId: string
+  }
+
   export type DashboardUpdateWithoutDashboardOwnerInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    DashboardViewers?: UserUpdateManyWithoutDashboardsSharedNestedInput
     IncidentCollection?: IncidentUpdateManyWithoutDashboardNestedInput
+    DashboardShare?: DashboardShareUpdateManyWithoutDashboardNestedInput
   }
 
   export type DashboardUncheckedUpdateWithoutDashboardOwnerInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    DashboardViewers?: UserUncheckedUpdateManyWithoutDashboardsSharedNestedInput
     IncidentCollection?: IncidentUncheckedUpdateManyWithoutDashboardNestedInput
+    DashboardShare?: DashboardShareUncheckedUpdateManyWithoutDashboardNestedInput
   }
 
   export type DashboardUncheckedUpdateManyWithoutDashboardOwnerInput = {
@@ -5700,24 +8787,39 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
   }
 
-  export type DashboardUpdateWithoutDashboardViewersInput = {
+  export type DashboardShareUpdateWithoutSharedByInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    DashboardOwner?: UserUpdateOneRequiredWithoutDashboardsOwnedNestedInput
-    IncidentCollection?: IncidentUpdateManyWithoutDashboardNestedInput
+    SharedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    Dashboard?: DashboardUpdateOneRequiredWithoutDashboardShareNestedInput
+    Recipients?: DashboardRecipientUpdateManyWithoutDashboardShareNestedInput
   }
 
-  export type DashboardUncheckedUpdateWithoutDashboardViewersInput = {
+  export type DashboardShareUncheckedUpdateWithoutSharedByInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    dashboardOwnerId?: StringFieldUpdateOperationsInput | string
-    IncidentCollection?: IncidentUncheckedUpdateManyWithoutDashboardNestedInput
+    dashboardId?: StringFieldUpdateOperationsInput | string
+    SharedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    Recipients?: DashboardRecipientUncheckedUpdateManyWithoutDashboardShareNestedInput
   }
 
-  export type DashboardUncheckedUpdateManyWithoutDashboardViewersInput = {
+  export type DashboardShareUncheckedUpdateManyWithoutSharedByInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    dashboardOwnerId?: StringFieldUpdateOperationsInput | string
+    dashboardId?: StringFieldUpdateOperationsInput | string
+    SharedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type DashboardRecipientUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    DashboardShare?: DashboardShareUpdateOneRequiredWithoutRecipientsNestedInput
+  }
+
+  export type DashboardRecipientUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    dashboardShareId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type DashboardRecipientUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    dashboardShareId?: StringFieldUpdateOperationsInput | string
   }
 
   export type IncidentCreateManyDashboardInput = {
@@ -5728,24 +8830,10 @@ export namespace Prisma {
     incidentCoords?: IncidentCreateincidentCoordsInput | number[]
   }
 
-  export type UserUpdateWithoutDashboardsSharedInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    DashboardsOwned?: DashboardUpdateManyWithoutDashboardOwnerNestedInput
-  }
-
-  export type UserUncheckedUpdateWithoutDashboardsSharedInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    DashboardsOwned?: DashboardUncheckedUpdateManyWithoutDashboardOwnerNestedInput
-  }
-
-  export type UserUncheckedUpdateManyWithoutDashboardsSharedInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
+  export type DashboardShareCreateManyDashboardInput = {
+    id?: string
+    sharerId: string
+    SharedAt?: Date | string
   }
 
   export type IncidentUpdateWithoutDashboardInput = {
@@ -5770,6 +8858,46 @@ export namespace Prisma {
     imageData?: BytesFieldUpdateOperationsInput | Uint8Array
     incidentConfidence?: IntFieldUpdateOperationsInput | number
     incidentCoords?: IncidentUpdateincidentCoordsInput | number[]
+  }
+
+  export type DashboardShareUpdateWithoutDashboardInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    SharedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    SharedBy?: UserUpdateOneRequiredWithoutDashboardsSharedNestedInput
+    Recipients?: DashboardRecipientUpdateManyWithoutDashboardShareNestedInput
+  }
+
+  export type DashboardShareUncheckedUpdateWithoutDashboardInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    sharerId?: StringFieldUpdateOperationsInput | string
+    SharedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    Recipients?: DashboardRecipientUncheckedUpdateManyWithoutDashboardShareNestedInput
+  }
+
+  export type DashboardShareUncheckedUpdateManyWithoutDashboardInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    sharerId?: StringFieldUpdateOperationsInput | string
+    SharedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type DashboardRecipientCreateManyDashboardShareInput = {
+    id?: string
+    userId: string
+  }
+
+  export type DashboardRecipientUpdateWithoutDashboardShareInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    User?: UserUpdateOneRequiredWithoutDashboardsReceivedNestedInput
+  }
+
+  export type DashboardRecipientUncheckedUpdateWithoutDashboardShareInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type DashboardRecipientUncheckedUpdateManyWithoutDashboardShareInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
   }
 
 

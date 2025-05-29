@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from 'react';
 
-export default function CameraCapture(){
+export default function CameraCapture(props){
   //Store videostream object
   const [videoStreams, setVideoStreams] = useState([]);
   //Store video references to dom
@@ -11,7 +11,6 @@ export default function CameraCapture(){
     const setupStreams = async () => {
         //Grant permissions first
         await navigator.mediaDevices.getUserMedia({ video: true });
-
         //Enumerate through devices
         //Find devices + cameras(more specific filtering)
         const devices = await navigator.mediaDevices.enumerateDevices();
@@ -72,9 +71,10 @@ export default function CameraCapture(){
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ dataURL }),
+      body: JSON.stringify({ dataURL: dataURL, dashboardID: props.dashboardID }),
         credentials: "include"
       })
+      console.log("Sent dashboardID of: "+dashboardID)
   }
   
   return (

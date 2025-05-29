@@ -15,28 +15,48 @@ datasource db {
 }
 
 model User {
-  id               String      @id @unique @default(uuid())
-  name             String      @unique
-  password         String
-  DashboardsOwned  Dashboard[] @relation("OwnedDashboards")
-  DashboardsShared Dashboard[] @relation("SharedDashboards")
+  id                 String               @id @default(uuid())
+  name               String               @unique
+  password           String
+  DashboardsOwned    Dashboard[]          @relation("OwnedDashboards")
+  DashboardsShared   DashboardShare[]     @relation("SharedDashboards")
+  DashboardsReceived DashboardRecipient[] @relation("ReceivedDashboards")
 }
 
 model Dashboard {
-  id                 String     @id @unique @default(uuid())
+  id                 String           @id @default(uuid())
   name               String
-  DashboardOwner     User       @relation("OwnedDashboards", fields: [dashboardOwnerId], references: [id])
+  DashboardOwner     User             @relation("OwnedDashboards", fields: [dashboardOwnerId], references: [id])
   dashboardOwnerId   String
-  DashboardViewers   User[]     @relation("SharedDashboards")
-  IncidentCollection Incident[] @relation("DashboardIncidents")
+  IncidentCollection Incident[]       @relation("DashboardIncidents")
+  DashboardShare     DashboardShare[]
 }
 
 model Incident {
-  id                 String    @id @unique @default(uuid())
+  id                 String    @id @default(uuid())
   dateCreated        DateTime  @default(now())
   imageData          Bytes
   incidentConfidence Int
   incidentCoords     Int[]
   Dashboard          Dashboard @relation("DashboardIncidents", fields: [dashboardId], references: [id])
   dashboardId        String
+}
+
+model DashboardShare {
+  id          String               @id @default(uuid())
+  dashboardId String
+  Dashboard   Dashboard            @relation(fields: [dashboardId], references: [id])
+  SharedBy    User                 @relation("SharedDashboards", fields: [sharerId], references: [id])
+  sharerId    String
+  SharedAt    DateTime             @default(now())
+  Recipients  DashboardRecipient[]
+}
+
+model DashboardRecipient {
+  id               String @id @default(uuid())
+  dashboardShareId String
+  userId           String
+
+  DashboardShare DashboardShare @relation(fields: [dashboardShareId], references: [id])
+  User           User           @relation("ReceivedDashboards", fields: [userId], references: [id])
 }

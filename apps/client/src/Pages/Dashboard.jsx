@@ -13,6 +13,7 @@ export default function Dashboard(){
     const { dashboardURL } = useParams();
     useEffect(() =>{
         const fetchDashboardInformation = (async() =>{
+            console.log("Fetching dashboard information")
             const fetchedDashboardInformation = await fetch(`http://localhost:8080/api/fetch_dashboard`, {
                 method: 'POST',
                 headers: {
@@ -21,12 +22,13 @@ export default function Dashboard(){
                 credentials: "include",
                 body: JSON.stringify({ dashboard_identification: dashboardURL }),
             })
-            setDashboardData(fetchedDashboardInformation);
-            setIncidents(fetchedDashboardInformation.IncidentCollection)
+            const dashboardInformation = await fetchedDashboardInformation.json();
+            setDashboardData(dashboardInformation.fetched_dashboard);
+            setIncidents(dashboardInformation.fetched_dashboard.IncidentCollection)
         })
         fetchDashboardInformation();
         setLoading(false);
-    })
+    }, [])
 
     const latestIncidentQuery = useQuery({
         queryKey: ["incidents", dashboardURL], 
@@ -56,7 +58,7 @@ export default function Dashboard(){
     return(
         <div className="incidentListWrapper">
             {Array.isArray(incidents) && incidents.map((incident) =>{
-                <IncidentComponent incidentId={incident.id} incidentConfidence={incident.incidentConfidence} incidentTime={incident.dateCreated}></IncidentComponent>
+                return <IncidentComponent incidentId={incident.id} incidentConfidence={incident.incidentConfidence} incidentTime={incident.dateCreated} key={incident.id}></IncidentComponent>
                 //Might have to convert our incidentTime to actually be readable
             })}
         </div>

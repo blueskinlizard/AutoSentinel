@@ -18,7 +18,7 @@ const routes = [
         element: <SignUp />
     },
     {
-        path: '/surveilance',
+        path: '/dashboard/:dashboardURL/surveilance',
         element: <CameraPage />
     },
     {

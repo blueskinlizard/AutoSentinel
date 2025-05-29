@@ -10,6 +10,8 @@ const { spawn } = require("child_process");
 router.post("/new_image", async(req, res)=>{
     if(!req.user){ return res.status(500).json({message: `Failed to add image to local cam-cache, caused by lack of current user`})}
     const dataURL = req.body.dataURL;
+    const dashboardID = req.body.dashboardID;
+    if(!dashboardID){ return res.status(500).json({message: `Failed to evaluate incident image, no dashboard ID specified in request`})}
     //Strip out prefix
     const UUID = crypto.randomUUID();
     const base64Data = dataURL.replace(/^data:image\/\w+;base64,/, '');
@@ -26,7 +28,7 @@ router.post("/new_image", async(req, res)=>{
             if(Array.isArray(detections) && detections.find(obj => obj.class_id === 0)){
                 //Given that detections may have multiple objects, making sure it is a list before accessing is important
                 //Create incident here given that an API call is inefficient
-                await db.createIncident(detections[0], buffer);
+                await db.createIncident(detections[0], Array.from(buffer), dashboardID);
             }
             else{
                 try{
