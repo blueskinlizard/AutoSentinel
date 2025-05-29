@@ -1,12 +1,13 @@
 export default function DashboardCreateComponent(){
     const createDashboard = async(dashboardName) =>{
+        console.log("Dashboard name sent: "+dashboardName)
         await fetch(`http://localhost:8080/api/create_dashboard`,{
             method: 'POST',
             headers: {
                 "Content-Type": "application/json",
             },
             credentials: "include",
-            body: JSON.stringify({ dashboardName }),
+            body: JSON.stringify({ dashboard_name: dashboardName }),
         })
     }
 

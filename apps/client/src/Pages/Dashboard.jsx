@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import IncidentComponent from "../Components/incidentComponent";
 import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 export default function Dashboard(){
     const [dashboardData, setDashboardData] = useState([null]);
@@ -18,7 +19,7 @@ export default function Dashboard(){
                 "Content-Type": "application/json",
                 },
                 credentials: "include",
-                body: JSON.stringify({ dashboardURL }),
+                body: JSON.stringify({ dashboard_identification: dashboardURL }),
             })
             setDashboardData(fetchedDashboardInformation);
             setIncidents(fetchedDashboardInformation.IncidentCollection)
@@ -28,7 +29,7 @@ export default function Dashboard(){
     })
 
     const latestIncidentQuery = useQuery({
-        queryKey: ["messages", conversationId], 
+        queryKey: ["incidents", dashboardURL], 
         staleTime: 1000 * 20,
         queryFn: async () =>{
             const fetchedLastIncident = await fetch(`http://localhost:8080/api/latest_incident`, {
@@ -49,9 +50,12 @@ export default function Dashboard(){
     if(loading){
         return <><h2>Loading...</h2></>
     }
+    if(!incidents){
+        return <><h2>No incidents yet!</h2></>
+    }
     return(
         <div className="incidentListWrapper">
-            {incidents.map((incident) =>{
+            {Array.isArray(incidents) && incidents.map((incident) =>{
                 <IncidentComponent incidentId={incident.id} incidentConfidence={incident.incidentConfidence} incidentTime={incident.dateCreated}></IncidentComponent>
                 //Might have to convert our incidentTime to actually be readable
             })}

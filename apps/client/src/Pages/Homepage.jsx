@@ -65,12 +65,13 @@ export default function Homepage(){
             <h1>Great Debug session king, this is the homepage</h1>
             
             {dashboards.length === 0 ? 
-            <><h2>No dashboards yet!</h2> <DashboardCreateComponent /></>
+            <><h2>No dashboards yet!</h2> <DashboardCreateComponent  /></>
               : 
               <h2>Owned dashboards</h2>
             }
             {dashboards.map((dashboard) =>{
               return (<DashboardHomeComponent dashboardTitle={dashboard.name} 
+              key={dashboard.id}
               dashboardId={dashboard.id} 
               dashboardOwner={dashboard.dashboardOwner} /> )
             })}

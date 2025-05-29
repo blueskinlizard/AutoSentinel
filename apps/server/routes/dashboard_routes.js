@@ -9,7 +9,7 @@ router.post("/fetch_dashboard", async(req, res) =>{
         const fetched_dashboard = await db.fetchDashboard(dashboard_identification);
         return res.status(200).json({fetched_dashboard})
     }catch(error){
-        return res.status(500).json({message: `Syntax error fetching dashboard for user: ${user_id}, returned with error: ${error}`})
+        return res.status(500).json({message: `Syntax error fetching dashboard with id: ${dashboard_identification}, returned with error: ${error}`})
     }
 })
 
@@ -25,6 +25,7 @@ router.post("/delete_dashboard", async(req, res) =>{
 
 router.post("/create_dashboard", async(req, res) =>{
     const { dashboard_name } = req.body;
+    console.log("Trying to create dashboard: "+dashboard_name)
     try{
         if(!req.user){ return res.status(500).json({message: `Error in creating dashboard, user not logged in3 `})}
         const fetched_userObject = await db.findUserByName(req.user.name);
