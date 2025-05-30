@@ -28,7 +28,7 @@ export default function Dashboard(){
         })
         fetchDashboardInformation();
         setLoading(false);
-    }, [])
+    }, [dashboardURL])
 
     const latestIncidentQuery = useQuery({
         queryKey: ["incidents", dashboardURL], 
@@ -41,10 +41,12 @@ export default function Dashboard(){
                 },
                 credentials: "include",
             })
-            if(fetchedLastIncident.id != incidents[incidents.length - 1].id){
+            const lastIncident = await response.json();
+            if(lastIncident.id != incidents[incidents.length - 1].id){
                 //Incidents.length - 1 refers to our last incident
-                setIncidents(prevIncidents => [...prevIncidents, fetchedLastIncident]) //Append new incident
+                setIncidents(prevIncidents => [...prevIncidents, lastIncident]) //Append new incident
             }
+            return lastIncident;
         },
         refetchInterval: 1000 * 2,
         refetchIntervalInBackground: false

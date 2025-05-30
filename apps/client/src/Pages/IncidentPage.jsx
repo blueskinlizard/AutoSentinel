@@ -64,7 +64,7 @@ export default function IncidentPage(){
                 context.beginPath();
                 context.moveTo(coords[0], coords[1]);
                 context.lineTo(coords[2], coords[3]);
-                context.strokeStyle = "#FFFFFF";
+                context.strokeStyle = "#FF0000"
                 context.lineWidth = 2;
                 context.lineJoin = "round";
                 context.lineCap = "round";
