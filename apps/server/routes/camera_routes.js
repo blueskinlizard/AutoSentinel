@@ -28,7 +28,7 @@ router.post("/new_image", async(req, res)=>{
             if(Array.isArray(detections) && detections.find(obj => obj.class_id === 0)){
                 //Given that detections may have multiple objects, making sure it is a list before accessing is important
                 //Create incident here given that an API call is inefficient
-                await db.createIncident(detections[0], Array.from(buffer), dashboardID);
+                await db.createIncident(detections[0], buffer, dashboardID);
             }
             else{
                 try{
