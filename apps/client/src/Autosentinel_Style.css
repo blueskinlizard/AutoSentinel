@@ -1,0 +1,53 @@
+#root{
+    font-size: 10px;
+}
+.Incident_Component > a{
+    display: flex;
+    padding-left: 5rem;
+    padding-right: 5rem;
+    gap: 10rem;
+    margin-bottom: 0.3rem;
+    
+}
+p{
+    font-size: 1.1rem;
+}
+#Incident_Title{
+    color: grey;
+}
+#Incident_Confidence_Low{
+    color: rgb(80, 200, 120);
+}
+#Incident_Confidence_Medium{
+    
+}
+#Incident_Confidence_High{
+    
+}
+#Incident_Confidence_Low, #Incident_Confidence_Medium, #Incident_Confidence_High{
+    padding-right: 5rem;
+}
+#Incident_Component_Link{
+    border-top: 0.1rem solid grey;
+
+}
+#Incident_Component_Link:hover{
+    background-color: rgba(128, 128, 128, 0.5);
+    transition: background-color 0.25s ease-in-out;
+    border-radius: 0.25rem;
+}
+.Dashboard_Heading{
+    font-size: 1.3rem;
+    width: fit-content;
+    margin-left: 12rem;
+}
+.titleWrappers{
+    display: flex;
+    padding-left: 5rem;
+    padding-right: 9rem;
+    gap: 5rem;
+}
+.Dashboard_Title{
+    padding-bottom: 3rem;
+    font-size: 3rem;
+}

@@ -3,6 +3,8 @@ import { useQuery } from "@tanstack/react-query";
 import IncidentComponent from "../Components/incidentComponent";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
+import '../Autosentinel_Style.css'
+
 
 export default function Dashboard(){
     const [dashboardData, setDashboardData] = useState([null]);
@@ -58,11 +60,19 @@ export default function Dashboard(){
         return <><h2>No incidents yet!</h2></>
     }
     return(
-        <div className="incidentListWrapper">
-            {Array.isArray(incidents) && incidents.map((incident) =>{
-                return <IncidentComponent incidentId={incident.id} incidentConfidence={incident.incidentConfidence} incidentTime={incident.dateCreated} key={incident.id}></IncidentComponent>
-                //Might have to convert our incidentTime to actually be readable
-            })}
-        </div>
+        <>
+        <h1 className="Dashboard_Title">{dashboardData.name}</h1>
+            <div className="titleWrappers">
+                <h2 className="Dashboard_Heading">Incident Id</h2>
+                <h2 className="Dashboard_Heading">Confidence</h2>
+                <h2 className="Dashboard_Heading">Captured</h2>
+            </div>
+            <div className="incidentListWrapper">
+                {Array.isArray(incidents) && incidents.map((incident) =>{
+                    return <IncidentComponent incidentId={incident.id} incidentConfidence={incident.incidentConfidence} incidentTime={incident.dateCreated} key={incident.id}></IncidentComponent>
+                    //Might have to convert our incidentTime to actually be readable
+                })}
+            </div>
+        </>
     )
 }

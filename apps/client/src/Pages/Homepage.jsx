@@ -65,7 +65,7 @@ export default function Homepage(){
             <h1>Great Debug session king, this is the homepage</h1>
             
             {dashboards.length === 0 ? 
-            <><h2>No dashboards yet!</h2> <DashboardCreateComponent  /></>
+            <><h2>No owned dashboards yet!</h2> <DashboardCreateComponent  /></>
               : 
               <h2>Owned dashboards</h2>
             }
@@ -75,6 +75,11 @@ export default function Homepage(){
               dashboardId={dashboard.id} 
               dashboardOwner={dashboard.dashboardOwner} /> )
             })}
+            {/* {dashboards.length === 0 ? 
+            <><h2>No owned dashboards yet!</h2> <DashboardCreateComponent  /></>
+              : 
+              <h2>Owned dashboards</h2>
+            } */}
         </div>
     )
 }
