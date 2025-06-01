@@ -2,7 +2,8 @@
 
 ## 🧠 Overview
 
-AutoSentinel combines server-side video processing with web-based visualization tools to deliver a near real-time firearm detection solution for schools and secure facilities. The system ingests video feeds, runs detections using a high-performance computer vision model (yolov11m), and broadcasts detected images from a surveilance stream to a web dashboard with actionable timestamps of where any guns were detected.
+AutoSentinel combines server-side video processing with web-based visualization tools to deliver a near real-time firearm detection solution for schools and secure facilities. 
+The system ingests video feeds, runs detections using a high-performance computer vision model (Yolov11m), and broadcasts detected images from a surveilance stream to a web dashboard with actionable timestamps of where any guns were detected.
 
 ---
 ## 🧩 Multi-User & Multi-Camera Architecture
@@ -34,7 +35,7 @@ AutoSentinel is built for scalable deployment across institutions such as school
 - Each feed is displayed in a dedicated dashboard tile.
 - Users can:
   - View recent detection snapshots and status
-  - Filter feeds by location, detection time, or returned yolov11 confidence scale (Soon to be implemented).
+  - Filter feeds by location, detection time, or returned Yolov11 confidence scale (Soon to be implemented).
 
 ## 🧱 Tech Stack
 
@@ -45,13 +46,12 @@ AutoSentinel is built for scalable deployment across institutions such as school
   - Structured MVC-style service separation for clean logic management.
 
 - **Custom Video Processor Service (Python)**  
-  - Script that runs firearm detection on video streams using a YOLOv8 model.
+  - Script that runs firearm detection on video streams using a YOLOv11 model.
   - Communicates with Node.js via child processes for logging and event handling.
 
 - **PostgreSQL**  
   - Stores timestamped detection logs, metadata, and system events.
   - Optimized schema for querying recent detections and historical patterns.
-  - 
 ### 🌐 Frontend (Dashboard)
 
 - **React.js + Vite**  
@@ -63,6 +63,6 @@ AutoSentinel is built for scalable deployment across institutions such as school
 
 ### ⚙️ Infrastructure & DevOps (Soon to be implemented)
 
-- **Docke
+- **Docker
   - Entire system is containerized: web, API, video processor, and database.
   - Easy local spin-up and seamless transition to production deployment.
