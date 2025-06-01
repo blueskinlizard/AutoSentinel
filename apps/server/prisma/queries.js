@@ -90,10 +90,33 @@ export const deleteDashboard = async(dashboardIdentification_param) =>{
     })
 }
 
-export const fetchSharedDashboards = async(identification_param) =>{
+export const fetchSharedDashboardIds = async(identification_param) =>{
     return await prisma.dashboardRecipient.findMany({
         where:{
             userId: identification_param
+        }
+    })
+}
+
+export const createSharedDashboard = async(identification_param, dashboardIdentification_param, recipientIdentification_param) =>{
+    const createdDashboardShare = await prisma.dashboardShare.create({
+        data:{
+            dashboardId: dashboardIdentification_param,
+            sharerId: identification_param
+        },
+    })
+    await prisma.dashboardRecipient.create({
+        data:{
+            dashboardShareId: createdDashboardShare.id,
+            userId: recipientIdentification_param
+        }
+    })
+}
+
+export const fetchSharedDashboards = async(dashboardShare_identification_param) =>{
+    await prisma.dashboardShare.findFirst({
+        where:{
+            id: dashboardShare_identification_param
         }
     })
 }

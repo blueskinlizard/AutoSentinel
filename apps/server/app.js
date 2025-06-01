@@ -10,6 +10,8 @@ const camera_routes = require("./routes/camera_routes");
 const dashboard_routes = require("./routes/dashboard_routes");
 const incident_routes = require("./routes/incident_routes");
 const user_routes = require("./routes/user_routes");
+const sharing_routes = require("./routes/sharing_routes");
+
 
 
 dotenv.config();
@@ -53,6 +55,8 @@ app.use('/api/', camera_routes);
 app.use('/api/', dashboard_routes);
 app.use('/api/', incident_routes);
 app.use('/api/', user_routes);
+app.use('/api/', sharing_routes);
+
 
 
 server.listen(PORT, () => {
