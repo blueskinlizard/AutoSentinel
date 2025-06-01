@@ -9,6 +9,8 @@ export default function Homepage(){
   const [signedIn, setSignedIn] = useState(false);
   const [dashboards, setDashboards] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [sharedDashboards, setSharedDashboards] = useState([]);
+  //sharedDashboards is an array of dashboard Ids, not objects.
     useEffect(() =>{
         const fetchUserInformation = async() =>{
           const fetchedCurrentUser = await fetch(`http://localhost:8080/api/current_user`, {
@@ -38,12 +40,47 @@ export default function Homepage(){
                   const parsedUserDashboards = await fetchedUserDashboards.json(); 
                   console.log("Fetched dashboards JSON:", parsedUserDashboards.ownedBoards);
                   setDashboards(parsedUserDashboards.ownedBoards); 
-                  setLoading(false);
                 }
                 
                 else{ console.log("Error in fetching owned dashboards, returned with status 500") }
               }catch(error){
                 console.log("Error in fetching owned dashboards, returned with error: "+error)
+                return;
+              }
+              try{
+                const fetchedSharedDashboardIds = await fetch(`http://localhost:8080/api/shared_dashboards`, {
+                  method: 'GET',
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
+                  credentials: "include"
+                })
+                if(fetchedSharedDashboardIds.ok){
+                  const parsedSharedDashboards = await fetchedSharedDashboardIds.json(); 
+                  console.log("Fetched Shared dashboard IDS JSON: ", parsedSharedDashboards)
+                  parsedSharedDashboards.forEach(async sharedDashboardId => {
+                    const fetchedSharedDashboard = await fetch(`http://localhost:8080/api/fetch_dashboard`, {
+                      method: 'POST',
+                      headers: {
+                        "Content-Type": "application/json",
+                      },
+                      credentials: "include",
+                      body: JSON.stringify({ dashboard_name: sharedDashboardId }),
+                    })
+                    const sharedDashboard = await fetchUserInformation.json();
+                    setSharedDashboards(prevDashboards => [...prevDashboards, sharedDashboard])
+                  });
+                }
+                else{
+                  setSharedDashboards([])
+                  setLoading(false);
+                }
+              }catch(error){
+                console.log("Error in fetching shared dashboards, returned with: "+error);
+                setSharedDashboards([])
+                setLoading(false);
+                //While it may seem weird to setLoading(false) so much near the shared dashboards part, given that our useEffect
+                //Ends around this certain area, we must handle all possible contingencies
               }
             }
     }
@@ -75,11 +112,17 @@ export default function Homepage(){
               dashboardId={dashboard.id} 
               dashboardOwner={dashboard.dashboardOwner} /> )
             })}
-            {/* {dashboards.length === 0 ? 
-            <><h2>No owned dashboards yet!</h2> <DashboardCreateComponent  /></>
+            {sharedDashboards.length === 0 ? 
+            <><h2>No dashboards have been shared with you yet!</h2></>
               : 
-              <h2>Owned dashboards</h2>
-            } */}
+              <h2>Shared dashboards:</h2>
+            }
+            {sharedDashboards.map((sharedDashboardId) =>{
+              return (<DashboardHomeComponent dashboardTitle={dashboard.name} 
+              key={dashboard.id}
+              dashboardId={dashboard.id} 
+              dashboardOwner={dashboard.dashboardOwner} /> )
+            })}
         </div>
     )
 }

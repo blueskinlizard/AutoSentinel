@@ -3,7 +3,7 @@ const express = require('express')
 
 const router = express.Router();
 
-router.get("/sharedDashboards", async(req, res)=>{
+router.get("/shared_dashboards", async(req, res)=>{
     if(!req.user){ return res.status(500).json({message: `Failed to fetch shared dashboards, lack of current user`})}
     try{
         const fetched_userObject = await db.findUserByName(req.user.name);
@@ -16,13 +16,14 @@ router.get("/sharedDashboards", async(req, res)=>{
                 sharedDashboards.push(fetched_dashboardShare.dashboardId)
             })
         }
+        return res.status(200).json({ sharedDashboards })
 
     }catch(error){
         return res.status(500).json({message: `Syntax error caught while fetching shared dashboards, error: ${error}`})
     }
 })
 
-router.post("/createSharedDashboard", async(req, res) =>{
+router.post("/create_sharedDashboard", async(req, res) =>{
     const { share_dashboard, dashboard_recipient } = req.body;
     if(!req.user){ return res.status(500).json({message: `Failed to fetch create shared dashboard, lack of current user`})}
     try{
