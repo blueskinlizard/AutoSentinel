@@ -56,7 +56,6 @@ export default function Dashboard(){
                 }else{
                     console.log("Requirements not satisfied for new incident")
                 }
-                console.log("Fetched latest incident is: "+JSON.stringify(lastIncident))
                 return lastIncident.latest_incident ?? null;
             }catch(error){
                 console.log(`Caught error of ${error} when fetching for latest incident`)
@@ -82,7 +81,7 @@ export default function Dashboard(){
                 <h2 className="Dashboard_Heading">Captured</h2>
             </div>
             <div className="incidentListWrapper">
-                {Array.isArray(incidents) && incidents.map((incident) =>{
+                {Array.isArray(incidents) && [...incidents].reverse().map((incident) => {
                     return <IncidentComponent incidentId={incident.id} incidentConfidence={incident.incidentConfidence} incidentTime={incident.dateCreated} key={incident.id}></IncidentComponent>
                     //Might have to convert our incidentTime to actually be readable
                 })}

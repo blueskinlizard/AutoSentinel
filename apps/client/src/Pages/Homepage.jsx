@@ -56,9 +56,10 @@ export default function Homepage(){
                   credentials: "include"
                 })
                 if(fetchedSharedDashboardIds.ok){
-                  const parsedSharedDashboards = await fetchedSharedDashboardIds.json(); 
-                  console.log("Fetched Shared dashboard IDS JSON: ", parsedSharedDashboards)
-                  parsedSharedDashboards.forEach(async sharedDashboardId => {
+                  const parsedSharedDashboards = await fetchedSharedDashboardIds.json();
+                  console.log("Fetched Shared dashboard IDS JSON: ", parsedSharedDashboards);
+                  //Purpose of our map is to fetch data of dashboards shared to us for user experience
+                  const sharedDashboardPromises = parsedSharedDashboards.sharedDashboards.map(async(sharedDashboardId) => {
                     const fetchedSharedDashboard = await fetch(`http://localhost:8080/api/fetch_dashboard`, {
                       method: 'POST',
                       headers: {
@@ -66,10 +67,15 @@ export default function Homepage(){
                       },
                       credentials: "include",
                       body: JSON.stringify({ dashboard_name: sharedDashboardId }),
-                    })
-                    const sharedDashboard = await fetchUserInformation.json();
-                    setSharedDashboards(prevDashboards => [...prevDashboards, sharedDashboard])
-                  });
+                    });
+                    if (!fetchedSharedDashboard.ok) {
+                      throw new Error("Failed to fetch a shared dashboard");
+                    }
+                    return fetchedSharedDashboard.json();
+                  })
+                  const sharedDashboardsData = await Promise.all(sharedDashboardPromises);
+                  setSharedDashboards(sharedDashboardsData);
+                  setLoading(false)
                 }
                 else{
                   setSharedDashboards([])
@@ -117,11 +123,11 @@ export default function Homepage(){
               : 
               <h2>Shared dashboards:</h2>
             }
-            {sharedDashboards.map((sharedDashboardId) =>{
-              return (<DashboardHomeComponent dashboardTitle={dashboard.name} 
-              key={dashboard.id}
-              dashboardId={dashboard.id} 
-              dashboardOwner={dashboard.dashboardOwner} /> )
+            {sharedDashboards.map((sharedDashboard) =>{
+              return (<DashboardHomeComponent dashboardTitle={sharedDashboard.name} 
+              key={sharedDashboard.id}
+              dashboardId={sharedDashboard.id} 
+              dashboardOwner={sharedDashboard.dashboardOwner} /> )
             })}
         </div>
     )

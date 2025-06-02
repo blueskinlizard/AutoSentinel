@@ -10,12 +10,16 @@ router.get("/shared_dashboards", async(req, res)=>{
         const fetched_dashboardShare_ids = await db.fetchSharedDashboardIds(fetched_userObject.id);
         //Given our Prisma schema, this returns our DashboardRecipient models, which in turn contain a DashboardShare Id.
         let sharedDashboards = [];
-        if(Array.isArray(fetched_dashboardShare_ids)){
-            fetched_dashboardShare_ids.forEach(async dashboardShareId => {
-                const fetched_dashboardShare = await db.fetchSharedDashboardIds(dashboardShareId);
-                sharedDashboards.push(fetched_dashboardShare.dashboardId)
+        //Got rid of forEach loop given async incompatability 
+        if (Array.isArray(fetched_dashboardShare_ids)) {
+            const dashboards = await Promise.all(
+            fetched_dashboardShare_ids.map(async (dashboardShareId) => {
+                const fetched_dashboardShare = await db.fetchDashboardByShareId(dashboardShareId);
+                return fetched_dashboardShare.dashboardId;
             })
-        }
+      );
+      sharedDashboards = dashboards;
+    }
         return res.status(200).json({ sharedDashboards })
 
     }catch(error){
