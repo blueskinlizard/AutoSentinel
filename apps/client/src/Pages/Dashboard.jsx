@@ -7,10 +7,10 @@ import '../Autosentinel_Style.css'
 
 
 export default function Dashboard(){
-    const [dashboardData, setDashboardData] = useState([null]);
+    const [dashboardData, setDashboardData] = useState(null);
     const [loading, setLoading] = useState(true);
     //Simply stores incident ID for comparison, whole object storage is unecessary
-    const [incidents, setIncidents] = useState(null);
+    const [incidents, setIncidents] = useState([]);
     //Quality of life access for incident management, technically unecessary, but makes my life easier
     const { dashboardURL } = useParams();
     useEffect(() =>{
@@ -25,33 +25,47 @@ export default function Dashboard(){
                 body: JSON.stringify({ dashboard_identification: dashboardURL }),
             })
             const dashboardInformation = await fetchedDashboardInformation.json();
+            console.log("Fetched dashboard information: "+JSON.stringify(dashboardInformation))
             setDashboardData(dashboardInformation.fetched_dashboard);
             setIncidents(dashboardInformation.fetched_dashboard.IncidentCollection)
+            setLoading(false);
+
         })
         fetchDashboardInformation();
-        setLoading(false);
     }, [dashboardURL])
 
     const latestIncidentQuery = useQuery({
         queryKey: ["incidents", dashboardURL], 
         staleTime: 1000 * 20,
         queryFn: async () =>{
-            const fetchedLastIncident = await fetch(`http://localhost:8080/api/latest_incident`, {
-                method: 'GET',
-                headers: {
-                "Content-Type": "application/json",
-                },
-                credentials: "include",
-            })
-            const lastIncident = await response.json();
-            if(lastIncident.id != incidents[incidents.length - 1].id){
-                //Incidents.length - 1 refers to our last incident
-                setIncidents(prevIncidents => [...prevIncidents, lastIncident]) //Append new incident
+            try{
+                console.log("Queryfn ran")
+                const fetchedLastIncident = await fetch(`http://localhost:8080/api/latest_incident`, {
+                    method: 'POST',
+                    headers: {
+                    "Content-Type": "application/json",
+                    },
+                    credentials: "include",
+                    body: JSON.stringify({ dashboard_id: dashboardURL })
+                })
+                const lastIncident = await fetchedLastIncident.json();
+                if (lastIncident.latest_incident && Array.isArray(incidents) && incidents.length > 0 && 
+                lastIncident.latest_incident.id !== incidents[incidents.length - 1].id && lastIncident.latest_incident.incidentConfidence !== undefined) {
+                    console.log("Updating incident state")
+                    setIncidents(prevIncidents => [...prevIncidents, lastIncident.latest_incident])
+                }else{
+                    console.log("Requirements not satisfied for new incident")
+                }
+                console.log("Fetched latest incident is: "+JSON.stringify(lastIncident))
+                return lastIncident.latest_incident ?? null;
+            }catch(error){
+                console.log(`Caught error of ${error} when fetching for latest incident`)
+                return null;
             }
-            return lastIncident;
         },
         refetchInterval: 1000 * 2,
-        refetchIntervalInBackground: false
+        refetchIntervalInBackground: false,
+        enabled: !loading && incidents !== null
     })
     if(loading){
         return <><h2>Loading...</h2></>

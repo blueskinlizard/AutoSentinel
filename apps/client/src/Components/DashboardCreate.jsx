@@ -9,6 +9,7 @@ export default function DashboardCreateComponent(){
             credentials: "include",
             body: JSON.stringify({ dashboard_name: dashboardName }),
         })
+        window.location.reload();
     }
 
     const handleFormInformation = async(submittedForm) =>{

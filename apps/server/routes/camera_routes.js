@@ -18,6 +18,9 @@ router.post("/new_image", async(req, res)=>{
     const buffer = Buffer.from(base64Data, 'base64');
     const imagePath = path.join(__dirname, '..', 'cam-cache', `${UUID}.jpg`);
     fs.writeFileSync(imagePath, buffer);
+
+    
+
     try{
         //I know I could uniformly use async/await stuff but I'm too stubborn for that
         await fs.promises.access(imagePath, fs.constants.F_OK | fs.constants.R_OK);
@@ -33,16 +36,10 @@ router.post("/new_image", async(req, res)=>{
                 //Given that detections may have multiple objects, making sure it is a list before accessing is important
                 //Create incident here given that an API call is inefficient
             }
-            try{
-                await fs.promises.unlink(imagePath);
-                console.log(`File at ${imagePath} deleted successfully`);
-            }catch(error){
-                console.error(`Error deleting file at ${imagePath}, caused by: `+error)
-            }
             //Delete incident file in cam-cache even after creation/detection given that we will have already stored imagedata to our database
             return res.status(200).json({detections, UUID, message: "Detection ran!!!"})
         })
-        .catch((error)=>{
+        .catch(async (error)=>{
             console.log("Error during detection: "+error)
             //This isn't ran if no detections are found, simply from a syntax error.
             res.status(500).json({ message: "Detection failed", error: error.message });
@@ -67,11 +64,12 @@ function runDetection(imagePath) {
             console.error("Python stderr:", chunk.toString());
         });
 
-        process.on("close", (code) => {
+        process.on("close", async (code) => {
             if (code !== 0) {
                 reject(new Error(`Process exited with code: ${code}`));
             } else {
                 try {
+                    await cleanupFile(imagePath);
                     const lines = data.trim().split('\n').filter(line => line.trim().length > 0);
                     const jsonLine = lines.reverse().find(line => line.startsWith('[') || line.startsWith('{'));
                     const result = JSON.parse(jsonLine);
@@ -83,4 +81,14 @@ function runDetection(imagePath) {
         });
     });
 }
+
+const cleanupFile = async (imagePath) => {
+        try {
+            await fs.promises.unlink(imagePath);
+            console.log(`File at ${imagePath} deleted successfully`);
+        } catch(error) {
+            console.error(`Error deleting file at ${imagePath}, caused by: ${error}`);
+        }
+    };
+
 module.exports = router;

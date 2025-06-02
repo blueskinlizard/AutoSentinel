@@ -12,13 +12,11 @@ router.post("/delete_incident", async(req, res) =>{
         return res.status(500).json({message: `Failed to delete incident with id: ${incident_id}, returned with syntax error: ${error}`})
     }
 })
-router.get("/latest_incident", async(req, res) =>{
-    const fetched_user = await db.findUserByName(req.user.name)
+router.post("/latest_incident", async(req, res) =>{
+    const { dashboard_id } = req.body;
     try{
-        const fetched_dashboard = await db.fetchDashboard(fetched_user.id);
-        const incidents = fetched_dashboard?.IncidentCollection || [];
-        const latest_incident = incidents[incidents.length - 1] || null;
-        return res.status(200).json({latest_incident})
+        const latest_incident = await db.fetchLatestIncident(dashboard_id)
+        return res.status(200).json({latest_incident: latest_incident.IncidentCollection[0]})
     }catch(error){
         return res.status(500).json({message: `Syntax error in fetching latest dashboard incident for user: ${req.user.name}, returned with error: ${error}`})
     }

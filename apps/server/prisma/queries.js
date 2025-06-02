@@ -16,7 +16,7 @@ export const findUserById = async(identification_param) =>{
     })
 }
 export const createNewUser = async(username_param, hashed_password_param) =>{
-    await prisma.user.create({
+    return await prisma.user.create({
         data:{
             name: username_param,
             password: hashed_password_param
@@ -117,6 +117,20 @@ export const fetchSharedDashboards = async(dashboardShare_identification_param) 
     await prisma.dashboardShare.findFirst({
         where:{
             id: dashboardShare_identification_param
+        }
+    })
+}
+
+export const fetchLatestIncident = async(dashboardIdentification_param) =>{
+    return await prisma.dashboard.findUnique({
+        where: {
+            id: dashboardIdentification_param
+        },
+        include: {
+            IncidentCollection: {
+                orderBy: { dateCreated: `desc` },
+                take: 1
+            }
         }
     })
 }
