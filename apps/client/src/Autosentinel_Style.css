@@ -19,10 +19,10 @@ p{
     color: rgb(80, 200, 120);
 }
 #Incident_Confidence_Medium{
-    
+    color: rgb(219, 159, 79);
 }
 #Incident_Confidence_High{
-    
+    color: rgb(212, 57, 57);
 }
 #Incident_Confidence_Low, #Incident_Confidence_Medium, #Incident_Confidence_High{
     padding-right: 5rem;

@@ -36,7 +36,7 @@ model Incident {
   id                 String    @id @default(uuid())
   dateCreated        DateTime  @default(now())
   imageData          Bytes
-  incidentConfidence Int
+  incidentConfidence Float
   incidentCoords     Int[]
   Dashboard          Dashboard @relation("DashboardIncidents", fields: [dashboardId], references: [id])
   dashboardId        String

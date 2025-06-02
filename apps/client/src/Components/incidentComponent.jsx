@@ -7,7 +7,7 @@ export default function IncidentComponent(props){
     if(props.incidentConfidence < 0.55){
         incidentConfidence = "Low";
     }
-    if(props.incidentConfidence > 0.55 && props.incidentConfidence < 0.7){
+    if(props.incidentConfidence > 0.55 && props.incidentConfidence < 0.75){
         incidentConfidence = "Medium";
     }
     if(props.incidentConfidence > 0.75){
@@ -17,7 +17,7 @@ export default function IncidentComponent(props){
         <div className="Incident_Component">
             <Link to={`/incident/${props.incidentId}`} id="Incident_Component_Link">
                 <p id="Incident_Title">Incident {props.incidentId}</p>
-                <p id="Incident_Confidence_Low">{incidentConfidence} ({props.incidentConfidence})</p>
+                <p id={`Incident_Confidence_${incidentConfidence}`}>{incidentConfidence} ({props.incidentConfidence.toFixed(2)})</p>
                 <p id="Incident_DateTime">{incidentDate.toLocaleString()}</p>
             </Link>
         </div>

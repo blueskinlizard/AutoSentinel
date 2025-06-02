@@ -25,19 +25,21 @@ router.post("/new_image", async(req, res)=>{
             //Return our detections here, console.log is just for debuggin:
             console.log("Detections:", detections);
             //Simple detection return
-            if(Array.isArray(detections) && detections.find(obj => obj.class_id === 0)){
+            if(Array.isArray(detections)){
+                const targetDetection = detections.find(obj => obj.class_id === 0)
+                if(targetDetection){
+                    await db.createIncident(targetDetection, buffer, dashboardID);
+                }
                 //Given that detections may have multiple objects, making sure it is a list before accessing is important
                 //Create incident here given that an API call is inefficient
-                await db.createIncident(detections[0], buffer, dashboardID);
             }
-            else{
-                try{
-                    await fs.promises.unlink(imagePath);
-                    console.log(`File at ${imagePath} deleted successfully`);
-                }catch(error){
-                    console.error(`Error deleting file at ${imagePath}, caused by: `+error)
-                }
+            try{
+                await fs.promises.unlink(imagePath);
+                console.log(`File at ${imagePath} deleted successfully`);
+            }catch(error){
+                console.error(`Error deleting file at ${imagePath}, caused by: `+error)
             }
+            //Delete incident file in cam-cache even after creation/detection given that we will have already stored imagedata to our database
             return res.status(200).json({detections, UUID, message: "Detection ran!!!"})
         })
         .catch((error)=>{

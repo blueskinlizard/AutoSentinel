@@ -23,7 +23,7 @@ for result in results:
     for box in result.boxes:
         detectedObject = {
             "class_id": int(box.cls[0]),
-            "confidence": float(box.conf[0]),
+            "confidence": box.conf.item(),
             "bbox": [float(coord) for coord in box.xyxy[0]],
             #bbox is our bounding box coordinate, important for false positive prevention methods
             "path": image_path

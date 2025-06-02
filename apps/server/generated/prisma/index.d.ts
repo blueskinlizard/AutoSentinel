@@ -4230,7 +4230,7 @@ export namespace Prisma {
     readonly id: FieldRef<"Incident", 'String'>
     readonly dateCreated: FieldRef<"Incident", 'DateTime'>
     readonly imageData: FieldRef<"Incident", 'Bytes'>
-    readonly incidentConfidence: FieldRef<"Incident", 'Int'>
+    readonly incidentConfidence: FieldRef<"Incident", 'Float'>
     readonly incidentCoords: FieldRef<"Incident", 'Int[]'>
     readonly dashboardId: FieldRef<"Incident", 'String'>
   }
@@ -6897,9 +6897,16 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'Int'
+   * Reference to a field of type 'Float'
    */
-  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
+  export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
+    
+
+
+  /**
+   * Reference to a field of type 'Float[]'
+   */
+  export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
     
 
 
@@ -6911,16 +6918,9 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'Float'
+   * Reference to a field of type 'Int'
    */
-  export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
-    
-
-
-  /**
-   * Reference to a field of type 'Float[]'
-   */
-  export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
+  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
     
   /**
    * Deep Input Types
@@ -7036,7 +7036,7 @@ export namespace Prisma {
     id?: StringFilter<"Incident"> | string
     dateCreated?: DateTimeFilter<"Incident"> | Date | string
     imageData?: BytesFilter<"Incident"> | Uint8Array
-    incidentConfidence?: IntFilter<"Incident"> | number
+    incidentConfidence?: FloatFilter<"Incident"> | number
     incidentCoords?: IntNullableListFilter<"Incident">
     dashboardId?: StringFilter<"Incident"> | string
     Dashboard?: XOR<DashboardScalarRelationFilter, DashboardWhereInput>
@@ -7059,7 +7059,7 @@ export namespace Prisma {
     NOT?: IncidentWhereInput | IncidentWhereInput[]
     dateCreated?: DateTimeFilter<"Incident"> | Date | string
     imageData?: BytesFilter<"Incident"> | Uint8Array
-    incidentConfidence?: IntFilter<"Incident"> | number
+    incidentConfidence?: FloatFilter<"Incident"> | number
     incidentCoords?: IntNullableListFilter<"Incident">
     dashboardId?: StringFilter<"Incident"> | string
     Dashboard?: XOR<DashboardScalarRelationFilter, DashboardWhereInput>
@@ -7086,7 +7086,7 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"Incident"> | string
     dateCreated?: DateTimeWithAggregatesFilter<"Incident"> | Date | string
     imageData?: BytesWithAggregatesFilter<"Incident"> | Uint8Array
-    incidentConfidence?: IntWithAggregatesFilter<"Incident"> | number
+    incidentConfidence?: FloatWithAggregatesFilter<"Incident"> | number
     incidentCoords?: IntNullableListFilter<"Incident">
     dashboardId?: StringWithAggregatesFilter<"Incident"> | string
   }
@@ -7320,7 +7320,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     imageData?: BytesFieldUpdateOperationsInput | Uint8Array
-    incidentConfidence?: IntFieldUpdateOperationsInput | number
+    incidentConfidence?: FloatFieldUpdateOperationsInput | number
     incidentCoords?: IncidentUpdateincidentCoordsInput | number[]
     Dashboard?: DashboardUpdateOneRequiredWithoutIncidentCollectionNestedInput
   }
@@ -7329,7 +7329,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     imageData?: BytesFieldUpdateOperationsInput | Uint8Array
-    incidentConfidence?: IntFieldUpdateOperationsInput | number
+    incidentConfidence?: FloatFieldUpdateOperationsInput | number
     incidentCoords?: IncidentUpdateincidentCoordsInput | number[]
     dashboardId?: StringFieldUpdateOperationsInput | string
   }
@@ -7347,7 +7347,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     imageData?: BytesFieldUpdateOperationsInput | Uint8Array
-    incidentConfidence?: IntFieldUpdateOperationsInput | number
+    incidentConfidence?: FloatFieldUpdateOperationsInput | number
     incidentCoords?: IncidentUpdateincidentCoordsInput | number[]
   }
 
@@ -7355,7 +7355,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     imageData?: BytesFieldUpdateOperationsInput | Uint8Array
-    incidentConfidence?: IntFieldUpdateOperationsInput | number
+    incidentConfidence?: FloatFieldUpdateOperationsInput | number
     incidentCoords?: IncidentUpdateincidentCoordsInput | number[]
     dashboardId?: StringFieldUpdateOperationsInput | string
   }
@@ -7583,15 +7583,15 @@ export namespace Prisma {
     not?: NestedBytesFilter<$PrismaModel> | Uint8Array
   }
 
-  export type IntFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntFilter<$PrismaModel> | number
+  export type FloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
   }
 
   export type IntNullableListFilter<$PrismaModel = never> = {
@@ -7666,20 +7666,20 @@ export namespace Prisma {
     _max?: NestedBytesFilter<$PrismaModel>
   }
 
-  export type IntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+  export type FloatWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
     _count?: NestedIntFilter<$PrismaModel>
     _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
+    _sum?: NestedFloatFilter<$PrismaModel>
+    _min?: NestedFloatFilter<$PrismaModel>
+    _max?: NestedFloatFilter<$PrismaModel>
   }
 
   export type DashboardShareCountOrderByAggregateInput = {
@@ -7972,7 +7972,7 @@ export namespace Prisma {
     set?: Uint8Array
   }
 
-  export type IntFieldUpdateOperationsInput = {
+  export type FloatFieldUpdateOperationsInput = {
     set?: number
     increment?: number
     decrement?: number
@@ -8151,6 +8151,17 @@ export namespace Prisma {
     not?: NestedBytesFilter<$PrismaModel> | Uint8Array
   }
 
+  export type NestedFloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
   export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -8175,23 +8186,7 @@ export namespace Prisma {
     _max?: NestedBytesFilter<$PrismaModel>
   }
 
-  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
-  }
-
-  export type NestedFloatFilter<$PrismaModel = never> = {
+  export type NestedFloatWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | FloatFieldRefInput<$PrismaModel>
     in?: number[] | ListFloatFieldRefInput<$PrismaModel>
     notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
@@ -8199,7 +8194,12 @@ export namespace Prisma {
     lte?: number | FloatFieldRefInput<$PrismaModel>
     gt?: number | FloatFieldRefInput<$PrismaModel>
     gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatFilter<$PrismaModel> | number
+    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedFloatFilter<$PrismaModel>
+    _min?: NestedFloatFilter<$PrismaModel>
+    _max?: NestedFloatFilter<$PrismaModel>
   }
 
   export type DashboardCreateWithoutDashboardOwnerInput = {
@@ -8467,7 +8467,7 @@ export namespace Prisma {
     id?: StringFilter<"Incident"> | string
     dateCreated?: DateTimeFilter<"Incident"> | Date | string
     imageData?: BytesFilter<"Incident"> | Uint8Array
-    incidentConfidence?: IntFilter<"Incident"> | number
+    incidentConfidence?: FloatFilter<"Incident"> | number
     incidentCoords?: IntNullableListFilter<"Incident">
     dashboardId?: StringFilter<"Incident"> | string
   }
@@ -8840,7 +8840,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     imageData?: BytesFieldUpdateOperationsInput | Uint8Array
-    incidentConfidence?: IntFieldUpdateOperationsInput | number
+    incidentConfidence?: FloatFieldUpdateOperationsInput | number
     incidentCoords?: IncidentUpdateincidentCoordsInput | number[]
   }
 
@@ -8848,7 +8848,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     imageData?: BytesFieldUpdateOperationsInput | Uint8Array
-    incidentConfidence?: IntFieldUpdateOperationsInput | number
+    incidentConfidence?: FloatFieldUpdateOperationsInput | number
     incidentCoords?: IncidentUpdateincidentCoordsInput | number[]
   }
 
@@ -8856,7 +8856,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     dateCreated?: DateTimeFieldUpdateOperationsInput | Date | string
     imageData?: BytesFieldUpdateOperationsInput | Uint8Array
-    incidentConfidence?: IntFieldUpdateOperationsInput | number
+    incidentConfidence?: FloatFieldUpdateOperationsInput | number
     incidentCoords?: IncidentUpdateincidentCoordsInput | number[]
   }
 
