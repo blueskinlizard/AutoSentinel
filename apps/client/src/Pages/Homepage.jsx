@@ -121,12 +121,12 @@ export default function Homepage(){
               dashboardId={dashboard.id} 
               dashboardOwner={dashboard.dashboardOwner} /> )
             })}
+            <DashboardCreateComponent shareDashboard={true}/>
             {sharedDashboards.length === 0 ? 
             <><h2>No dashboards have been shared with you yet!</h2></>
               : 
-              <h2>Shared dashboards:</h2>
+              <h2>Dashboards shared with you:</h2>
             }
-            <DashboardCreateComponent shareDashboard={true}/>
             {sharedDashboards.map((sharedDashboard) =>{
               return (<DashboardHomeComponent dashboardTitle={sharedDashboard.name} 
               key={sharedDashboard.id}

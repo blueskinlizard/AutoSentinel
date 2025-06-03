@@ -55,8 +55,8 @@ export default function DashboardCreateComponent(props){
             <div className="SharedDashboardCreateComponent">
                 <h3>Share new dashboard:</h3>
                 <form id="shareDashboardForm" onSubmit={handleFormInformation}>
-                    <input type="text" id="sharedDashboardNameInput" placeholder="Share dashboard with name:" name="dashboardName"></input>
-                    <input type="text" id="sharedDashboardRecipientInput" placeholder="Share dashboard to:" name="dashboardRecipient"></input>
+                    <input type="text" id="sharedDashboardNameInput" placeholder="Share dashboard of:" name="dashboardName"></input>
+                    <input type="text" id="sharedDashboardRecipientInput" placeholder="Share dashboard to user:" name="dashboardRecipient"></input>
                     <button type="submit">Share your board!</button>
                 </form>
             </div>
