@@ -13,6 +13,22 @@ router.post("/fetch_dashboard", async(req, res) =>{
     }
 })
 
+router.post("/fetch_dashboard_name", async(req, res) =>{
+    const { dashboard_identification } = req.body;
+    try{
+        if(!req.user){ return res.status(500).json({message: `Error in fetching all user dashboards, user is not signed in`})}
+        console.log("req.user:", req.user);
+        const user = await db.findUserByName(req.user.name);
+        const user_id = user.id;
+        
+        const fetched_dashboard = await db.fetchDashboardByName(dashboard_identification, user_id);
+        return res.status(200).json({fetched_dashboard})
+    }catch(error){
+        return res.status(500).json({message: `Syntax error fetching dashboard with name: ${dashboard_identification}, returned with error: ${error}`})
+    }
+})
+
+
 router.post("/delete_dashboard", async(req, res) =>{
     const { dashboard_identification } = req.body;
     try{

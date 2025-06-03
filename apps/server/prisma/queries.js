@@ -61,6 +61,14 @@ export const fetchDashboard = async(dashboardIdentification_param) =>{
         }
     })
 }
+export const fetchDashboardByName = async(dashboardName_param, identification_param) =>{ 
+    return await prisma.dashboard.findFirst({
+        where:{
+            name: dashboardName_param,
+            dashboardOwnerId: identification_param
+        }
+    })
+}
 
 export const fetchUserDashboards = async(identification_param) =>{
     //User id for identification_param, returns all dashboards under specific user
@@ -98,10 +106,19 @@ export const fetchSharedDashboardIds = async(identification_param) =>{
     })
 }
 
-export const createSharedDashboard = async(identification_param, dashboardIdentification_param, recipientIdentification_param) =>{
-    const createdDashboardShare = await prisma.dashboardShare.create({
+export const createSharedDashboard = async(identification_param, dashboardName_param, recipientIdentification_param) =>{
+    const dashboard = await prisma.dashboard.findFirst({
+        where: {
+            name: dashboardName_param,
+            dashboardOwnerId: identification_param
+        }
+    });
+    if (!dashboard) {
+        throw new Error(`Dashboard '${dashboardName_param}' not found or not owned by user`);
+    }
+     const createdDashboardShare = await prisma.dashboardShare.create({
         data:{
-            dashboardId: dashboardIdentification_param,
+            dashboardId: dashboard.id,
             sharerId: identification_param
         },
     })
@@ -114,7 +131,7 @@ export const createSharedDashboard = async(identification_param, dashboardIdenti
 }
 
 export const fetchSharedDashboards = async(dashboardShare_identification_param) =>{
-    await prisma.dashboardShare.findFirst({
+    return await prisma.dashboardShare.findFirst({
         where:{
             id: dashboardShare_identification_param
         }

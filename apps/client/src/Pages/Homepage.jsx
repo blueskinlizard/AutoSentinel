@@ -60,18 +60,21 @@ export default function Homepage(){
                   console.log("Fetched Shared dashboard IDS JSON: ", parsedSharedDashboards);
                   //Purpose of our map is to fetch data of dashboards shared to us for user experience
                   const sharedDashboardPromises = parsedSharedDashboards.sharedDashboards.map(async(sharedDashboardId) => {
+                    console.log("Processing sharedDashboardId:", sharedDashboardId); 
+                    console.log("Type of sharedDashboardId:", typeof sharedDashboardId); 
                     const fetchedSharedDashboard = await fetch(`http://localhost:8080/api/fetch_dashboard`, {
                       method: 'POST',
                       headers: {
                         "Content-Type": "application/json",
                       },
                       credentials: "include",
-                      body: JSON.stringify({ dashboard_name: sharedDashboardId }),
+                      body: JSON.stringify({ dashboard_identification: sharedDashboardId }),
                     });
                     if (!fetchedSharedDashboard.ok) {
                       throw new Error("Failed to fetch a shared dashboard");
                     }
-                    return fetchedSharedDashboard.json();
+                    const parsedFetchedSharedDashboard = await fetchedSharedDashboard.json();
+                    return parsedFetchedSharedDashboard.fetched_dashboard;
                   })
                   const sharedDashboardsData = await Promise.all(sharedDashboardPromises);
                   setSharedDashboards(sharedDashboardsData);
@@ -123,6 +126,7 @@ export default function Homepage(){
               : 
               <h2>Shared dashboards:</h2>
             }
+            <DashboardCreateComponent shareDashboard={true}/>
             {sharedDashboards.map((sharedDashboard) =>{
               return (<DashboardHomeComponent dashboardTitle={sharedDashboard.name} 
               key={sharedDashboard.id}

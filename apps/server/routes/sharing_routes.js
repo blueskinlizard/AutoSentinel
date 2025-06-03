@@ -14,7 +14,7 @@ router.get("/shared_dashboards", async(req, res)=>{
         if (Array.isArray(fetched_dashboardShare_ids)) {
             const dashboards = await Promise.all(
             fetched_dashboardShare_ids.map(async (dashboardShareId) => {
-                const fetched_dashboardShare = await db.fetchDashboardByShareId(dashboardShareId);
+                const fetched_dashboardShare = await db.fetchSharedDashboards(dashboardShareId.dashboardShareId);
                 return fetched_dashboardShare.dashboardId;
             })
       );
