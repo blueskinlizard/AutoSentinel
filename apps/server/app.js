@@ -30,8 +30,27 @@ app.use(session({
   }
 }));
 
+const allowedOrigins = [
+    'http://localhost:3000',
+    'http://localhost:5173',
+    'http://client:3000',
+    'http://client:80',
+    'http://localhost',
+    'http://localhost:80',        
+    'http://server:8080',         
+    'http://client:3000',         
+    'http://0.0.0.0:3000',        
+    'http://127.0.0.1:3000',      
+];
+
 const corsOptions = {
-  origin: 'http://localhost:5173',
+  origin: function(origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE']
 };

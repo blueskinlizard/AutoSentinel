@@ -1,24 +1,19 @@
 FROM node:22
 
-# Install Python + pip
 RUN apt-get update && apt-get install -y python3 python3-pip
 
-# Set working dir
 WORKDIR /app
 
-# Node dependencies
-COPY package*.json ./
+COPY server/package*.json ./
 RUN npm install
 
-# Prisma
-COPY prisma ./prisma
+COPY server/prisma ./prisma
 RUN npx prisma generate
 
-# App files
-COPY . .
-
 COPY yoloservice/requirements.txt ./yoloservice/
-RUN pip3 install -r ./yoloservice/requirements.txt
+RUN pip3 install -r ./yoloservice/requirements.txt --break-system-packages
+
+COPY server/. .
 
 EXPOSE 8080
 
