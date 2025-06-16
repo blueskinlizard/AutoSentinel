@@ -53,7 +53,7 @@ router.post("/new_image", async(req, res)=>{
 function runDetection(imagePath) {
 
     return new Promise((resolve, reject) => {
-        const process = spawn("python3", ["../../yoloservice/yolo_model.py", imagePath]);
+        const process = spawn("python3", ["../yoloservice/yolo_model.py", imagePath]);
         let data = "";
         process.stdout.on("data", (chunk) => {
             console.log("Python stdout:", chunk.toString());
