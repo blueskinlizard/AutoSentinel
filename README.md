@@ -66,3 +66,8 @@ AutoSentinel is built for scalable deployment across institutions such as school
 - **Docker
   - Entire system is containerized: web, API, video processor, and database.
   - Easy local spin-up and seamless transition to production deployment.
+---
+## Screenshots
+<img width="1367" height="525" alt="image" src="https://github.com/user-attachments/assets/c4c78716-d25c-4535-99b1-f6af9d556909" />
+<img width="327" height="275" alt="image" src="https://github.com/user-attachments/assets/2c9b26fc-1809-4b6e-b491-cce5d6dd9cda" />
+
