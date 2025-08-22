@@ -2,14 +2,10 @@
 
 ## 🧠 Overview
 
-AutoSentinel combines server-side video processing with web-based visualization tools to deliver a near real-time firearm detection solution for schools and secure facilities. 
+AutoSentinel combines server-side video processing with web-based visualization tools to deliver a near real-time firearm detection solution for schools and secure facilities (It uploads frames, so it has a detection delay of ~3 seconds). 
 The system ingests video feeds, runs detections using a high-performance computer vision model (Yolov11m), and broadcasts detected images from a surveilance stream to a web dashboard with actionable timestamps of where any guns were detected.
 
 ---
-## 🧩 Multi-User & Multi-Camera Architecture
-
-AutoSentinel is built for scalable deployment across institutions such as schools, campuses, or office buildings—supporting multiple users, real-time surveillance feeds, and modular monitoring dashboards.
-
 ### 👥 Multi-User Support
 
 #### User Accounts & Authentication
@@ -26,10 +22,10 @@ AutoSentinel is built for scalable deployment across institutions such as school
 
 ---
 
-### 🎥 Multi-Camera Feed Management
+### Multi-Camera Feed Management
 
-#### Dynamic Camera Registration
-- Camera streams can be registered and configured via the surveilance page for a respective dashboard.
+#### Camera Registration
+- Camera streams can be registered and configured via the surveilance page for a respective dashboard (any detected cameras will automatically be used).
 
 #### Stream Monitoring Dashboard
 - Each feed is displayed in a dedicated dashboard tile.
@@ -37,9 +33,9 @@ AutoSentinel is built for scalable deployment across institutions such as school
   - View recent detection snapshots and status
   - Filter feeds by location, detection time, or returned Yolov11 confidence scale (Soon to be implemented).
 
-## 🧱 Tech Stack
+## Tech Stack
 
-### 🖥️ Backend (Server-Side)
+### Backend (Server-Side)
 
 - **Node.js + Express.js**  
   - Core REST API layer for detection events, logs, and camera metadata.
@@ -52,7 +48,7 @@ AutoSentinel is built for scalable deployment across institutions such as school
 - **PostgreSQL**  
   - Stores timestamped detection logs, metadata, and system events.
   - Optimized schema for querying recent detections and historical patterns.
-### 🌐 Frontend (Dashboard)
+### Frontend (Dashboard)
 
 - **React.js + Vite**  
   - Fast, lightweight SPA with detection feed, camera stream previews, and historical data browsing.
@@ -61,7 +57,7 @@ AutoSentinel is built for scalable deployment across institutions such as school
 - **Material UI (Soon to be implemented)**  
   - Utility-first styling for a responsive and accessible UI.
 
-### ⚙️ Infrastructure & DevOps (Soon to be implemented)
+### Infrastructure & DevOps (Soon to be implemented)
 
 - **Docker
   - Entire system is containerized: web, API, video processor, and database.
