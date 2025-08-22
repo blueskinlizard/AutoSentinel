@@ -6,7 +6,7 @@ AutoSentinel combines server-side video processing with web-based visualization 
 The system ingests video feeds, runs detections using a high-performance computer vision model (Yolov11m), and broadcasts detected images from a surveilance stream to a web dashboard with actionable timestamps of where any guns were detected.
 
 ---
-### 👥 Multi-User Support
+### Multi-User Support
 
 #### User Accounts & Authentication
 - Secure authentication system with hashed passwords.
